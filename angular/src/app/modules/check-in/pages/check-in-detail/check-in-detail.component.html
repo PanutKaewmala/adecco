@@ -1,0 +1,24 @@
+<ng-container *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="body-01 text-uppercase d-flex gap-10">
+    <svg-icon src="../../../../../assets/images/icons/arrow.svg" class="pointer d-flex align-items-center"
+      [routerLink]="userId ? ['/check-in', 'no-status'] : ['/check-in']"></svg-icon>
+    {{ userId ? 'No Status' : 'check-in details' }}
+  </div>
+
+  <app-employee-detail [data]="detail" (workplace)="workplace = $event"></app-employee-detail>
+
+  <ng-container *ngIf="workplace">
+    <div class="my-3" *ngIf="!isEmptyActivity(detail.activities[workplace].check_in)">
+      <app-check-in-out-detail type="check-in" [isCheckIn]="true" [detail]="detail.activities[workplace].check_in">
+      </app-check-in-out-detail>
+    </div>
+
+    <div class="my-3" *ngIf="!isEmptyActivity(detail.activities[workplace].check_out)">
+      <app-check-in-out-detail type="check-out" [detail]="detail.activities[workplace].check_out">
+      </app-check-in-out-detail>
+    </div>
+  </ng-container>
+</ng-container>

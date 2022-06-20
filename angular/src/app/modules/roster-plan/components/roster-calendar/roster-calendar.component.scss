@@ -1,0 +1,53 @@
+::ng-deep .roster-detail .cal-month-view {
+  .cal-header .cal-cell {
+    font-weight: 500;
+    background-color: #f4f5f7;
+    text-align: left;
+    font-size: 10px;
+    padding-left: 5px;
+  }
+
+  .cal-day-number {
+    float: initial;
+    display: block;
+    text-align: left;
+    margin: 5px;
+    font-size: 10px !important;
+  }
+
+  .cal-day-cell.cal-today .cal-day-number {
+    font-size: 1.2em;
+  }
+
+  .caption-03 {
+    color: #be2c42;
+  }
+
+  .schedule-1 {
+    background-color: #fef8ec;
+  }
+
+  .schedule-2 {
+    background-color: #f3ecf5;
+  }
+
+  .schedule-3 {
+    background-color: #fcf0e8;
+  }
+
+  .schedule-4 {
+    background-color: #f1f6ed;
+  }
+
+  .schedule-5 {
+    background-color: #eff7fd;
+  }
+
+  .schedule-6 {
+    background-color: #eef6f5;
+  }
+
+  .schedule-7 {
+    background-color: #f3f1f1;
+  }
+}

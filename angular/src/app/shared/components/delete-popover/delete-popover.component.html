@@ -1,0 +1,5 @@
+<div class="body-03 mb-1">Are you sure you want to delete this {{ message }} ?</div>
+<div class="d-flex justify-content-end gap-10">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="cancel.emit()">No</button>
+  <button type="button" class="btn btn-outline-danger btn-sm" (click)="confirm.emit()">Yes</button>
+</div>

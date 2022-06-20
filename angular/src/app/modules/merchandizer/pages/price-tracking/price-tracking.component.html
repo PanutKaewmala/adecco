@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between">
+  <div class="body-01 my-auto">Price Tracking</div>
+  <button class="btn btn-outline-dark" (click)="add.open()">Add Reason</button>
+</div>
+<app-add-list-modal title="Add Reason" itemName="Reason" addLabel="Add Reason" (confirm)="createPriceTracking($event)"
+  #add>
+</app-add-list-modal>
+<app-add-list-modal title="Edit Reason" itemName="Reason" (confirm)="editPriceTracking($event)" #edit
+  [singleElement]="true">
+</app-add-list-modal>
+<div class="table-responsive table-hover">
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Reason Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="pointer" *ngFor="let data of dataPriceTracking.price_tracking_settings; index as i">
+        <td class="text-center">{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td class="text-center" (click)="$event.stopPropagation()">
+          <div class="d-flex align-content justify-content-center gap-10">
+            <i class="fal fa-edit m-t-5 pointer" (click)="edit.open([data.name], {id: data.id});"></i>
+            <svg-icon class="pointer" src="./../../../../../assets/images/icons/delete.svg" #p="ngbPopover"
+              [ngbPopover]="popover" [autoClose]="false" triggers="manual" placement="left" (click)="p.open()">
+            </svg-icon>
+            <ng-template #popover>
+              <app-delete-popover message="leave quota" (cancel)="p.close()"
+                (confirm)="deletePriceTracking(i); p.close()">
+              </app-delete-popover>
+            </ng-template>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

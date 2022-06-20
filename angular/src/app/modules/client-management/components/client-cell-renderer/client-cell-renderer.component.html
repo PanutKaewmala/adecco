@@ -1,0 +1,9 @@
+<ng-container *ngIf="field === 'name'">
+  <div class="h6 mb-0">{{ cellValue }}</div>
+  <small class="text-secondary">{{ data.url }}</small>
+</ng-container>
+
+<ng-container *ngIf="field === 'contact_person'">
+  <div>{{ cellValue }}</div>
+  <div class="phone">{{ data.contact_number }}</div>
+</ng-container>

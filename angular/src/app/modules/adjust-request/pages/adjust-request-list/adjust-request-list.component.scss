@@ -1,0 +1,38 @@
+.grid-container {
+  height: calc(100vh - 14.7rem);
+}
+
+.custom-date {
+  color: black;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  max-width: 250px;
+
+  input {
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .input-group-text {
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
+:host ::ng-deep .month-picker {
+  .ngb-dp-arrow {
+    display: none;
+  }
+
+  ngb-datepicker-month {
+    display: none;
+  }
+
+  ngb-datepicker {
+    width: 220px;
+    padding: 10px;
+  }
+}

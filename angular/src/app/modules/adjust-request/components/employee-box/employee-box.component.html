@@ -1,0 +1,92 @@
+<form [formGroup]="formGroup">
+  <div class="employee-box mt-3">
+    <div class="d-flex justify-content-between">
+      <div class="body-01 font-weight-bold">
+        {{ date | date: "d MMM yyyy" }}
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr class="text-center">
+            <th style="width: 250px;">Employee Name</th>
+            <th style="width: 150px;">Type</th>
+            <th style="width: 300px;">Workplace</th>
+            <th style="width: 200px;">Working Time</th>
+            <th style="width: 100px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="isEdit; else elseTemplate">
+            <tr>
+              <td>
+                <ng-select [items]="employees" bindLabel="label" bindValue="value" appendTo="body" [clearable]="false"
+                  formControlName="employee_project" appValidationForm>
+                </ng-select>
+              </td>
+              <td>
+                <ng-select [items]="types" bindLabel="label" bindValue="value" appendTo="body" [clearable]="false"
+                  formControlName="type" appValidationForm>
+                </ng-select>
+              </td>
+              <td>
+                <ng-select [items]="workplaces" bindLabel="label" bindValue="value" appendTo="body" [clearable]="false"
+                  [multiple]="true" formControlName="workplaces" appValidationForm>
+                </ng-select>
+              </td>
+              <td>
+                <ng-select [items]="workingTimes" bindLabel="name" bindValue="id" appendTo="body"
+                  [clearable]="false" formControlName="working_hour" appValidationForm>
+                </ng-select>
+              </td>
+              <td class="text-center p-1">
+                <svg-icon class="pointer" src="../../../../../assets/images/icons/delete.svg" (click)="delete.emit()">
+                </svg-icon>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <ng-container formArrayName="employee_list">
+              <tr *ngFor="let employee of employeeArray.controls; index as i" [formGroupName]="i">
+                <td>
+                  <ng-select [items]="employees" bindLabel="label" bindValue="value" appendTo="body" [clearable]="false"
+                    formControlName="employee_project" appValidationForm>
+                  </ng-select>
+                </td>
+                <td>
+                  <ng-select [items]="types" bindLabel="label" bindValue="value" appendTo="body" [clearable]="false"
+                    formControlName="type" appValidationForm>
+                  </ng-select>
+                </td>
+                <td>
+                  <ng-select [items]="workplaces" bindLabel="label" bindValue="value" appendTo="body"
+                    [clearable]="false" [multiple]="true" formControlName="workplaces" appValidationForm>
+                  </ng-select>
+                </td>
+                <td>
+                  <ng-select [items]="workingTimes" bindLabel="name" bindValue="id" appendTo="body" [clearable]="false"
+                    formControlName="working_hour" appValidationForm>
+                  </ng-select>
+                </td>
+                <td class="text-center p-1">
+                  <svg-icon class="pointer" src="../../../../../assets/images/icons/delete.svg"
+                    (click)="onDeleteEmployee(i)">
+                  </svg-icon>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row" *ngIf="!isEdit">
+      <div class="col-12 col-lg-6 p-0">
+        <a class="text-danger pointer" (click)="onAddEmployee()">+ Add employee</a> <br>
+        <!-- <small class="text-danger" *ngIf="getWorkplaces(schedule).touched && getWorkplaces(schedule).errors">Workplace
+          is required</small> -->
+      </div>
+    </div>
+  </div>
+</form>

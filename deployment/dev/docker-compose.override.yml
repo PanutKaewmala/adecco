@@ -1,0 +1,89 @@
+version: "2.4"
+
+services:
+  nginx:
+    image: nginx:1.21-alpine
+    ports:
+      - "117.121.213.41:80:80"
+      - "117.121.213.41:443:443"
+    volumes:
+      - ./nginx/dhparam.pem:/etc/nginx/dhparam.pem:ro
+      - ./nginx/nginx.green.conf:/etc/nginx/nginx.green.conf:ro
+      - ./nginx/nginx.blue.conf:/etc/nginx/nginx.blue.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt/live/adecco.c0d1um.io:/certificate:ro
+      - /etc/letsencrypt/live/storage.adecco.c0d1um.io:/certificate-storage:ro
+      - /etc/letsencrypt/archive:/archive:ro
+      - ./.docker_volumes/angular/dist:/angular/dist:ro
+      - ./.docker_volumes/django/static:/django/static
+      - ./.docker_volumes/django/media:/django/media
+      - ./.docker_volumes/minio/data:/minio/data
+    restart: always
+
+  postgres:
+    ports:
+      - "117.121.213.41:5432:5432"
+    env_file:
+      - .env
+    restart: always
+
+  django:
+    depends_on:
+      - minio
+    image: registry.gitlab.com/c0d1um/adecco/django
+    command: 'gunicorn -k main.apps.common.workers.UvicornWorker --bind 0.0.0.0:8000 --workers 3 --max-requests 1000 --timeout 6000 main.asgi:application --log-level=INFO'
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    env_file:
+      - .env
+    restart: always
+
+  django-blue:
+    image: registry.gitlab.com/c0d1um/adecco/django
+    command: 'gunicorn -k main.apps.common.workers.UvicornWorker --bind 0.0.0.0:8000 --workers 3 --max-requests 1000 --timeout 6000 main.asgi:application --log-level=INFO'
+    env_file:
+      - .env
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    restart: always
+
+  celery-worker:
+    image: registry.gitlab.com/c0d1um/adecco/django
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    env_file:
+      - .env
+    restart: always
+
+  celery-beat:
+    image: registry.gitlab.com/c0d1um/adecco/django
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    env_file:
+      - .env
+    restart: always
+
+  redis:
+    restart: always
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "117.121.213.41:1080:8025"
+    restart: always
+
+  minio:
+    command: server /data --console-address ":9001"
+    ports:
+      - "117.121.213.41:9000:9000"
+      - "117.121.213.41:9001:9001"
+    image: minio/minio
+    env_file:
+      - .env
+    volumes:
+      - ./.docker_volumes/minio/data:/data
+    restart: always

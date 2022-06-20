@@ -1,0 +1,107 @@
+<form [formGroup]="formGroup">
+  <div class="roster-box mt-3">
+    <div class="d-flex justify-content-between">
+      <div class="body-01 font-weight-bold">
+        {{ isAutoShift ? 'Monthly' : 'Shift ' + index }}
+      </div>
+      <div class="pointer" *ngIf="!isEditShift && !isAutoShift" (click)="p.open()" #p="ngbPopover"
+        [ngbPopover]="popover" [autoClose]="false" triggers="manual" placement="left">
+        <svg-icon src="../../../../../assets/images/icons/delete.svg"></svg-icon>
+
+        <ng-template #popover>
+          <app-delete-popover (confirm)="delete.emit()" (cancel)="p.close()" message="shift"></app-delete-popover>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-6 p-0 pr-lg-2 mt-3" *ngIf="!isAutoShift">
+        <div class="form-group">
+          <label>From</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ngbDatepicker #start="ngbDatepicker" placeholder="Select"
+              formControlName="from_date" appValidationForm [uniqueKey]="'shift' + index"
+              [value]="dateString(formGroup.get('from_date').value)" [firstDayOfWeek]="7"
+              [minDate]="getNgbDate(startDate)" [maxDate]="getNgbDate(endDate)" readonly>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg"></svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 p-0 pl-lg-2 mt-3" *ngIf="!isAutoShift">
+        <div class="form-group">
+          <label>To</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ngbDatepicker #end="ngbDatepicker" (click)="end.toggle()"
+              placeholder="Select" formControlName="to_date" appValidationForm [uniqueKey]="'shift' + index"
+              (dateSelect)="onToDateSelect()" [value]="dateString(formGroup.get('to_date').value)" [firstDayOfWeek]="7"
+              [minDate]="getNgbDate(startDate)" [maxDate]="getNgbDate(endDate)" readonly>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="end.toggle()"></svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-content></ng-content>
+
+      <div class="col-12 col-lg-12 p-0 mt-3" formArrayName="schedules">
+        <label>Schedule</label>
+        <ng-container *ngFor="let schedule of schedules.controls; index as i" [formGroupName]="i">
+          <div class="d-flex justify-content-between mb-3">
+            <div class="d-flex gap-10">
+              <div class="day-of-week rounded-circle body-03" *ngFor="let day of days"
+                (click)="onSelectDay(day, schedule)" [ngClass]="{'active': schedule.get(day)?.value === 'work_day', 
+                 'not-allowed': schedule.get(day)?.value === 'holiday' || isDisable(day, schedule)}">
+                {{ day[0] | uppercase }}
+              </div>
+            </div>
+            <div class="pointer" (click)="s.open()" #s="ngbPopover" [ngbPopover]="popover" [autoClose]="false"
+              triggers="manual" placement="left">
+              <svg-icon src="../../../../../assets/images/icons/delete.svg"></svg-icon>
+
+              <ng-template #popover>
+                <app-delete-popover (confirm)="onDeleteSchedule(i, schedule)" (cancel)="s.close()" message="schedule">
+                </app-delete-popover>
+              </ng-template>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-6 p-0">
+              <div class="d-flex justify-content-between gap-10 mb-2" formArrayName="workplaces"
+                *ngFor="let workplace of getWorkplaces(schedule).controls; index as workplaceIndex">
+                <ng-select class="w-100" [items]="workplaces" [formControlName]="workplaceIndex" bindValue="value"
+                  bindLabel="label" (change)="onSelectWorkplace(workplace)" placeholder="Select" appValidationForm>
+                </ng-select>
+                <i class="fal fa-times pointer my-auto" (click)="onDeleteWorkplace(workplaceIndex, schedule)"></i>
+              </div>
+
+              <a class="text-danger pointer" (click)="onAddWorkplace(schedule)">+ Add workplace</a> <br>
+              <small class="text-danger"
+                *ngIf="getWorkplaces(schedule).touched && getWorkplaces(schedule).errors">Workplace is required</small>
+            </div>
+          </div>
+          <div class="col-12 border-top p-0 my-3"></div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-6 p-0">
+        <button type="button" class="btn btn-outline-danger mb-2 w-100" (click)="onAddSchedule()"
+          [disabled]="!canAddSchedule" [ngClass]="{'not-allowed': !canAddSchedule}">
+          Add Schedule
+        </button>
+        <small class="text-danger" *ngIf="schedules.touched && schedules.errors">
+          Schedule is required
+        </small>
+      </div>
+    </div>
+  </div>
+</form>

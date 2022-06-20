@@ -1,0 +1,40 @@
+.container-image {
+  align-items: center;
+  background-color: #bababa;
+  border-radius: 3px;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  position: relative;
+  width: 120px;
+  
+  > * {
+    position: absolute;
+  }
+
+  &:hover {
+    opacity: 0.7;
+
+    .icon-edit {
+      display: block;
+    }
+  }
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.icon {
+  &-default {
+    fill: #979797;
+    z-index: 1;
+  }
+
+  &-edit {
+    cursor: pointer;
+    display: none;
+    fill: white;
+    z-index: 3;
+  }
+}

@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+db.sqlite3
+node_modules/
+.coverage
+
+.docker_volumes/
+__pycache__
+
+.DS_Store
+*.log
+
+
+minio/

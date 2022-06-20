@@ -1,0 +1,96 @@
+<div class="row my-4">
+  <div class="col-12 col-lg-2 m-auto d-flex justify-content-center">
+    <div class="square">
+      <img [src]="detail.user.photo || 'assets/images/icons/adecco_user.svg'" alt="profile">
+    </div>
+  </div>
+  <div class="col-10 row mt-3">
+    <div class="col-12 col-md-6 col-lg-4 m-auto">
+      <div class="title">name</div>
+      <div class="body-01">{{ detail.user.full_name }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8 m-auto">
+      <div class="title">phone</div>
+      <div class="body-01">{{ detail.user.phone_number || '-' }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="title">id</div>
+      <div class="body-01">{{ detail.user.id }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="title">Working hour</div>
+      <div class="body-01">9:00 - 18:00</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="title">SUPERVISOR</div>
+      <div class="body-01">{{ detail.supervisor.full_name }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <div class="title">
+      OT Request
+    </div>
+  </div>
+
+  <div class="my-2">
+    <div class="title">
+      Ot Date
+    </div>
+    <div class="body-01">
+      {{ detail.multi_day ? 
+        (detail.start_date | date: 'dd MMM yyyy') + ' - ' + (detail.end_date  | date: 'dd MMM yyyy') 
+        : (detail.start_date | date: 'dd MMM yyyy') }}
+    </div>
+  </div>
+
+  <div class="my-2">
+    <div class="title">
+      ot Total
+    </div>
+    <div class="body-01">{{ detail.ot_total }}</div>
+  </div>
+
+  <div class="mt-2">
+    <div class="title">
+      workplace
+    </div>
+    <div class="body-01">{{ detail.workplace.name }}</div>
+  </div>
+
+  <div class="my-2">
+    <div class="title">
+      Description
+    </div>
+    <div class="body-01">{{ detail.description || '-' }}</div>
+  </div>
+</div>
+
+<div class="box my-4">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <div class="title">
+      OT Rate
+    </div>
+  </div>
+
+  <ag-grid-angular style="width: 100%; height: 177px;" class="ag-theme-alpine mt-3" [rowData]="otRules"
+    [columnDefs]="otRateColumnDefs" (gridReady)="onGridReady($event)" (gridSizeChanged)="onGridSizeChanged($event)">
+  </ag-grid-angular>
+</div>
+
+<div class="box my-4">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <div class="title">
+      OT quota
+    </div>
+  </div>
+
+  <ag-grid-angular style="width: 100%; height: 115px;" class="ag-theme-alpine mt-3" [rowData]="otQuota"
+    [columnDefs]="otQuotaColumnDefs" (gridReady)="onGridReady($event)" (gridSizeChanged)="onGridSizeChanged($event)">
+  </ag-grid-angular>
+</div>

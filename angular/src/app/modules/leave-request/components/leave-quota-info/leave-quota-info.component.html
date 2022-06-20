@@ -1,0 +1,12 @@
+<div class="box my-4">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <div class="title">
+      Leave quota
+    </div>
+  </div>
+
+  <ag-grid-angular style="width: 100%; height: 177px;" class="ag-theme-alpine mt-3" [rowData]="leaveQuota"
+    [columnDefs]="columnDefs" (gridReady)="onGridReady($event)" (gridSizeChanged)="onGridSizeChanged($event)">
+  </ag-grid-angular>
+</div>

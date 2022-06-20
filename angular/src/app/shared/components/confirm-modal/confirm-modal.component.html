@@ -1,0 +1,10 @@
+<ng-template #confirm let-modal>
+  <div class="modal-body text-center h5 mt-3">
+    {{ message }}
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="onConfirm()">Confirm</button>
+  </div>
+</ng-template>

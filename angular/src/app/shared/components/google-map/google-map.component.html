@@ -1,0 +1,3 @@
+<google-map #map [options]="options" [center]="center" (mapClick)="clickable ? onMapClicked($event) : null">
+  <map-marker *ngIf="!isDirection" [position]="position" [options]="markerOptions"></map-marker>
+</google-map>

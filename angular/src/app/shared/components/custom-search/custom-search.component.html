@@ -1,0 +1,27 @@
+<div class="filter-popup" [ngClass]="{'date': isOpen && customFilter?.isDate}">
+  <input *ngIf="!options && !customFilter?.isDate && !customFilter?.dropdown" type="text" class="ag-custom-filter"
+    placeholder="Search" [(ngModel)]="search[field]" (change)="updateFilter()">
+
+  <ng-select *ngIf="options" class="ag-custom-filter" appendTo="body" (change)="updateFilter()"
+    [(ngModel)]="search[field]" [searchable]="false" placeholder="Filter" [items]="options">
+    <ng-template ng-label-tmp let-item="item">
+      {{ item.replace('_', ' ') | titlecase }}
+    </ng-template>
+
+    <ng-template ng-option-tmp let-item="item">
+      {{ item.replace('_', ' ') | titlecase }}
+    </ng-template>
+  </ng-select>
+
+  <ng-select *ngIf="customFilter?.dropdown" class="ag-custom-filter" appendTo="body" (change)="updateFilter()"
+    [(ngModel)]="search[field]" [searchable]="false" placeholder="Filter" [items]="dropdown$ | async" bindLabel="label"
+    bindValue="value">
+  </ng-select>
+
+  <div class="filter-date" *ngIf="customFilter?.isDate">
+    <input type="text" class="ag-custom-filter" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()"
+      placeholder="Select" [value]="getDateString || ''" (dateSelect)="onDateSelected($event)" [firstDayOfWeek]="7"
+      (click)="isOpen = !isOpen" readonly>
+    <span *ngIf="search[field]" aria-hidden="true" class="ng-clear" (click)="onClear()">×</span>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="d-flex flex-column h-100">
+  <div class="text-right">
+    <button class="btn btn-outline-danger" routerLink="create">New Type</button>
+  </div>
+
+  <div class="h-100 d-flex">
+    <ag-grid-angular style="width: 100%; height: auto;" class="ag-theme-alpine mt-3" [rowData]="dataList"
+      [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents"
+      (gridSizeChanged)="onGridSizeChanged($event)" [suppressFieldDotNotation]="true" (filterOpened)="onFilterOpened()"
+      (cellClicked)="onCellClicked($event)">
+    </ag-grid-angular>
+  </div>
+
+  <app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>
+</div>

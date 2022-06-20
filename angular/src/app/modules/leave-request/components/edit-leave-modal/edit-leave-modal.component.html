@@ -1,0 +1,41 @@
+<ng-template #confirm let-modal>
+  <div class="modal-header pb-0">
+    <div class="modal-title header with-underline">
+      Edit leave quota setting
+    </div>
+    <button type="button" class="close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row mb-3">
+      <div class="col-3 title p-0">Employee :</div>
+      <div class="col-9 p-0">{{ data.full_name }}, {{ data.year_total }}</div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="text-center">
+            <th>Leave Name</th>
+            <th>Quota (Day)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leave of data.leave_quotas">
+            <th>{{ leave.type }}</th>
+            <td>
+              <input type="number" class="form-control" [(ngModel)]="leave.total">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-footer pt-0">
+    <button class="btn btn-outline-danger" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="onConfirm()" [ladda]="submitting">Confirm</button>
+  </div>
+</ng-template>

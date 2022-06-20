@@ -1,0 +1,65 @@
+<div class="box">
+  <div class="box-title">
+    <div class="decorate bg-warning"></div>
+    <div class="title text-warning">
+      {{ route.location_name }}
+    </div>
+    <i *ngIf="isPinpoint && !isPinpointDetail" [routerLink]="['/route', 'pinpoint', route.pin_point_id]"
+      class="fas fa-info-circle ml-2 pointer text-warning"></i>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-5 p-0 pr-md-3">
+      <div class="my-3">
+        <div class="title">
+          TIME TRACKING
+        </div>
+        <div class="body-01">{{ (route.time_tracking || activity.date_time) | date: "dd MMM yyyy, h:mm a"}}</div>
+      </div>
+
+      <div class="my-3" *ngIf="isPinpointDetail">
+        <div class="title">
+          IMAGE
+        </div>
+        <div class="check-in-image mt-1">
+          <img [src]="activity.picture ||
+            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'" alt="check-in-out">
+        </div>
+      </div>
+
+      <div class="my-3">
+        <div class="title">
+          LOCATION
+        </div>
+        <div class="body-01">
+          {{ route.location_address }}
+        </div>
+        <div class="body-01">
+          {{ latLngString }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-7 p-0 pl-md-3">
+      <ng-container *ngIf="isPinpointDetail; else elseTemplate">
+        <div class="mt-5">
+          <app-google-map [position]="position"></app-google-map>
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <div class="title mt-3">
+          {{ isPinpoint ? 'IMAGE' : 'REMARKS' }}
+        </div>
+        <ng-container *ngIf="isPinpoint; else elseTemplate">
+          <div class="check-in-image mt-1">
+            <img [src]="route.picture || 
+            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'" alt="check-in-out">
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div class="body-01">{{ route.remark || '-˝' }}</div>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</div>

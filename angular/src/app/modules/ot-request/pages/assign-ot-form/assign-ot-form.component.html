@@ -1,0 +1,131 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header">
+  {{ id && !isLoading ? data.user.full_name : 'Assign ot to employee' }}
+</div>
+
+<ng-container *ngIf="isLoading && id; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <form [formGroup]="formGroup" (submit)="onSubmit()" *ngIf="formGroup">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <div class="box">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <div class="title">Details</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-7 mt-3">
+        <div class="form-group">
+          <label class="required">Title</label>
+          <input type="text" class="form-control" formControlName="title" appValidationForm>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" formControlName="description" appValidationForm>
+        </div>
+        <div class="form-group">
+          <label class="required">Workplace</label>
+          <ng-select placeholder="Select" formControlName="workplace" appValidationForm [items]="workplaces"
+            bindValue="value" bindLabel="label"></ng-select>
+        </div>
+      </div>
+
+      <div class="col-12 mt-3">
+        <div class="box">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <div class="title">Date & time</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-7 mt-3">
+        <ng-container *ngIf="!id">
+          <div class="btn-group btn-group-toggle" role="group" ngbRadioGroup name="typeRadio" formControlName="type">
+            <label ngbButtonLabel class="btn-outline-danger">
+              <input ngbButton type="radio" value="one_day">One Day
+            </label>
+            <label ngbButtonLabel class="btn-outline-danger">
+              <input ngbButton type="radio" value="multi_day">Multi-Day
+            </label>
+          </div>
+        </ng-container>
+
+        <div class="form-group mt-3">
+          <label class="required">
+            <span *ngIf="type === 'multi_day'">Start</span> Date
+          </label>
+          <div class="input-group">
+            <input type="text" class="form-control" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()"
+              (dateSelect)="onDateSelect()" placeholder="Select" formControlName="start_date" appValidationForm
+              [firstDayOfWeek]="7" readonly>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="start.toggle()">
+                </svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-3" *ngIf="type === 'multi_day'">
+          <label class="required">End Date</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ngbDatepicker #end="ngbDatepicker" (click)="end.toggle()"
+              placeholder="Select" formControlName="end_date" appValidationForm (dateSelect)="onDateSelect()"
+              [minDate]="getNgbDate(formGroup.get('start_date').value)" [firstDayOfWeek]="7" readonly>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="end.toggle()">
+                </svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="required">Start Time</label>
+          <ngb-timepicker formControlName="start_time"></ngb-timepicker>
+          <small class="text-danger w-100" id="start_time"
+            *ngIf="formGroup.touched && formGroup.get('start_time').invalid">This field is required.</small>
+        </div>
+        <div class="form-group">
+          <label class="required">End Time</label>
+          <ngb-timepicker formControlName="end_time"></ngb-timepicker>
+          <small class="text-danger w-100" id="end_time"
+            *ngIf="formGroup.touched && formGroup.get('end_time').invalid">This field is required.</small>
+        </div>
+      </div>
+
+      <ng-container *ngIf="!id">
+        <div class="col-12 mt-3">
+          <div class="box">
+            <div class="box-title">
+              <div class="decorate"></div>
+              <div class="title">Assignee</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <app-select-employee [projectId]="1" [formGroup]="formGroup">
+            <span class="body-01">Please add assignee(s) to the pinpoint type</span>
+          </app-select-employee>
+        </div>
+
+        <div class="col-12 mt-3">
+          <div class="text-right">
+            <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+              Cancel
+            </button>
+            <button class="btn btn-danger" type="submit" [ladda]="submitting" appSubmitForm>
+              Save
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</ng-template>

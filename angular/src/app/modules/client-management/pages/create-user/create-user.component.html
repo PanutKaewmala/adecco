@@ -1,0 +1,64 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="header">
+  ADD New User
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label>Search user id/name from master data</label>
+        <ng-select placeholder="Select" (change)="onUserSelect($event)" [items]="userDropdown$ | async"
+          [typeahead]="userSearch$">
+          <ng-template ng-label-tmp ng-option-tmp let-user="item">
+            <label class="label-user-option mb-0">ID: {{ user.id }}</label> {{ user.full_name }}
+          </ng-template>
+        </ng-select>
+      </div>
+
+      <ng-container formGroupName="user">
+        <div class="form-group my-4">
+          <label class="required">First ​Name</label>
+          <input type="text" class="form-control" appValidationForm formControlName="first_name">
+        </div>
+
+        <div class="form-group my-4">
+          <label>Middle ​Name</label>
+          <input type="text" class="form-control" appValidationForm formControlName="middle_name">
+        </div>
+
+        <div class="form-group my-4">
+          <label class="required">Last ​Name</label>
+          <input type="text" class="form-control" appValidationForm formControlName="last_name">
+        </div>
+
+        <div class="form-group my-4">
+          <label class="required">Email address</label>
+          <input type="text" class="form-control" appValidationForm formControlName="email">
+        </div>
+
+        <div class="form-group my-4">
+          <label class="required">Role</label>
+          <ng-select placeholder="Select" bindLabel="label" bindValue="value" [items]="roles" appValidationForm
+            formControlName="role" [clearable]="false">
+          </ng-select>
+        </div>
+      </ng-container>
+
+      <div class="form-group my-4">
+        <label>Username</label>
+        <input type="text" class="form-control" appValidationForm formControlName="username">
+      </div>
+
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,377 @@
+[
+  {
+    "model": "users.employeeproject",
+    "pk": 1,
+    "fields": {
+      "employee": 2,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 2,
+    "fields": {
+      "employee": 3,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 3,
+    "fields": {
+      "employee": 4,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 4,
+    "fields": {
+      "employee": 5,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 5,
+    "fields": {
+      "employee": 6,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 6,
+    "fields": {
+      "employee": 7,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 7,
+    "fields": {
+      "employee": 8,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 8,
+    "fields": {
+      "employee": 1,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 9,
+    "fields": {
+      "employee": 9,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 10,
+    "fields": {
+      "employee": 1,
+      "supervisor": 6,
+      "project": 2,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 11,
+    "fields": {
+      "employee": 1,
+      "supervisor": 6,
+      "project": 3,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 12,
+    "fields": {
+      "employee": 9,
+      "supervisor": 9,
+      "project": 2,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 13,
+    "fields": {
+      "employee": 9,
+      "supervisor": 9,
+      "project": 3,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 14,
+    "fields": {
+      "employee": 14,
+      "supervisor": 14,
+      "project": 1,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 15,
+    "fields": {
+      "employee": 14,
+      "supervisor": 3,
+      "project": 2,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 16,
+    "fields": {
+      "employee": 14,
+      "supervisor": 13,
+      "project": 3,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 17,
+    "fields": {
+      "employee": 13,
+      "supervisor": 6,
+      "project": 1,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 18,
+    "fields": {
+      "employee": 13,
+      "supervisor": 9,
+      "project": 2,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 19,
+    "fields": {
+      "employee": 13,
+      "supervisor": 9,
+      "project": 3,
+      "start_date": "2022-04-25",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 20,
+    "fields": {
+      "employee": 6,
+      "supervisor": 6,
+      "project": 2,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 21,
+    "fields": {
+      "employee": 6,
+      "supervisor": 6,
+      "project": 3,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 22,
+    "fields": {
+      "employee": 7,
+      "supervisor": 6,
+      "project": 2,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 23,
+    "fields": {
+      "employee": 7,
+      "supervisor": 6,
+      "project": 3,
+      "start_date": "2022-04-22",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 24,
+    "fields": {
+      "employee": 5,
+      "supervisor": 6,
+      "project": 2,
+      "start_date": "2022-04-30",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.employeeproject",
+    "pk": 25,
+    "fields": {
+      "employee": 5,
+      "supervisor": 6,
+      "project": 3,
+      "start_date": "2022-05-15",
+      "resign_date": null,
+      "workplaces": [
+        1,
+        2
+      ]
+    }
+  }
+]

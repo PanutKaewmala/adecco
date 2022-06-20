@@ -1,0 +1,126 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="header">Add new product</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row mt-3">
+    <ng-container *ngIf="!productId">
+      <div class="col-12">
+        <div class="heading-04 font-weight-bold">Group product</div>
+      </div>
+
+      <div class="col-12 col-md-8 col-lg-7 row">
+        <div class="col-12 col-md-5 col-lg-4 p-0 mt-3">
+          <div class="heading-04 font-weight-bold required">Group</div>
+          <div class="caption-02">Select product group</div>
+        </div>
+        <div class="col-12 col-md-7 col-lg-8 p-0 mt-3">
+          <ng-select formControlName="group" [items]="groups$ | async" bindValue="value" bindLabel="label"
+            (change)="onGroupChange($event)" appValidationForm>
+          </ng-select>
+        </div>
+
+        <div class="col-12 col-md-5 col-lg-4 p-0 mt-3">
+          <div class="heading-04 font-weight-bold">Category</div>
+          <div class="caption-02">Select product category</div>
+        </div>
+        <div class="col-12 col-md-7 col-lg-8 p-0 mt-3">
+          <ng-select formControlName="category" [items]="categories$ | async" bindValue="value" bindLabel="label"
+            (change)="onCategoryChange($event)" appValidationForm [readonly]="!formGroup.get('group').value">
+          </ng-select>
+        </div>
+
+        <div class="col-12 col-md-5 col-lg-4 p-0 mt-3">
+          <div class="heading-04 font-weight-bold">Subcategory</div>
+          <div class="caption-02">Select product subcategory</div>
+        </div>
+        <div class="col-12 col-md-7 col-lg-8 p-0 mt-3">
+          <ng-select formControlName="subcategory" [items]="subcategories$ | async" bindValue="value" bindLabel="label"
+            (change)="onSubcategoryChange($event)" appValidationForm [readonly]="!formGroup.get('category').value">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <hr>
+      </div>
+    </ng-container>
+
+    <div class="col-12 col-md-8 col-lg-7">
+      <div class="heading-04 font-weight-bold">Product details</div>
+
+      <div class="form-group mt-3">
+        <label>Product ID</label>
+        <input type="text" class="form-control" formControlName="product_id" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label class="required">Product Name</label>
+        <input type="text" class="form-control" formControlName="name" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label>Brand Name</label>
+        <input type="text" class="form-control" formControlName="brand_name" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label>Distributor</label>
+        <input type="text" class="form-control" formControlName="distributor" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label class="required">Price</label>
+        <input type="text" class="form-control" formControlName="price" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label class="required">Ratio</label>
+        <input type="text" class="form-control" formControlName="ratio" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label>Barcode Number</label>
+        <input type="text" class="form-control" formControlName="barcode_number" appValidationForm>
+      </div>
+
+      <ng-container formArrayName="product_details" *ngFor="let question of questions; index as i">
+        <div class="form-group" *ngIf="question.context.active" [formGroupName]="i">
+          <label>{{ question.label }}</label>
+          <input type="text" class="form-control" formControlName="answer" appValidationForm>
+        </div>
+      </ng-container>
+
+      <div class="row body-03" *ngIf="productId">
+        <div class="col-12 col-lg-6 d-flex justify-content-start justify-content-lg-between gap-10">
+          <svg-icon src="../../../../../assets/images/icons/create.svg"></svg-icon>
+          <div>Create by :
+            <div>{{ product?.created_user.full_name }}</div>
+          </div>
+          <div>Create date :
+            <div>{{ product?.created_at | date: 'dd/MM/yyyy' }}</div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6 d-flex mt-3 mt-lg-0 justify-content-start justify-content-lg-between gap-10">
+          <svg-icon src="../../../../../assets/images/icons/modify.svg"></svg-icon>
+          <div>Modify by :
+            <div>{{ product?.updated_user.full_name }}</div>
+          </div>
+          <div>Modify date :
+            <div>{{ product?.updated_at | date: 'dd/MM/yyyy' }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right mt-3">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

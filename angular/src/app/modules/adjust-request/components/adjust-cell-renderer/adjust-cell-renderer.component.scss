@@ -1,0 +1,20 @@
+.workplace {
+  white-space: normal;
+
+  .workplace-badge {
+    font-size: 10px;
+    padding: 7px 15px;
+    background: #ddecea;
+    border-radius: 12px;
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    margin: 3px 0;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<div class="d-flex flex-column h-100">
+  <div class="text-right">
+    <button class="btn btn-outline-danger" (click)="add.open()">Additional type</button>
+  </div>
+  <app-add-list-modal addLabel="Additional type" itemName="Detail" title="Additional type"
+    (confirm)="createAdditionalType($event)" #add></app-add-list-modal>
+  <app-add-list-modal addLabel="Additional type" itemName="Detail" title="Additional type" [singleElement]="true"
+    (confirm)="editAdditionalType($event)" #edit></app-add-list-modal>
+  <div class="h-100 d-flex">
+    <ag-grid-angular style="width: 100%; height: auto;" class="ag-theme-alpine mt-3" [rowData]="dataList"
+      [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+  </div>
+  <app-pagination [totalItems]="totalItems" [page]="page" (changePage)="changePage($event)"></app-pagination>
+</div>

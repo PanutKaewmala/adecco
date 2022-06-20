@@ -1,0 +1,11 @@
+.menu {
+  &:hover {
+    background: #ffcdc873;
+    color: var(--red);
+  }
+
+  &.active {
+    background: #ffcdc8;
+    color: var(--red);
+  }
+}

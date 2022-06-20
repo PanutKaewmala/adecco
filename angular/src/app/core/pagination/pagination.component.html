@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-center py-3">
+  <div class="my-auto mr-3">Page</div>
+  <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemPerPage" [(page)]="page" [maxSize]="3"
+    [directionLinks]="false" [ellipses]="true" [rotate]="true" (pageChange)="onChangePage($event)">
+  </ngb-pagination>
+</div>

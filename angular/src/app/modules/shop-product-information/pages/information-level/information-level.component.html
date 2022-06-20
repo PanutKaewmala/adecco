@@ -1,0 +1,55 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="d-flex flex-column my-3 h-100">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-9 mb-3">
+      <div class="heading-02 d-flex gap-10 p-0">
+        <svg-icon src="../../../../../assets/images/icons/back.svg" class="pointer d-flex align-items-center"
+          appBackLocation>
+        </svg-icon>
+        {{ merchandise?.name || level }}
+      </div>
+      <div class="caption-01 text-secondary" *ngIf="isSubcategory">{{ totalItems }} {{ type | titlecase }}s Found</div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-9 p-0" *ngIf="!isSubcategory">
+      <ng-select class="w-50" placeholder="All {{filterLevelName}}" [items]="levelOptions$ | async" bindLabel="label"
+        bindValue="value" (change)="onFilterLevel($event)">
+      </ng-select>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3 text-right p-0">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+          New {{ type | titlecase }}
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem (click)="goToAddPage()">Create New</button>
+          <button ngbDropdownItem (click)="import.open()">Import</button>
+        </div>
+
+        <app-upload-file-modal #import title="Import new {{type}}">
+        </app-upload-file-modal>
+      </div>
+    </div>
+
+    <div class="col-12 p-0" *ngIf="!isSubcategory">
+      <hr>
+    </div>
+  </div>
+
+  <div class="flex-grow-1">
+    <div class="heading-02" *ngIf="!isSubcategory">All {{ type | titlecase }} {{ totalItems }} Item</div>
+    <div class="d-flex flex-column h-100">
+      <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine mt-3" [rowData]="dataList"
+        [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)"
+        (gridSizeChanged)="onGridSizeChanged($event)" (cellClicked)="onCellClicked($event)"
+        [suppressFieldDotNotation]="true" (filterOpened)="onFilterOpened()">
+      </ag-grid-angular>
+
+      <app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>
+    </div>
+  </div>
+</div>
+
+<app-add-detail-modal [type]="type" #add></app-add-detail-modal>

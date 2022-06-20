@@ -1,0 +1,34 @@
+.container-workplace {
+  display: flex;
+
+  > div:nth-child(2) {
+    display: flex;
+    padding-top: 2rem;
+  }
+}
+
+.container-profile-photo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  app-upload-profile-photo {
+    @media screen and (min-width: 992px) {
+      position: absolute;
+    }
+  }
+}
+
+.form-content {
+  > div.row.no-gutters {
+    margin-bottom: 1.5rem;
+
+    > div {
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+.label-user-option {
+  width: 70px;
+}

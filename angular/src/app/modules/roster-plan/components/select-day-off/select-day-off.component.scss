@@ -1,0 +1,67 @@
+::ng-deep .day-off-calendar ngb-datepicker {
+  background-color: white;
+  padding: 2rem;
+
+  .ngb-dp-weekdays {
+    background-color: white;
+    border: none;
+  }
+
+  .ngb-dp-header {
+    background-color: white;
+  }
+
+  .ngb-dp-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    padding: 5px;
+
+    .bg-primary {
+      background: #a61589 !important;
+      border-radius: 40px;
+    }
+
+    .btn-light:hover {
+      border-radius: 40px;
+    }
+
+    &.disabled {
+      color: #a3a3a3;
+    }
+  }
+
+  .ngb-dp-day > div {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+  }
+
+  .ngb-dp-weekday {
+    width: 3rem;
+    color: black;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  .ngb-dp-arrow-btn {
+    display: none;
+  }
+
+  .custom-day {
+    &.selected {
+      background: #a61589 !important;
+      border-radius: 40px;
+      color: white;
+    }
+
+    &.disabled {
+      color: #a3a3a3;
+      cursor: default !important;
+      pointer-events: none;
+    }
+  }
+}

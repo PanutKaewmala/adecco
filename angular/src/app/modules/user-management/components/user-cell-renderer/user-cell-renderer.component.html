@@ -1,0 +1,28 @@
+<ng-container *ngIf="field === 'user'">
+  <div>{{ cellValue }}</div>
+  <small>{{ data.email }}</small>
+</ng-container>
+
+<ng-container *ngIf="field === 'username' && data.role !== 'Admin'">
+  <div>{{ cellValue }}</div>
+</ng-container>
+
+<div *ngIf="field === 'status' && data.role !== 'Admin'" class="d-flex justify-content-center h-100 align-items-center">
+  <div container="body" ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-dark" id="dropdown" ngbDropdownToggle>
+      Action
+    </button>
+    <div ngbDropdownMenu>
+      <button ngbDropdownItem></button>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" *ngIf="field === 'more' && data.role !== 'Admin'">
+  <div container="body" ngbDropdown class="d-inline-block pointer more">
+    <svg-icon src="../../../../../assets/images/icons/more.svg" id="dropdown" ngbDropdownToggle></svg-icon>
+    <div ngbDropdownMenu>
+      <button ngbDropdownItem>Reset Password</button>
+    </div>
+  </div>
+</div>

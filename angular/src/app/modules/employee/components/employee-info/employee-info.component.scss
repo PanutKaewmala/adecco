@@ -1,0 +1,19 @@
+.btn-edit {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.frame-info {
+  padding-bottom: 1rem;
+  
+  > .row {
+    > .col, [class*="col-"] {
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+.square {
+  width: clamp(80px, 100%, 140px);
+}

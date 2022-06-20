@@ -1,0 +1,29 @@
+[
+  {
+    "model": "activities.place",
+    "pk": 1,
+    "fields": {
+      "place_name": "Lotus Rama1",
+      "latitude": 13.7478601,
+      "longitude": 100.5222008
+    }
+  },
+  {
+    "model": "activities.place",
+    "pk": 2,
+    "fields": {
+      "place_name": "Central World Department Store",
+      "latitude": 13.7468613,
+      "longitude": 100.5368355
+    }
+  },
+  {
+    "model": "activities.place",
+    "pk": 3,
+    "fields": {
+      "place_name": "Central Rama 9",
+      "latitude": 13.7585954,
+      "longitude": 100.5639887
+    }
+  }
+]

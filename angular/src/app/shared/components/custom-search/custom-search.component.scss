@@ -1,0 +1,17 @@
+::ng-deep .date.filter-popup {
+  width: 255px;
+  height: 320px;
+}
+
+.filter-date {
+  display: grid;
+  position: relative;
+
+  span {
+    margin-right: 7px;
+    position: absolute;
+    right: 0;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+}

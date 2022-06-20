@@ -1,0 +1,38 @@
+import { environment } from '../../../environments/environment';
+
+const BaseUrl = environment.baseUrl + '/backend/api';
+
+export const ApiUrl = {
+  login: BaseUrl + '/token-auth/',
+  change_password: BaseUrl + '/change-password/',
+  users: BaseUrl + '/users/',
+  leave_requests: BaseUrl + '/leave-requests/',
+  leave_quotas: BaseUrl + '/leave-quotas/',
+  leave_type_settings: BaseUrl + '/leave-type-settings/',
+  update_total: BaseUrl + '/leave-quotas/update-total/',
+  check_in: BaseUrl + '/activities/',
+  clients: BaseUrl + '/clients/',
+  employee: BaseUrl + '/employees/',
+  projects: BaseUrl + '/projects/',
+  dropdowns: BaseUrl + '/dropdown/',
+  rosters: BaseUrl + '/rosters/',
+  roster_plans: BaseUrl + '/rosters/roster-plans/',
+  workplaces: BaseUrl + '/workplaces/',
+  managers: BaseUrl + '/managers/',
+  edit_shifts: BaseUrl + '/edit-shifts/',
+  leave_types: BaseUrl + '/leave-types/',
+  adjust_requests: BaseUrl + '/adjust-requests/',
+  client_leave_type_settings: BaseUrl + '/client-leave-type-settings/',
+  pin_point_types: BaseUrl + '/pin-point-types/',
+  track_routes: BaseUrl + '/track-routes/',
+  pin_points: BaseUrl + '/pin-points/',
+  ot_requests: BaseUrl + '/ot-requests/',
+  working_hours: BaseUrl + '/working-hours/',
+  ot_rules: BaseUrl + '/ot-rules/',
+  shops: BaseUrl + '/shops/',
+  products: BaseUrl + '/products/',
+  merchandizer_settings: BaseUrl + '/merchandizer-settings/',
+  employee_projects: BaseUrl + '/employee-projects/',
+  additional_types: BaseUrl + '/additional-types/',
+  business_calendars: BaseUrl + '/business-calendars/',
+};

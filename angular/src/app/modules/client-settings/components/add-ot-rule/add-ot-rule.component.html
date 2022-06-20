@@ -1,0 +1,45 @@
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-12 heading-03 p-0 font-weight-bold">
+      Add New Rule
+    </div>
+
+    <div class="col-10 mt-3 p-0">
+      <div class="form-group">
+        <label class="required">Type</label>
+        <input type="text" class="form-control" formControlName="type" appValidationForm>
+      </div>
+      <div class="form-group">
+        <label class="required">Pay Code</label>
+        <input type="text" class="form-control" formControlName="pay_code" appValidationForm>
+      </div>
+      <div class="form-group">
+        <label class="required">Day of Week</label>
+        <ng-select [items]="days" bindLabel="label" bindValue="value" formControlName="day" appValidationForm
+          [clearable]="false">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label class="required">Time Period</label>
+        <ng-select [items]="times" bindLabel="label" bindValue="value" formControlName="time" appValidationForm
+          [clearable]="false">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label>Description</label> <br>
+        <input type="text" class="form-control" formControlName="description" appValidationForm>
+      </div>
+
+      <div class="d-flex justify-content-end gap-10 pt-0">
+        <button type="button" class="btn btn-outline-danger" appBackLocation>Cancel</button>
+        <button appSubmitForm
+            class="btn btn-danger"
+            type="submit"
+            [ladda]="submitting"
+            (click)="onSubmit()">
+          {{ id ? 'Edit' : 'Add' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,20 @@
+.sentry:
+  image: getsentry/sentry-cli
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9-\.]+/'
+  environment: prod
+  retry: 1
+
+new-release:
+  extends: .sentry
+  stage: .pre
+  script:
+    - sentry-cli releases new -p $CI_PROJECT_NAME $CI_COMMIT_TAG
+    - (sentry-cli releases set-commits --auto $CI_COMMIT_TAG || true)
+
+finalize-release:
+  extends: .sentry
+  stage: .post
+  script:
+    - sentry-cli releases finalize $CI_COMMIT_TAG
+    - sentry-cli releases deploys $CI_COMMIT_TAG new -e $CI_ENVIRONMENT_NAME

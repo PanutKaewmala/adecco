@@ -1,0 +1,39 @@
+<div class="box">
+  <div class="box-title">
+    <div class="decorate bg-success"></div>
+    <div class="title text-success">
+      TOTAL
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-5 p-0 pr-md-3">
+      <div class="my-3">
+        <div class="title">
+          TOTAL TRAVEL TIME
+        </div>
+        <div class="body-01">1.30 Hours</div>
+      </div>
+
+      <div class="my-3">
+        <div class="title">
+          TOTAL TRAVEL DISTANCE
+        </div>
+        <div class="body-01">{{ distance / 1000 }} Kilometers</div>
+      </div>
+
+      <div class="my-3">
+        <div class="title">
+          TOTAL WORKING HOUR
+        </div>
+        <div class="body-01">9.00 Hours</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-7 p-0 pl-md-3">
+      <div class="mt-3">
+        <app-google-map (distance)="distance = $event" [isDirection]="true"></app-google-map>
+      </div>
+    </div>
+  </div>
+</div>

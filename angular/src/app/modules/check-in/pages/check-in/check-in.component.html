@@ -1,0 +1,13 @@
+<div class="header">
+  CHECK-IN & CHECK-OUT
+</div>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs mt-3" [(activeId)]="active">
+  <li [ngbNavItem]="menu.id" *ngFor="let menu of menus">
+    <a ngbNavLink class="nav-link" [routerLink]="menu.path" routerLinkActive="active">{{ menu.name }}</a>
+  </li>
+</ul>
+
+<div class="tab-container pt-3">
+  <router-outlet></router-outlet>
+</div>

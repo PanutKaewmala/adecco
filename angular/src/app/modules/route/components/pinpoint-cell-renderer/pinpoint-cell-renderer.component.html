@@ -1,0 +1,10 @@
+<ng-container *ngIf="field === 'name' || field === 'Name'">
+  {{ cellValue }}
+  <div class="caption-02">
+    {{ data.id }}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="field === 'type'">
+  {{ data.type.name }}
+</ng-container>

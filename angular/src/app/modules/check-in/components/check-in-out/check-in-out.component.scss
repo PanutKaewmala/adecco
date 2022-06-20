@@ -1,0 +1,41 @@
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+
+.custom-day.range,
+.custom-day:hover {
+  background-color: var(--red);
+  color: white;
+}
+
+.custom-day.faded {
+  background-color: rgba(190, 44, 66, 0.4);
+}
+
+.date-range {
+  color: black;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  max-width: 250px;
+
+  input {
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .input-group-text {
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}

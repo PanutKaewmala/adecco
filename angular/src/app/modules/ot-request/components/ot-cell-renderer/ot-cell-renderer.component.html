@@ -1,0 +1,44 @@
+<ng-container *ngIf="field === 'full_name'">
+  {{ data.user.full_name }}
+</ng-container>
+
+<div *ngIf="field === 'status'" class="d-flex flex-column">
+  <ngb-progressbar type="info" [value]="1" [max]="2" height="7px"></ngb-progressbar>
+  <div class="italic-02">{{ cellValue.replace('_', ' ') | titlecase }}</div>
+  <div class="caption-02">Ana Jay</div>
+</div>
+
+<ng-container *ngIf="['created_at', 'start_date'].includes(field)">
+  {{ cellValue | date: 'dd MMM yyyy' }}
+</ng-container>
+
+<div *ngIf="field === 'action'" class="text-center action">
+  <ng-container *ngIf="data.status === 'pending'; else elseTemplate">
+    <div container="body" ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-dark" id="dropdown" ngbDropdownToggle>Action</button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem (click)="approve.open(data, 'approve')">Approve</button>
+        <button ngbDropdownItem (click)="partial.open(data)">Partial-Approve</button>
+        <button ngbDropdownItem (click)="approve.open(data, 'reject')">Reject</button>
+        <app-approve-ot-modal #approve></app-approve-ot-modal>
+        <app-partial-approve-ot-modal #partial></app-partial-approve-ot-modal>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div [ngClass]="{'text-success':  ['approve', 'partial_approve'].includes(data.status), 
+      'text-danger': data.status === 'reject'}">
+      {{ ['approve', 'partial_approve'].includes(data.status) ? 'Approve' : (data.status | titlecase) }}
+    </div>
+  </ng-template>
+</div>
+
+<div *ngIf="field === 'workplace'" class="workplace">
+  <span class="workplace-badge">{{ data.workplace.name }}</span>
+</div>
+
+<ng-container *ngIf="field === ''">
+  <svg-icon (click)="confirm.open()" src="../../../../../assets/images/icons/delete.svg" class="pointer"></svg-icon>
+  <app-confirm-modal #confirm message="Are you sure you want to delete this employee?" (confirm)="onDeleteOT()">
+  </app-confirm-modal>
+</ng-container>

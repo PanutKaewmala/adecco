@@ -1,0 +1,35 @@
+[
+  {
+    "model": "activities.leavetypesetting",
+    "pk": 1,
+    "fields": {
+      "name": "Annual Leave",
+      "apply_before": 30,
+      "apply_after": 30,
+      "default": true,
+      "client": 1
+    }
+  },
+  {
+    "model": "activities.leavetypesetting",
+    "pk": 2,
+    "fields": {
+      "name": "Business Leave",
+      "apply_before": 30,
+      "apply_after": 30,
+      "default": true,
+      "client": 1
+    }
+  },
+  {
+    "model": "activities.leavetypesetting",
+    "pk": 3,
+    "fields": {
+      "name": "Sick Leave",
+      "apply_before": 30,
+      "apply_after": 30,
+      "default": true,
+      "client": 1
+    }
+  }
+]

@@ -1,0 +1,45 @@
+<div class="box">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <div class="title">
+      Leave Request
+    </div>
+  </div>
+
+  <div class="my-2">
+    <div class="title">
+      leave type
+    </div>
+    <div class="body-01">{{ leaveDetail.type }}</div>
+  </div>
+
+  <div class="my-2">
+    <div class="title">
+      leave date
+    </div>
+    <div class="body-01">
+      {{ leaveDetail.start_date | date: "dd MMM yyyy" }}
+      <span *ngIf="leaveDetail.end_date"> - {{ leaveDetail.end_date | date: "dd MMM yyyy" }}</span>
+      <span *ngIf="leaveDetail.start_time">{{ leaveDetail.start_time }} - {{ leaveDetail.end_time }}</span>
+    </div>
+  </div>
+
+  <div class="my-2">
+    <div class="title">
+      Description
+    </div>
+    <div class="body-01">{{ leaveDetail.description || '-' }}</div>
+  </div>
+
+  <div class="mt-2">
+    <div class="title">
+      Attachment
+    </div>
+    <div class="body-01 d-flex flex-column">
+      <span *ngIf="!leaveDetail.upload_attachments.length">-</span>
+      <a *ngFor="let attachment of leaveDetail.upload_attachments" target="_blank" [href]="attachment.file">
+        {{ attachment.name }}
+      </a>
+    </div>
+  </div>
+</div>

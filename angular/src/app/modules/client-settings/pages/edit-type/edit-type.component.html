@@ -1,0 +1,53 @@
+<div class="heading-03">
+  Edit Leave Type
+</div>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <form [formGroup]="formGroup">
+    <div class="row">
+      <div class="col-12 col-md-10 p-0 mt-3" formArrayName="leave_type_settings">
+        <div class="mb-3" *ngFor="let leave of leaveTypesControls.controls; index as i" [formGroupName]="i">
+          <app-leave-type [form]="leave"></app-leave-type>
+        </div>
+      </div>
+
+      <div class="col-12 p-0 mt-3">
+        <div class="box">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <div class="title">Addition type</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-10 p-0" formArrayName="addition_type">
+        <ng-container *ngFor="let leave of additionControls.controls; index as i" [formGroupName]="i">
+          <app-addition-type [form]="leave"
+              [canDelete]="(!projectId && !leave.value?.project)
+                || (projectId && leave.value?.project)"
+              (delete)="onDelete(i)">
+          </app-addition-type>
+        </ng-container>
+        <button type="button" class="btn btn-outline-danger w-100 mt-3" (click)="onAddType()">
+          Add Type
+        </button>
+      </div>
+
+      <div class="col-12 col-md-10 p-0 mt-5">
+        <div class="text-right">
+          <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+            Cancel
+          </button>
+          <button class="btn btn-danger" type="submit" [ladda]="submitting" (click)="onSave()" appSubmitForm>
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>

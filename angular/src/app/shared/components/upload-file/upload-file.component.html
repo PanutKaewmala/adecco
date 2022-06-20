@@ -1,0 +1,11 @@
+<ngx-file-drop dropZoneLabel="Browse or Drop file here" (onFileDrop)="dropped($event)">
+  <ng-template ngx-file-drop-content-tmp let-openFile="openFileSelector">
+    <div class="text-center pointer" (click)="openFile()">
+      <img src="../../../../assets/images/icons/file-folder.svg" alt="">
+      <div class="upload-label">
+        <svg-icon src="../../../../assets/images/icons/upload.svg" class="mr-1"></svg-icon>
+        Browse or drop file here
+      </div>
+    </div>
+  </ng-template>
+</ngx-file-drop>

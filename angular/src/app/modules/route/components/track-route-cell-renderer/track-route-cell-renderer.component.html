@@ -1,0 +1,17 @@
+<ng-container *ngIf="field === 'name'">
+  {{ data.user.full_name }}
+  <div class="caption-02">
+    {{ data.user.phone_number }}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="field === 'date'">
+  {{ data.date_time | date: "dd MMM yyyy" }}
+</ng-container>
+
+<div *ngIf="field === 'route'" class="workplace">
+  <span class="workplace-badge" *ngFor="let workplace of data.routes"
+    [ngClass]="{'bg-orange': ['pin_point', 'track_route'].includes(workplace.type)}">
+    {{ workplace.location_name }}
+  </span>
+</div>

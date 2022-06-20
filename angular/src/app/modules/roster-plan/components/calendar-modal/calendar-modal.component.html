@@ -1,0 +1,17 @@
+<ng-template #calendar let-modal>
+  <ng-container *ngIf="isLoading; else elseTemplate">
+    <div class="p-5">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="p-3">
+      <div class="caption-03">
+        {{ rosterPlan.start_date | date: 'dd-MMM-yyyy' }} to {{ rosterPlan.end_date | date: 'dd-MMM-yyyy' }}
+      </div>
+      <app-roster-calendar [rosterPlan]="rosterPlan" [rosterPlanDetail]="rosterPlanDetail" [isModal]="!isShiftRequest"
+        [shifts]="shiftRequestDetail?.to_shift">
+      </app-roster-calendar>
+    </div>
+  </ng-template>
+</ng-template>

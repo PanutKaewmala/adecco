@@ -1,0 +1,49 @@
+<div *ngIf="field === 'user.full_name'" class="d-flex flex-column">
+  {{ cellValue }}
+  <small>{{ checkIn.user.phone_number }}</small>
+</div>
+
+<ng-container *ngIf="['date_time', 'date'].includes(field)">
+  {{ cellValue | date: "dd MMM yyyy, h:mm a"}}
+</ng-container>
+
+<div *ngIf="field === 'type'" class="status">
+  <div class="d-flex align-items-center justify-content-center">
+    <i class="fas fa-circle mr-2" [ngClass]="{'text-success': checkIn.type === 'check_in', 
+    'text-warning': checkIn.type === 'check_out', 'leave': checkIn.type === 'leave', 
+    'day-off': checkIn.type === 'day_off'}">
+    </i>
+    {{ checkIn.type.replace('_', ' ') | titlecase }}
+  </div>
+  <div class="italic-01 admin-status text-center">
+    {{ checkIn.extra_type === 'ot' ? 'OT' : (checkIn.extra_type?.replace('_', ' ') | titlecase) }}
+  </div>
+</div>
+
+<div *ngIf="field === 'location_name'" class="location d-flex flex-column">
+  <div class="location-value">{{ cellValue }}</div>
+  <div class="coordinate">{{ checkIn.latitude }}, {{ checkIn.longitude }}</div>
+</div>
+
+<div *ngIf="field === 'photo'" class="text-center">
+  <svg-icon *ngIf="checkIn.picture" src="../../../../../assets/images/icons/photo.svg"></svg-icon>
+</div>
+
+<div *ngIf="field === 'working_hour'" class="text-center">
+  {{ cellValue }}
+</div>
+
+<div *ngIf="field === 'workplace'" class="workplace">
+  <span class="workplace-badge">
+    {{ checkIn.workplace.name }}
+  </span>
+</div>
+
+<div *ngIf="field === 'workplace-no-status'" class="workplace">
+  <span class="workplace-badge" *ngFor="let workplace of noStatus.workplaces">
+    {{ workplace.name }}
+  </span>
+</div>
+
+<div *ngIf="field === 'working-hour-no-status'" class="text-center" [innerHTML]="noStatusWorkingHour">
+</div>

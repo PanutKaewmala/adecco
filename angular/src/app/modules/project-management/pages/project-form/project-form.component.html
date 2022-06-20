@@ -1,0 +1,79 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="header">
+  {{ isCreate ? 'ADD New project' : project?.name }}
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Client</label>
+        <ng-select placeholder="Select" appValidationForm formControlName="client" [items]="clients" bindLabel="label"
+          bindValue="value" [clearable]="false"></ng-select>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Project Name</label>
+        <input type="text" class="form-control" appValidationForm formControlName="name">
+      </div>
+
+      <div class="form-group my-4">
+        <label>Project Description</label>
+        <input type="text" class="form-control" appValidationForm formControlName="description">
+      </div>
+
+      <div class="form-group my-4">
+        <label>Project Start Date</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()"
+            placeholder="Select" formControlName="start_date" [firstDayOfWeek]="7">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="start.toggle()"></svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-4">
+        <label>Project End Date</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngbDatepicker #end="ngbDatepicker" (click)="end.toggle()"
+            placeholder="Select" formControlName="end_date" [firstDayOfWeek]="7"
+            [minDate]="formGroup.get('start_date').value">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="end.toggle()"></svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Country</label>
+        <input type="text" class="form-control" formControlName="country" appValidationForm>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">City</label>
+        <input type="text" class="form-control" formControlName="city" appValidationForm>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Project Assignee</label>
+        <ng-select placeholder="Select" appValidationForm formControlName="project_assignee" [items]="projectManagers"
+          bindLabel="context.full_name" bindValue="value" [clearable]="false"></ng-select>
+      </div>
+
+      <div class="text-right">
+        <button class="btn btn-outline-danger mr-3" type="button" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

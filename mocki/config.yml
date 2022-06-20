@@ -1,0 +1,55 @@
+name: mocki
+port: 9002
+
+endpoints:
+  - path: /backend/api/token-auth/
+    method: post
+    behavior: random
+    responses:
+      - statusCode: 200
+        delay: 1000
+        body:
+          refresh: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NDgwMjc2MiwianRpIjoiOTJlOGUzMTkzYzdhNGEwZDg5NGZjZGY2ZGFiZjFiMTMiLCJ1c2VyX2lkIjo0fQ.Hi0Zeifz7qDi0evg03hna76Le2EUR544_Xti7thVONI
+          access: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1ODU4NzYyLCJqdGkiOiJjZTE0MzIxNmI2MTk0NWZmYmM3NzVkZWZiYTAwZTk5MiIsInVzZXJfaWQiOjR9.0xFEGdsBK3qPwdaiz4OQq8UebZfbzNC27It1sm3JXNA
+          user:
+            username: "admin"
+            email: "admin@example.com"
+            first_name: "admin"
+            last_name: "admin"
+            first_time_login: true
+      - statusCode: 401
+        delay: 1000
+        body:
+          detail: No active account found with the given credentials
+
+  - path: /backend/api/token-refresh/
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          access: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1ODU4NzYyLCJqdGkiOiJjZTE0MzIxNmI2MTk0NWZmYmM3NzVkZWZiYTAwZTk5MiIsInVzZXJfaWQiOjR9.0xFEGdsBK3qPwdaiz4OQq8UebZfbzNC27It1sm3JXNA
+
+  - path: /token-auth-failed/
+    method: post
+    responses:
+      - statusCode: 401
+        body:
+          detail: No active account found with the given credentials
+  - path: /change-first-time-password/
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+  - path: /forget-password/
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+  - path: /change-password/
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK

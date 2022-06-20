@@ -1,0 +1,26 @@
+<div class="d-flex flex-column h-100">
+    <div class="d-flex justify-content-end mb-3">
+        <div container="body" ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+                Add Employee
+            </button>
+            <div ngbDropdownMenu>
+                <button ngbDropdownItem>Create New</button>
+                <button ngbDropdownItem (click)="import.open()">Import</button>
+            </div>
+
+            <app-upload-file-modal #import title="Import USERS"
+                template="https://docs.google.com/spreadsheets/d/1pSavKw9xt18TxTG_EIC3GMPKVdSjjETx/edit#gid=1762430451">
+            </app-upload-file-modal>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column h-100">
+        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine" [rowData]="dataList"
+            [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)"
+            (gridSizeChanged)="onGridSizeChanged($event)" (filterOpened)="onFilterOpened()">
+        </ag-grid-angular>
+
+        <app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>
+    </div>
+</div>

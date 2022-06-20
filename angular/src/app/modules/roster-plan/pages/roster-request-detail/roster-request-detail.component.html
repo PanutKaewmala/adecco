@@ -1,0 +1,82 @@
+<app-breadcrumb></app-breadcrumb>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <div class="row align-items-center">
+    <div class="col-12 col-md-10 p-0 d-flex gap-10">
+      <div class="header">
+        {{ employeeList }}
+      </div>
+      <div class="status d-flex" [ngClass]="{'pending': rosterPlan.status === 'pending',
+        'approve': rosterPlan.status === 'approve', 'reject': rosterPlan.status === 'reject'}">
+        <i class="fas" [ngClass]="{'fa-clock': rosterPlan.status === 'pending', 
+          'fa-times-circle': rosterPlan.status === 'reject', 'fa-check-circle': rosterPlan.status === 'approve'}"></i>
+        {{ getStatus(rosterPlan.status) | titlecase }}
+      </div>
+    </div>
+
+    <div class="col-12 col-md-2 d-flex justify-content-end p-0 gap-10">
+      <button class="btn btn-outline-dark" *ngIf="canEdit" [routerLink]="['edit']">
+        Edit
+      </button>
+      <div container="body" ngbDropdown class="d-inline-block" *ngIf="rosterPlan.status === 'pending'">
+        <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+          Action
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem (click)="approval.open(rosterPlan, 'approve')">Approve</button>
+          <button ngbDropdownItem (click)="approval.open(rosterPlan, 'reject')">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <app-roster-request-modal #approval></app-roster-request-modal>
+  </div>
+
+  <div class="my-3">
+    <app-roster-detail-cmp [rosterPlan]="rosterPlan"></app-roster-detail-cmp>
+
+    <div class="row mt-3">
+      <div class="col-12 col-lg-8 p-0 pr-lg-3 box p-3">
+        <app-roster-calendar [rosterPlan]="rosterPlan" [shifts]="selectedShift"
+          [isDayOff]="rosterPlan.type === 'day_off'"></app-roster-calendar>
+      </div>
+
+      <div class="col-12 col-lg-4 p-0 pl-lg-3">
+        <app-roster-schedule *ngIf="selectedShift" [rosterPlan]="rosterPlan" [selectedShift]="selectedShift"
+          (shift)="selectedShift = $event" [disableEdit]="canEdit">
+        </app-roster-schedule>
+      </div>
+
+      <div class="col-12 p-0 mt-3" *ngIf="isSetting">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light">
+            Employee List ({{ rosterPlan.employee_projects.length }})
+          </li>
+          <div class="employee-list">
+            <ul class="list-group">
+              <li class="list-group-item rounded-bottom-0 d-flex justify-content-between align-items-center"
+                *ngFor="let employee of rosterPlan.employee_projects">
+                {{ employee.full_name }}
+                <i class="fal fa-file-export pointer"
+                  (click)="modal.open(); selectedEmployee = employee.employee_project_id"></i>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<app-confirm-modal #modal message="Are you sure you want to edit this employee?"
+  (confirm)="onDuplicateRoster(selectedEmployee)"></app-confirm-modal>
+
+<ng-container *ngIf="isLoadingDuplicate">
+  <app-loading-screen></app-loading-screen>
+</ng-container>

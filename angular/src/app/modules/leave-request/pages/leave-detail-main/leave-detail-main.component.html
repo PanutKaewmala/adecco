@@ -1,0 +1,54 @@
+<app-breadcrumb></app-breadcrumb>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <div class="row align-items-center">
+    <div class="col-12 col-md-10 p-0 d-flex gap-10">
+      <div class="header">
+        {{ leaveDetail.user.full_name }}
+      </div>
+      <div class="status d-flex">
+        <svg-icon src="../../../../../assets/images/icons/time.svg"></svg-icon>
+        {{ leaveDetail.status | titlecase }} Request
+      </div>
+    </div>
+
+    <div class="col-12 col-md-2 d-flex justify-content-end p-0" *ngIf="leaveDetail.status === 'pending'">
+      <div container="body" ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+          Action
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem (click)="leaveRequest.open(leaveDetail, 'approve')">Approve</button>
+          <button ngbDropdownItem (click)="partialApprove.open(leaveDetail)">Partial-Approve</button>
+          <button ngbDropdownItem (click)="leaveRequest.open(leaveDetail, 'reject')">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <app-leave-request-modal #leaveRequest></app-leave-request-modal>
+    <app-partial-approve-modal #partialApprove></app-partial-approve-modal>
+  </div>
+
+  <ul ngbNav #nav="ngbNav" class="nav-tabs mt-3" [(activeId)]="active">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink class="nav-link">Leave Detail</a>
+      <ng-template ngbNavContent>
+        <app-leave-detail [leaveDetail]="leaveDetail"></app-leave-detail>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink class="nav-link">Line of Approval (Pending 1/2)</a>
+      <ng-template ngbNavContent>
+        <app-leave-loa></app-leave-loa>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav"></div>
+</ng-template>

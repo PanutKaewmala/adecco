@@ -1,0 +1,14 @@
+<div class="d-flex flex-column h-100">
+  <div class="header mb-3">
+    Projects Summary
+  </div>
+
+  <app-statistics></app-statistics>
+
+  <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine project-summary mt-3" [rowData]="dataList"
+    [columnDefs]="columnDefs" (gridReady)="onGridReady($event)" (gridSizeChanged)="onGridSizeChanged($event)"
+    [rowHeight]="50" (cellClicked)="onCellClicked($event)">
+  </ag-grid-angular>
+
+  <app-pagination></app-pagination>
+</div>

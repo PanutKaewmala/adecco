@@ -1,0 +1,61 @@
+<div class="d-flex flex-column">
+  <div class="d-flex justify-content-between">
+    <div class="body-01 my-auto">Leave Quota</div>
+    <div class="d-flex gap-10">
+      <button class="btn btn-outline-dark"
+          routerLink="edit"
+          type="button">
+        Edit Type
+      </button>
+      <button class="btn btn-outline-dark" routerLink="add">Add Leave</button>
+    </div>
+  </div>
+
+  <div class="table-responsive flex-grow-1">
+    <table class=" table table-bordered mt-3">
+      <thead>
+        <tr class="text-center">
+          <th>Leave Name</th>
+          <th>Type</th>
+          <th>Earn Income</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="isLoading; else elseTemplate">
+          <tr>
+            <td colspan="4">
+              <app-loading-spinner></app-loading-spinner>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <tr *ngFor="let data of dataList; index as i">
+            <td>{{ data.name }}</td>
+            <td>{{ data.leave_type_setting.name }}</td>
+            <td class="text-center">
+              <input type="checkbox" [(ngModel)]="data.earn_income" disabled>
+            </td>
+            <td class="text-center column-action">
+              <div *ngIf="(settingType === 'client' && data.client)
+                  || (settingType === 'project' && data.project)"
+                  class="d-flex align-content justify-content-center gap-10">
+                <span class="fal fa-edit m-t-5 pointer" [routerLink]="data.id"></span>
+                <svg-icon class="pointer" src="./../../../../../assets/images/icons/delete.svg" #p="ngbPopover"
+                  [ngbPopover]="popover" [autoClose]="false" triggers="manual" placement="left" (click)="p.open()">
+                </svg-icon>
+
+                <ng-template #popover>
+                  <app-delete-popover message="leave quota" (confirm)="onDelete(data); p.close()" (cancel)="p.close()">
+                  </app-delete-popover>
+                </ng-template>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+
+      </tbody>
+    </table>
+  </div>
+  <app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>
+</div>

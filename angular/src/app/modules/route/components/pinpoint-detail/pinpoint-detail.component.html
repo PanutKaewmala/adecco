@@ -1,0 +1,22 @@
+<div class="box">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <div class="title">
+      pinpoint detail
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 p-0 pr-md-3" *ngFor="let detail of details; index as i"
+      [ngClass]="{'col-md-5': i%2 === 0, 'col-md-7': i%2 !== 0}">
+      <div class="my-3">
+        <div class="title">
+          {{ detail.question_name }}
+        </div>
+        <div class="body-01">
+          {{ detail.answer }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

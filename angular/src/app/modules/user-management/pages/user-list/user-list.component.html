@@ -1,0 +1,28 @@
+<div class="header">
+  User Management
+</div>
+
+<div class="text-right mt-3">
+  <div container="body" ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+      New User
+    </button>
+    <div ngbDropdownMenu>
+      <button ngbDropdownItem [routerLink]="['/user', 'create']">Create New</button>
+      <button ngbDropdownItem (click)="import.open()">Import</button>
+    </div>
+  </div>
+
+  <app-upload-file-modal #import title="Import USERS"
+    template="https://docs.google.com/spreadsheets/d/1pSavKw9xt18TxTG_EIC3GMPKVdSjjETx/edit#gid=1762430451">
+  </app-upload-file-modal>
+</div>
+
+<div class="grid-container d-flex mt-3">
+  <ag-grid-angular style="width: 100%; height: auto;" class="ag-theme-alpine" [rowData]="dataList"
+    [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)"
+    (gridSizeChanged)="onGridSizeChanged($event)">
+  </ag-grid-angular>
+</div>
+
+<app-pagination></app-pagination>

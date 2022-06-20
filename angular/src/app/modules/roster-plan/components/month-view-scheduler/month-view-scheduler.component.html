@@ -1,0 +1,61 @@
+<div class="overflow-auto pb-3">
+  <ng-template #customCell let-day="day" let-locale="locale">
+    <div class="cel-cell-top">
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    </div>
+    <div class="m-2 event-list">
+      <ng-container *ngIf="day.events.length">
+        <div class="caption-02 d-flex" *ngFor="let event of getEvents(day.date, 'approve').slice(0, 3)"
+          (click)="approval.open(); selectedRoster = event"
+          [ngClass]="{'selected-event': selectedRoster?.meta.id === event.meta.id}">
+          <i class="fas fa-circle active mr-1"></i>
+          {{ event.title }}
+        </div>
+      </ng-container>
+    </div>
+    <div class="m-2" *ngIf="day.events.length">
+      <span class="cal-day-badge active mr-1" *ngIf="getEvents(day.date, 'approve').length > 3" #p="ngbPopover"
+        [ngbPopover]="popover" [autoClose]="'outside'" popoverClass="popover-success month-popover">
+        +{{ getEvents(day.date, 'approve').length - 3 }}
+        Active
+
+        <ng-template #popover>
+          <div class="text-center mb-3">
+            <div class="text-secondary text-uppercase heading-03 font-weight-lighter">{{ day.date | date: "E" }}</div>
+            <div class="heading-03">{{ day.date | date: "d" }}</div>
+          </div>
+          <div class="caption-02" *ngFor="let event of getEvents(day.date, 'approve')"
+            (click)="approval.open(); selectedRoster = event; p.close()"
+            [ngClass]="{'selected-event': selectedRoster?.meta.id === event.meta.id}">
+            <span> <i class="fas fa-circle active"></i></span>
+            {{ event.title }}
+          </div>
+        </ng-template>
+      </span>
+      <span class="cal-day-badge pending" *ngIf="getEvents(day.date, 'pending').length > 0" #p="ngbPopover"
+        [ngbPopover]="popover" [autoClose]="'outside'"
+        popoverClass="popover-secondary month-popover">+{{ getEvents(day.date, 'pending').length }} Pending
+
+        <ng-template #popover>
+          <div class="text-center mb-3">
+            <div class="text-secondary text-uppercase heading-03 font-weight-lighter">{{ day.date | date: "E" }}</div>
+            <div class="heading-03">{{ day.date | date: "d" }}</div>
+          </div>
+          <div class="caption-02" *ngFor="let event of getEvents(day.date, 'pending')"
+            (click)="approval.open(); selectedRoster = event; p.close()"
+            [ngClass]="{'selected-event': selectedRoster?.id === event.id}">
+            <i class="fas fa-circle pending"></i>
+            {{ event.title }}
+          </div>
+        </ng-template>
+      </span>
+    </div>
+  </ng-template>
+
+  <div class="heading-02 border text-center py-2 month-header">{{ getDate | date: 'MMMM yyyy' }}</div>
+  <mwl-calendar-month-view [viewDate]="getDate" [events]="events" [cellTemplate]="customCell">
+  </mwl-calendar-month-view>
+</div>
+
+<app-roster-plan-approval-modal #approval (dismissed)="selectedRoster = null" [data]="selectedRoster">
+</app-roster-plan-approval-modal>

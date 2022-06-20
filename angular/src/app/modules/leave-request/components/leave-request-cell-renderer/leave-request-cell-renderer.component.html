@@ -1,0 +1,59 @@
+<div *ngIf="field === 'user.full_name'" class="d-flex flex-column">
+  {{ cellValue }}
+  <small>ID: {{ data.user.id }}</small>
+</div>
+
+<ng-container *ngIf="field === 'name'">
+  {{ data.user.full_name }}
+</ng-container>
+
+<div *ngIf="field === 'status'" class="d-flex flex-column">
+  <ngb-progressbar type="info" [value]="1" [max]="2" height="7px"></ngb-progressbar>
+  <div class="italic-02">{{ cellValue.replace('_', ' ') | titlecase }}</div>
+  <div class="caption-02">Ana Jay</div>
+</div>
+
+<div class="text-center" *ngIf="field === 'start_date'">
+  {{ cellValue | date: "dd MMM yyyy" }}
+  <span *ngIf="data.end_date"> - {{ data.end_date | date: "dd MMM yyyy" }} </span>
+  <span *ngIf="data.start_time">({{ data.start_time }} - {{ data.end_time }})</span>
+</div>
+
+<div class="text-center" *ngIf="field === 'created_at'">
+  {{ cellValue | date: "dd MMM yyyy" }}
+</div>
+
+<ng-container *ngIf="field === 'upload_attachments'">
+  <div *ngFor="let file of data.upload_attachments" class="text-truncate">
+    <svg-icon src="../../../../../assets/images/icons/attachment.svg" class="mr-2"></svg-icon>
+    <span>{{ file.name }}</span>
+  </div>
+</ng-container>
+
+<div *ngIf="field === 'action'" container="body" ngbDropdown class="text-center d-inline-block">
+  <ng-container *ngIf="data.status === 'pending'; else elseTemplate">
+    <button class="btn btn-outline-dark" id="dropdown" ngbDropdownToggle>
+      Action
+    </button>
+    <div ngbDropdownMenu>
+      <button ngbDropdownItem (click)="leaveRequest.open(data, 'approve')">Approve</button>
+      <button ngbDropdownItem (click)="partialApprove.open(data)">Partial-Approve</button>
+      <button ngbDropdownItem (click)="leaveRequest.open(data, 'reject')">Reject</button>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <span [ngClass]="{'text-danger': ['history', 'reject'].includes(data.status), 
+      'text-success': !['history', 'reject'].includes(data.status)}">
+      {{ ['history', 'reject'].includes(data.status) ? 'Rejected' : 'Approved' | titlecase  }}
+    </span>
+  </ng-template>
+
+  <app-leave-request-modal #leaveRequest></app-leave-request-modal>
+  <app-partial-approve-modal #partialApprove></app-partial-approve-modal>
+</div>
+
+<div class="text-center" *ngIf="field === ''">
+  <svg-icon src="../../../../../assets/images/icons/delete.svg" class="pointer" (click)="confirm.open()"></svg-icon>
+</div>
+
+<app-confirm-modal #confirm message="Are you sure you want to delete this leave?"></app-confirm-modal>

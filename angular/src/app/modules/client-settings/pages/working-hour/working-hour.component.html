@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-between">
+  <div class="body-01 my-auto">Template Business’s Working Hour</div>
+  <button class="btn btn-outline-dark" (click)="onAddClick()">Add</button>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered working-hour-table mt-3">
+    <thead>
+      <tr>
+        <th>Shift Name</th>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of dataList">
+        <tr class="text-center" rowspan="2">
+          <th scope="row" rowspan="2">{{ data.name }}</th>
+          <td *ngFor="let day of days">
+            <input type="checkbox" [(ngModel)]="data[day]" disabled>
+          </td>
+          <th scope="row" rowspan="2">
+            <div *ngIf="(settingType === 'client' && data.client)
+                || (settingType === 'project' && data.project)" 
+                class="d-flex align-content justify-content-center gap-10">
+              <span class="fal fa-edit m-t-5 pointer text-dark"
+                  (click)="onEditClick(data)">
+              </span>
+              <svg-icon class=" pointer" src="./../../../../../assets/images/icons/delete.svg" #p="ngbPopover"
+                [ngbPopover]="popover" [autoClose]="false" triggers="manual" placement="left" (click)="p.open()">
+              </svg-icon>
+              <ng-template #popover>
+                <app-delete-popover message="leave quota" (confirm)="onDelete(data.id); p.close()" (cancel)="p.close()">
+                </app-delete-popover>
+              </ng-template>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <td class="border-bottom" *ngFor="let day of days" [ngClass]="{'time': data[day]}">
+            {{ data[day] ? ((getTime(data[day+'_start_time']) | date: 'HH:mm') + '-'
+             + (getTime(data[day+'_end_time']) | date: 'HH:mm')) : '' }}
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

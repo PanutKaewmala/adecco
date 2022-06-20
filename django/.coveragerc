@@ -1,0 +1,40 @@
+# .coveragerc to control coverage.py
+[run]
+command_line = manage.py test --parallel
+concurrency = multiprocessing
+source = .
+
+[report]
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+
+    # Don't complain about missing debug-only code:
+    def __repr__
+    if self\.debug
+    if DEBUG:
+    if not DEBUG and not TESTING:
+    if settings\.DEBUG:
+
+    # Don't complain if tests don't hit defensive assertion code:
+    raise AssertionError
+    raise NotImplementedError
+
+    # Don't complain if non-runnable code isn't run:
+    if 0:
+    if __name__ == .__main__.:
+
+# Exclude files
+omit =
+    # Django-related
+    main/asgi.py
+    main/celery.py
+    main/wsgi.py
+    manage.py
+
+    # Migration files
+    */migrations/*
+
+    # Management command files
+    */management/commands/*

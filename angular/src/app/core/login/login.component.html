@@ -1,0 +1,33 @@
+<div class="bg"></div>
+<div class="row h-100">
+  <img class="logo" src="../../../assets/images/AHEAD_plus.png" alt="ahead logo">
+  <div class="col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-6 bg-white d-flex p-0">
+    <div class="align-self-center w-100 text-center">
+      <div class="heading-01 font-weight-bold">
+        Welcome!
+      </div>
+      <div class="body-01 mb-5">
+        Login to your account
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-center heading-04">
+          <div class="col-11 col-sm-9 col-lg-7">
+            <div class="form-group text-left">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" formControlName="username" appValidationForm>
+            </div>
+            <div class="form-group text-left">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password" appValidationForm>
+            </div>
+
+            <button class="btn btn-danger w-50 mt-4 w-100" type="submit" appSubmitForm [ladda]="loading">
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

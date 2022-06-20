@@ -1,0 +1,25 @@
+<div class="d-flex flex-wrap gap-10 mb-3">
+  <div class="btn-group" role="group" ngbRadioGroup name="radio" [(ngModel)]="view">
+    <label ngbButtonLabel class="btn-outline-dark mb-0">
+      <input ngbButton type="radio" class="btn-check d-none" value="week"> Week
+    </label>
+    <label ngbButtonLabel class="btn-outline-dark mb-0">
+      <input ngbButton type="radio" class="btn-check d-none" value="month"> Month
+    </label>
+  </div>
+
+  <div class="input-group custom-date" [ngClass]="{'month-picker': view === 'month'}">
+    <input type="text" class="form-control" placeholder="Select date" ngbDatepicker #d="ngbDatepicker"
+      (click)="d.toggle()" [value]="view === 'month' ? (date | date: 'MMMM yyyy') : dateString"
+      [startDate]="selectedDate" (dateSelect)="onDateSelected($event)" [firstDayOfWeek]="7"
+      (navigate)="view === 'month' ? onNavigate($event) : null" readonly>
+    <div class="input-group-append">
+      <div class="input-group-text" (click)="d.toggle()">
+        <svg-icon src="../../../../../assets/images/icons/arrow_down.svg"></svg-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-week-view-scheduler *ngIf="view === 'week'" [date]="selectedDate"></app-week-view-scheduler>
+<app-month-view-scheduler *ngIf="view === 'month'" [date]="selectedDate"></app-month-view-scheduler>

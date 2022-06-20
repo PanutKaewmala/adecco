@@ -1,0 +1,11 @@
+<ng-template #action let-modal>
+  <div class="modal-body">
+    <div class="my-2 body-01">Remarks (Optional)</div>
+    <input type="text" class="form-control" [(ngModel)]="reason">
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="onConfirm()" [ladda]="isSubmit">OK</button>
+  </div>
+</ng-template>

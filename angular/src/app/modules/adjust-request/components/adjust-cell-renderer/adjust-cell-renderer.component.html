@@ -1,0 +1,20 @@
+<ng-container *ngIf="field === 'date'">
+  {{ cellValue | date: "dd MMM yyyy"}}
+</ng-container>
+
+<div *ngIf="field === 'type'" class="text-center">
+  {{ cellValue.replace('_', ' ') | titlecase }}
+</div>
+
+<div *ngIf="field === 'workplaces'" class="workplace">
+  <span class="workplace-badge" *ngFor="let workplace of data.workplaces">
+    {{ workplace.name }}
+  </span>
+</div>
+
+<div *ngIf="field === 'action'" class="text-center pointer min-height-60">
+  <svg-icon src="../../../../../assets/images/icons/delete.svg" (click)="modal.open()"></svg-icon>
+</div>
+
+<app-confirm-modal #modal (confirm)="onDelete()" message="Are you sure you want to delete this request?">
+</app-confirm-modal>

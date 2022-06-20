@@ -1,0 +1,34 @@
+[
+  {
+    "model": "managements.workplace",
+    "pk": 1,
+    "fields": {
+      "name": "Codium 01",
+      "address": "codium 01",
+      "wifi": "",
+      "bluetooth": "",
+      "qr_code": "",
+      "addition_note": "",
+      "latitude": "0E-16",
+      "longitude": "0E-16",
+      "project": 1,
+      "radius_meter": 100
+    }
+  },
+  {
+    "model": "managements.workplace",
+    "pk": 2,
+    "fields": {
+      "name": "Codium 02",
+      "address": "codium 02",
+      "wifi": "",
+      "bluetooth": "",
+      "qr_code": "",
+      "addition_note": "",
+      "latitude": "0E-16",
+      "longitude": "0E-16",
+      "project": 1,
+      "radius_meter": 100
+    }
+  }
+]

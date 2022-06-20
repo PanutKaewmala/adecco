@@ -1,0 +1,52 @@
+<div class="box h-100">
+  <div class="box-title">
+    <div class="decorate"></div>
+    <ng-container *ngIf="roster.type === 'day_off'; else shiftTemplate">
+      <span class="title">
+        Working day
+      </span>
+    </ng-container>
+    <ng-template #shiftTemplate>
+      <span class="title pointer" [ngClass]="{'active': selectedShift.id === shift.id}"
+        *ngFor="let shift of roster.shifts; index as i" (click)="onSelectShift(shift)">
+        SHIFT {{ shiftRequest?.sequence || i + 1 }}
+      </span>
+    </ng-template>
+  </div>
+
+  <div class="caption-02 text-secondary border-bottom pb-1 d-flex justify-content-between">
+    {{ selectedShift.from_date | date: "dd MMM yyyy" }} to {{ selectedShift.to_date | date: "dd MMM yyyy" }}
+    <svg-icon *ngIf="canEditShift && !disableEdit" class="pointer" (click)="onEdit()"
+      src="../../../../../assets/images/icons/edit.svg"></svg-icon>
+  </div>
+
+  <div class="my-3" *ngIf="selectedShift.remark !== ''">
+    <div class="title">
+      Remarks
+    </div>
+    <div class="body-01">
+      {{ selectedShift.remark || '-' }}
+    </div>
+  </div>
+
+  <ng-container *ngIf="roster.type === 'day_off'; else elseTemplate">
+    <div class="mt-2">
+      <div class="body-01">
+        <span class="day">{{ selectedShift.work_days.join(', ') | titlecase }}</span>
+      </div>
+      <div class="workplace" *ngFor="let workplace of selectedShift.workplaces">{{ workplace }}</div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="my-3" *ngFor="let schedule of selectedShift?.schedules; index as i">
+      <div class="title">
+        Schedule {{ i + 1 }}
+      </div>
+      <div class="body-01">
+        <span class="day">{{ getWorkdays(schedule).join(', ') | titlecase }}</span>
+      </div>
+      <div class="workplace" *ngFor="let workplace of schedule.workplaces">{{ workplace?.name }}</div>
+    </div>
+  </ng-template>
+
+</div>

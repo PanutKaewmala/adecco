@@ -1,0 +1,42 @@
+<div class="overflow-auto">
+  <ng-template #customCell let-day="day" let-locale="locale">
+    <div class="cel-cell-top">
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    </div>
+    <div class="m-2" *ngIf="checkDateInRange(day.date)">
+      <ng-container *ngIf="isModal; else dayOffTemplate">
+        <div class="caption-03" *ngFor="let workplace of getWorkplaceModal(day.date)">
+          {{ workplace }}
+        </div>
+      </ng-container>
+      <ng-template #dayOffTemplate>
+        <ng-container *ngIf="isDayOff; else elseTemplate">
+          <div class="caption-03" *ngFor="let workplace of shifts.workplaces">
+            {{ workplace }}
+          </div>
+        </ng-container>
+      </ng-template>
+      <ng-template #elseTemplate>
+        <div class="caption-03" *ngFor="let workplace of getWorkplaces(day.date.getDay())">
+          {{ workplace.name }}
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+
+  <div class="d-flex justify-content-between">
+    <div class="d-flex gap-10">
+      <svg-icon src="../../../../../assets/images/icons/arrow.svg" class="pointer d-flex align-items-center"
+        *ngIf="index > 0" (click)="onPrevMonth()"></svg-icon>
+      <div class="heading-02 py-2 month-header">{{ selectedMonth | date: 'MMMM yyyy' }}</div>
+    </div>
+    <svg-icon src="../../../../../assets/images/icons/arrow.svg" class="next-arrow pointer d-flex align-items-center"
+      *ngIf="index !== months.length - 1" (click)="onNextMonth()">
+    </svg-icon>
+  </div>
+  <div class="roster-detail">
+    <mwl-calendar-month-view [viewDate]="selectedMonth" [cellTemplate]="customCell"
+      (beforeViewRender)="onMonthViewRender($event)">
+    </mwl-calendar-month-view>
+  </div>
+</div>

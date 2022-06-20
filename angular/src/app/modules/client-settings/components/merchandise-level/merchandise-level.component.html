@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-between">
+  <div class="d-flex gap-10 body-01 my-auto">
+    <svg-icon *ngIf="merchandise" src="../../../../../assets/images/icons/arrow.svg"
+      class="pointer d-flex align-items-center" appBackLocation></svg-icon>
+    {{ merchandise?.name || (level | titlecase) }} <span class="text-danger">({{totalItems}})</span>
+  </div>
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+      Add {{ level | titlecase }}
+    </button>
+    <div ngbDropdownMenu>
+      <button ngbDropdownItem (click)="add.open()">Create New</button>
+      <button ngbDropdownItem (click)="import.open()">Import</button>
+    </div>
+
+    <app-upload-file-modal #import title="Import new {{level}}">
+    </app-upload-file-modal>
+  </div>
+</div>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <ng-container *ngIf="totalItems; else elseTemplate">
+    <div class="table-responsive table-hover">
+      <table class=" table table-bordered mt-3">
+        <thead>
+          <tr class="text-center">
+            <th width="130">{{ level | titlecase }} ID</th>
+            <th>{{ level | titlecase }} Name</th>
+            <th width="100"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="pointer" *ngFor="let data of dataList; index as i" (click)="onNavigate(data.id)">
+            <td>{{ data.id }}</td>
+            <td>{{ data.name }}</td>
+            <td class="text-center" (click)="$event.stopPropagation()">
+              <div class="d-flex align-content justify-content-center gap-10">
+                <i class="fal fa-edit m-t-5 pointer" (click)="add.open(data)"></i>
+                <svg-icon class="pointer" src="./../../../../../assets/images/icons/delete.svg" #p="ngbPopover"
+                  [ngbPopover]="popover" [autoClose]="false" triggers="manual" placement="left" (click)="p.open()">
+                </svg-icon>
+
+                <ng-template #popover>
+                  <app-delete-popover message="leave quota" (confirm)="onDelete(data); p.close()" (cancel)="p.close()">
+                  </app-delete-popover>
+                </ng-template>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="body-01 text-center my-5">Data not found</div>
+  </ng-template>
+</ng-template>
+
+<app-add-level-modal [clientId]="clientId" [level]="level" [type]="type" (submitted)="onSubmitted()" #add>
+</app-add-level-modal>

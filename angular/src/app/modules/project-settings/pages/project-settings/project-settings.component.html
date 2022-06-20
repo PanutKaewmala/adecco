@@ -1,0 +1,21 @@
+<div class="header mb-3 d-flex gap-10" *ngIf="!isClient">
+  <svg-icon src="../../../../../assets/images/icons/arrow.svg" class="pointer d-flex align-items-center"
+    appBackLocation></svg-icon>
+  Project settings
+</div>
+
+<div class="row custom-height ">
+  <div class="col-4 pl-0">
+    <div class="border rounded">
+      <div class="py-2 px-3 pointer menu" *ngFor="let menu of menus" [routerLink]="menu.path" routerLinkActive="active">
+        {{ menu.label }}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8 p-0 border box overflow-auto h-100" [ngClass]="{'bg-white': isSubPage}">
+    <div class="p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

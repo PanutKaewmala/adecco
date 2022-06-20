@@ -1,0 +1,59 @@
+.docker:
+  before_script:
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+
+.push:
+  extends:
+    - .docker
+  stage: push
+  services:
+    - docker:dind
+  retry: 1
+  script:
+    - docker pull $CI_REGISTRY_IMAGE/$APPLICATION:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE/$APPLICATION:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/$APPLICATION
+    - docker push $CI_REGISTRY_IMAGE/$APPLICATION
+
+.ssh-for-deploy:
+  environment: $ENV
+  before_script:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - echo "$SSH_PRIVATE_KEY_DEV" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+  retry: 1
+
+.deploy:
+  stage: deploy
+  extends: .ssh-for-deploy
+
+upload:
+  stage: upload
+  extends: .ssh-for-deploy
+  image: kroniak/ssh-client:3.11
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - docker-compose.yml
+        - deployment/dev/**/*
+        - scripts/**/*
+        - mocki.yml
+      variables:
+        ENV: dev
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9-\.]+/'
+      changes:
+        - docker-compose.yml
+        - deployment/prod/**/*
+        - scripts/**/*
+      variables:
+        ENV: prod
+  resource_group: upload
+  script:
+    - ssh -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_IP "mkdir -p $DEPLOY_REMOTE_PATH/scripts"
+    - scp -P $DEPLOY_PORT -r docker-compose.yml $DEPLOY_USER@$DEPLOY_IP:$DEPLOY_REMOTE_PATH
+    - scp -P $DEPLOY_PORT -rp deployment/$CI_ENVIRONMENT_NAME/* $DEPLOY_USER@$DEPLOY_IP:$DEPLOY_REMOTE_PATH
+    - scp -P $DEPLOY_PORT -rp deployment/$CI_ENVIRONMENT_NAME/nginx/nginx.conf $DEPLOY_USER@$DEPLOY_IP:$DEPLOY_REMOTE_PATH/nginx/nginx.green.conf
+    - scp -P $DEPLOY_PORT -rp deployment/$CI_ENVIRONMENT_NAME/.env* $DEPLOY_USER@$DEPLOY_IP:$DEPLOY_REMOTE_PATH
+    - scp -P $DEPLOY_PORT -rp scripts/* $DEPLOY_USER@$DEPLOY_IP:$DEPLOY_REMOTE_PATH/scripts
+    - scp -P $DEPLOY_PORT -r mocki.yml $DEPLOY_USER@$DEPLOY_IP:$DEPLOY_REMOTE_PATH

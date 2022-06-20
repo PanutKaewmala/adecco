@@ -1,0 +1,65 @@
+<div class="col-12 p-0">
+  <div class="row">
+    <div class="col-12 col-md-6 m-auto">
+      <ng-content></ng-content>
+    </div>
+    <div class="col-12 col-md-6 text-right">
+      <button type="button" class="btn btn-outline-danger my-3">Import excel</button>
+    </div>
+  </div>
+
+  <div class="box row">
+    <div class="col-12 col-lg-5">
+      <div class="d-flex justify-content-between">
+        <label>Employee List</label>
+        <a class="text-danger pointer text-underline" (click)="onAddAll()">Select All</a>
+      </div>
+      <div class="employee-list text-left d-flex flex-column">
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" placeholder="Search name"
+            (keyup.enter)="getEmployeeList($event.target.value)" (keydown.enter)="$event.preventDefault()">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/search.svg"></svg-icon>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 flex-grow-1" *ngIf="!employeeList">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div class="flex-grow-1 overflow-auto">
+          <div class="py-2 my-1 pointer" [ngClass]="{'active': selected.has(employee)}"
+            *ngFor="let employee of employeeList" (click)="onSelectEmployee(employee)">
+            {{ employee.context['employee.user.full_name'] }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-2 d-flex flex-column justify-content-center my-3">
+      <button type="button" class="btn btn-outline-secondary mb-3" (click)="onAddEmployee()">
+        Add <svg-icon src="../../../../../assets/images/icons/right.svg"></svg-icon>
+      </button>
+      <button type="button" class="btn btn-outline-secondary" (click)="onRemoveEmployee()">
+        <svg-icon src="../../../../../assets/images/icons/left.svg"></svg-icon> Remove
+      </button>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="d-flex justify-content-between">
+        <label>Added Employee</label>
+        <a class="text-danger pointer text-underline" (click)="onRemoveAll()">Select All</a>
+      </div>
+      <div class="employee-list text-left overflow-auto">
+        <div class="py-2 my-1 pointer" [ngClass]="{'active': selected.has(employee)}" *ngFor="let employee of addedList"
+          (click)="onSelectEmployee(employee)">
+          {{ employee.context['employee.user.full_name'] }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <small class="text-danger" *ngIf="employeeProject.touched && employeeProject.errors">
+    Employee is required.
+  </small>
+</div>

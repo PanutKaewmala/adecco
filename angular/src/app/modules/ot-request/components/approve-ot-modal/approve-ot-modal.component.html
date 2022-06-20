@@ -1,0 +1,33 @@
+<ng-template #confirm let-modal>
+  <div class="modal-header pb-0">
+    <div class="modal-title header with-underline">
+      confirm to {{ type.replace('_', ' ') }}
+    </div>
+    <button type="button" class="close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row mb-3">
+      <div class="col-3 title p-0">Employee :</div>
+      <div class="col-9 p-0">{{ data.user.full_name }}</div>
+      <div class="col-3 title p-0">OT Date :</div>
+      <div class="col-9 p-0">
+        {{ data.start_date | date: 'dd MMM yyyy' }}
+      </div>
+      <div class="col-3 title p-0">OT Total :</div>
+      <div class="col-9 p-0">{{ data.start_time }}-{{ data.end_time }}</div>
+    </div>
+
+    <div class="note">
+      {{ type === 'reject' ? 'Reason *' : 'Note' }} <br>
+      <textarea rows="4" [(ngModel)]="note"></textarea>
+    </div>
+  </div>
+
+  <div class="modal-footer pt-0">
+    <button class="btn btn-outline-danger" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="onConfirm()" [ladda]="submitting">Confirm</button>
+  </div>
+</ng-template>

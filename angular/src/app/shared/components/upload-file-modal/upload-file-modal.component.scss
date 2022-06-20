@@ -1,0 +1,20 @@
+.filename {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove {
+  color: #d21847;
+  cursor: pointer;
+
+  span:hover {
+    text-decoration: underline;
+  }
+}
+
+.here {
+  color: #379cd0;
+  text-decoration: underline;
+  cursor: pointer;
+}

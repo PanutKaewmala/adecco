@@ -1,0 +1,25 @@
+.column-action {
+  width: 120px;
+}
+
+.table {
+  background-color: white;
+
+  th {
+    font-weight: 500;
+    color: #989797;
+    vertical-align: middle;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.5);
+  }
+}
+
+.m-t-5 {
+  margin-top: 5px;
+}

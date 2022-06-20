@@ -1,0 +1,149 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header">
+  {{ id ? 'EDIT roster' : 'NEW roster'}}
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Details</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Roster Name</label>
+        <input type="text" class="form-control" appValidationForm formControlName="name">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" appValidationForm formControlName="description">
+      </div>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Duration</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Start Date</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngbDatepicker #start="ngbDatepicker"
+            (click)="isEdit || start.toggle()" placeholder="Select" formControlName="start_date" appValidationForm
+            [firstDayOfWeek]="7" [value]="dateString(formGroup.get('start_date').value)"
+            (dateSelect)="clear(); onCanAddShift()" readonly>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="isEdit || start.toggle()">
+              </svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <label class="required">End Date</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngbDatepicker #end="ngbDatepicker" (click)="isEdit || end.toggle()"
+            placeholder="Select" formControlName="end_date" appValidationForm
+            [minDate]="getNgbDate(formGroup.get('start_date').value)" [firstDayOfWeek]="7"
+            [value]="dateString(formGroup.get('end_date').value)" (dateSelect)="clear(); onCanAddShift()" readonly>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="isEdit || end.toggle()">
+              </svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="required">Working Time</label>
+        <ng-select class="mb-2" [items]="workingHours$ | async" [clearable]="false" formControlName="working_hour"
+          (change)="onSelectWorking($event)" placeholder="Select" bindLabel="name" bindValue="id">
+        </ng-select>
+      </div>
+      <div class="box" *ngIf="formGroup.get('working_hour').value">
+        <table style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Day</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let day of days">
+              <tr *ngIf="selectedWorking[day] === 'day_off'">
+                <td>{{ day | titlecase }}</td>
+                <td>
+                  {{ (getTime(selectedWorking[day+'_start_time']) | date: 'HH:mm') + ' - ' 
+                   + (getTime(selectedWorking[day+'_end_time']) | date: 'HH:mm') }}
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Shift</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7" formArrayName="shifts" *ngIf="rosterPlan?.type === 'shift' || !id">
+      <ng-container *ngFor="let shift of shifts.controls; index as i" [formGroupName]="i">
+        <app-roster-box [formGroup]="shift" [workingHour]="selectedWorking" [index]="i + 1"
+          [startDate]="getStartShift(endShifts[i-1]) || formGroup.get('start_date').value"
+          [endDate]="formGroup.get('end_date').value" (endShift)="$event ? endShifts[i] = $event : null"
+          (delete)="onDeleteShift(i)" [projectId]="projectId" [isAutoShift]="isAutoShift">
+        </app-roster-box>
+      </ng-container>
+      <button *ngIf="!isAutoShift" type="button" class="btn btn-outline-danger w-100 mt-3" (click)="onAddShift()"
+        [ngClass]="{'not-allowed': dateOutOfRange || checkShiftEnd}" [disabled]="dateOutOfRange || checkShiftEnd">
+        Add Shift
+      </button>
+      <small class="text-danger" *ngIf="!canAddShift">Please select working time, start date and end date.</small>
+      <small class="text-danger" *ngIf="shifts.touched && shifts.errors && canAddShift">
+        Shift is required.
+      </small>
+    </div>
+
+    <div class="col-12 p-0" *ngIf="rosterPlan?.type === 'day_off'">
+      <app-select-day-off [rosterPlan]="rosterPlan"></app-select-day-off>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="body-01">Please add employee(s) to the roster</div>
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Employee</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="!id || isSetting">
+      <app-select-employee [formGroup]="formGroup" [projectId]="projectId"></app-select-employee>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

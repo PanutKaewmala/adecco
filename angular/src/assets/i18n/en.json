@@ -1,0 +1,8 @@
+{
+  "ERROR": {
+    "REQUIRED": "This field is required.",
+    "NGBDATE": "Date out of range.",
+    "CFPASSWORD": "Passwords didn't match. Try again.",
+    "PATTERN": "Format invalid."
+  }
+}

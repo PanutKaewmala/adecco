@@ -1,0 +1,17 @@
+<ng-container *ngIf="field === 'full_name'; else elseTemplate">
+  <div class="d-flex flex-column">
+    {{ cellValue }}
+    <small>{{ data.employee.nick_name }}</small>
+    <small>{{ data.employee.position }}</small>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <ng-container *ngIf="field === 'action'; else leaveTemplate">
+    <i class="fal fa-edit pointer" (click)="edit.open(leaveQuotaData)"></i>
+  </ng-container>
+  <ng-template #leaveTemplate>
+    {{ leaveQuota }}
+  </ng-template>
+</ng-template>
+
+<app-edit-leave-modal #edit></app-edit-leave-modal>

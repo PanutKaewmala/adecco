@@ -1,0 +1,13 @@
+<div class="border rounded d-flex flex-column h-100 justify-content-between">
+  <ag-grid-angular class="ag-theme-alpine h-100 w-100"
+      [columnDefs]="columnDefs"
+      [frameworkComponents]="frameworkComponents"
+      [rowData]="employeeList"
+      (cellClicked)="onCellClicked($event)"
+      (gridReady)="onGridReady($event)"
+      (gridSizeChanged)="onGridSizeChanged($event)">
+  </ag-grid-angular>
+  <div class="pagination border-top px-3 rounded-0 justify-content-end">
+    <app-pagination [page]="page" [totalItems]="totalItems" (changePage)="onPageChanged($event)"></app-pagination>
+  </div>
+</div>

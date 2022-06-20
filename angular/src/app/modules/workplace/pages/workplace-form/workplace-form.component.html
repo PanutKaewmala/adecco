@@ -1,0 +1,87 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="header">
+  {{ workplaceId ? 'Edit Workplace' : 'ADD New Workplace' }}
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Name</label>
+        <input type="text" class="form-control" appValidationForm formControlName="name">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Address</label>
+        <textarea rows="4" appValidationForm formControlName="address"></textarea>
+      </div>
+
+      <div class="form-group my-4">
+        <label>Additional Note</label>
+        <textarea rows="4" appValidationForm formControlName="addition_note"></textarea>
+      </div>
+
+      <div class="form-group my-4">
+        <label>
+          Wi-Fi BSSID
+          <span class="italic-01">ใช้ร่วมกับ Checkin Wi-Fi</span>
+        </label>
+        <textarea rows="4" appValidationForm formControlName="wifi"></textarea>
+      </div>
+
+      <div class="form-group my-4">
+        <label>
+          Bluetooth UUID
+          <span class="italic-01">ใช้ร่วมกับ Checkin Bluetooth (BLE) / iBeacon</span>
+        </label>
+        <textarea rows="4" appValidationForm formControlName="bluetooth"></textarea>
+      </div>
+
+      <div class="form-group my-4">
+        <label>
+          QR Code
+          <span class="italic-01">ใช้ร่วมกับ Checkin QR Code</span>
+        </label>
+        <textarea rows="4" appValidationForm formControlName="qr_code"></textarea>
+      </div>
+
+      <div class="form-group my-4">
+        <label>
+          Latitude & Longitude
+          <span class="italic-01">ใช้ร่วมกับ Checkin Location</span>
+        </label>
+
+        <app-google-map [clickable]="true" [position]="position" (mapClick)="onMapClicked($event)">
+        </app-google-map>
+        <div class="body-02 mt-2">
+          Click in the map to get Latitude and Longitude
+        </div>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Latitude</label>
+        <input type="text" class="form-control" appValidationForm formControlName="latitude">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Longitude</label>
+        <input type="text" class="form-control" appValidationForm formControlName="longitude">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Radius (Meters)</label>
+        <input type="text" class="form-control" appValidationForm formControlName="radius_meter">
+      </div>
+
+      <div class="text-right">
+        <button class="btn btn-outline-danger mr-3" type="button" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

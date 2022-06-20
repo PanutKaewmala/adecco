@@ -1,0 +1,13 @@
+.employee-box {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  border-left: 5px solid var(--red);
+  padding: 10px 1rem;
+
+  .table {
+    table-layout: fixed;
+    td {
+      padding: 0;
+    }
+  }
+}

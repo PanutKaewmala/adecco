@@ -1,0 +1,42 @@
+<div class="box">
+  <div class="box-title">
+    <div class="decorate bg-success"></div>
+    <div class="title text-success">
+      {{ route.location_name }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-5 p-0 pr-md-3">
+      <div class="my-3">
+        <div class="title">
+          CHECK-IN DATE/TIME
+        </div>
+        <div class="body-01">
+          {{ route.check_in !== '-' ? (route.check_in | date: "dd MMM yyyy, h:mm a") : route.check_in }}
+        </div>
+      </div>
+
+      <div class="my-3">
+        <div class="title">
+          CHECK-OUT DATE/TIME
+        </div>
+        <div class="body-01">
+          {{ route.check_out !== '-' ? (route.check_out | date: "dd MMM yyyy, h:mm a") : route.check_out }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-7 p-0 pl-md-3">
+      <div class="title mt-3">
+        LOCATION
+      </div>
+      <div class="body-01">
+        {{ route.location_address }}
+      </div>
+      <div class="body-01">
+        {{ latLngString }}
+      </div>
+    </div>
+  </div>
+</div>

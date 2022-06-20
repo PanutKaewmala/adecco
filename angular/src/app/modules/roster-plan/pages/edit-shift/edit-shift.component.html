@@ -1,0 +1,60 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header">
+  EDIT Shift
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Details</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Roster Name</label>
+        <input type="text" class="form-control" [value]="rosterPlan?.name" disabled>
+      </div>
+      <div class="form-group">
+        <label>Remarks</label>
+        <input type="text" class="form-control" appValidationForm formControlName="remark">
+      </div>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Shift</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7" *ngIf="rosterPlan?.type === 'shift' || !id">
+      <app-roster-box [formGroup]="formGroup" [workingHour]="selectedWorking" [index]="index" [projectId]="projectId"
+        [isEditShift]="true" [startDate]="shift.from_date">
+        <div class="col-12 p-0 mt-3">
+          <div class="form-group">
+            <label class="required">Working Time</label>
+            <ng-select class="mb-2" [items]="workingHours$ | async" [clearable]="false" formControlName="working_hour"
+              (change)="onSelectWorking($event)" placeholder="Select" bindLabel="name" bindValue="id">
+            </ng-select>
+          </div>
+        </div>
+      </app-roster-box>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

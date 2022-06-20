@@ -1,0 +1,70 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header d-flex gap-10">
+  <svg-icon *ngIf="clientId" src="../../../../../assets/images/icons/arrow.svg"
+    class="pointer d-flex align-items-center" appBackLocation></svg-icon>
+  {{ client?.name || 'Add new client' }}
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Client Name (English)</label>
+        <input type="text" class="form-control" appValidationForm formControlName="name">
+      </div>
+
+      <div class="form-group">
+        <label class="required">Client Name (Thai)</label>
+        <input type="text" class="form-control" appValidationForm formControlName="name_th">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Branch Name</label>
+        <ng-select [items]="branchList" bindValue="value" placeholder="Select" appValidationForm
+          formControlName="branch"></ng-select>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Contact Person</label>
+        <input type="text" class="form-control" appValidationForm formControlName="contact_person">
+      </div>
+
+      <div class="form-group my-4">
+        <label>Contact Number</label>
+        <input type="text" class="form-control" appValidationForm formControlName="contact_number">
+      </div>
+
+      <div class="form-group my-4">
+        <label>Contact Email</label>
+        <input type="text" class="form-control" appValidationForm formControlName="contact_person_email">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Project Manager</label>
+        <ng-select [items]="projectManagerList" bindValue="value" bindLabel="context.full_name" placeholder="Select"
+          appValidationForm formControlName="project_manager"></ng-select>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">URL</label>
+        <div class="input-group">
+          <input type="text" class="form-control" appValidationForm formControlName="url">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              .ahead.net
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button class="btn btn-outline-danger mr-3" type="button" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

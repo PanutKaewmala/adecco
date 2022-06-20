@@ -1,0 +1,43 @@
+.status {
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  font-size: 11px;
+
+  i {
+    margin-top: 1px;
+  }
+
+  &.pending {
+    color: #29adce;
+    background-color: #c8ebf4;
+  }
+
+  &.approve {
+    color: #00b347;
+    background-color: #ddecdb;
+  }
+
+  &.reject {
+    color: var(--red);
+    background-color: #be2c4233;
+  }
+}
+
+.employee-list {
+  max-height: 300px;
+  overflow: auto;
+
+  .list-group-item:first-child {
+    border-top: 0;
+  }
+
+  .list-group-item:first-child {
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+  }
+}
+
+.list-group-item-light {
+  background-color: #f4f5f7;
+}

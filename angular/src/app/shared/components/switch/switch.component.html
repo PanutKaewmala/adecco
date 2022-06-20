@@ -1,0 +1,14 @@
+<div class="d-flex gap-10">
+  <label class="switch">
+    <ng-container *ngIf="reverse; else elseTemplate">
+      <input type="checkbox" [ngModel]="!value" (change)="onChange($event.target.checked)">
+    </ng-container>
+    <ng-template #elseTemplate>
+      <input type="checkbox" [(ngModel)]="value" (change)="onChange()">
+    </ng-template>
+
+    <span class="slider round"></span>
+  </label>
+
+  <div class="pointer" [ngClass]="{'text-muted': reverse ? value : !value}" (click)="onChange(value)">{{ label }}</div>
+</div>

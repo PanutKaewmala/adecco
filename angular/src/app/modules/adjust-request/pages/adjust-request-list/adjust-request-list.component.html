@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-between">
+  <div class="input-group custom-date month-picker">
+    <input type="text" class="form-control" placeholder="Select date" ngbDatepicker #d="ngbDatepicker"
+      (click)="d.toggle()" [value]="(date | date: 'MMMM yyyy')" [startDate]="selectedDate"
+      (dateSelect)="onDateSelected($event)" [firstDayOfWeek]="7" (navigate)="onNavigate($event)" readonly>
+    <div class="input-group-append">
+      <div class="input-group-text" (click)="d.toggle()">
+        <svg-icon src="../../../../../assets/images/icons/arrow_down.svg"></svg-icon>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-outline-danger" routerLink="create">Add/ Edit Employee</button>
+</div>
+
+<div class="grid-container d-flex">
+  <ag-grid-angular style="width: 100%; height: auto;" class="ag-theme-alpine mt-3" [rowData]="dataList"
+    [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" (gridSizeChanged)="onGridSizeChanged($event)"
+    (cellClicked)="onCellClicked($event)" [suppressFieldDotNotation]="true" (filterOpened)="onFilterOpened($event)">
+  </ag-grid-angular>
+</div>
+<app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>

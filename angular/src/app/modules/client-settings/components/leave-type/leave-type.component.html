@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <div class="box">
+    <div class="box-title">
+      <div class="decorate"></div>
+      <div class="title">{{ name }}</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label>Apply Before (Days)</label>
+      <input type="text" class="form-control" formControlName="apply_before" appValidationForm>
+    </div>
+    <div class="form-group mb-0">
+      <label>Apply After (Days)</label>
+      <input type="text" class="form-control" formControlName="apply_after" appValidationForm>
+    </div>
+  </div>
+</form>

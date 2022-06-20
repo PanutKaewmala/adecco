@@ -1,0 +1,16 @@
+<div class="col-12">
+  <div class="p-3 my-3 bg-light day-off-calendar">
+    <ngb-datepicker #dp [dayTemplate]="template" [firstDayOfWeek]="0" [minDate]="getNgbDate(rosterPlan.start_date)"
+      [maxDate]="getNgbDate(rosterPlan.end_date)">
+    </ngb-datepicker>
+
+    <ng-template #template let-date="date" let-focused="focused">
+      <span class="custom-day w-100 h-100 d-flex justify-content-center align-items-center" (click)="onDateSelect(date)"
+        [class.focused]="focused" [class.selected]="isDateSelected(date)" (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null" [class.disabled]="isHoliday(date)">
+        {{ date.day }}
+      </span>
+    </ng-template>
+
+  </div>
+</div>

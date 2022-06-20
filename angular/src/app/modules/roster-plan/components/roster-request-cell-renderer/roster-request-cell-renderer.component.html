@@ -1,0 +1,49 @@
+<ng-container *ngIf="field === 'employee_name'">
+  {{ roster.employee_name_list[0] }}
+</ng-container>
+
+<div class="text-center" *ngIf="field === 'roster_name'">
+  {{ cellValue}}
+  <div class="italic-01 shift-number">Edit Shift {{ editShit.sequence }}</div>
+</div>
+
+<div *ngIf="field === 'status'" class="d-flex flex-column">
+  <ngb-progressbar type="info" [value]="1" [max]="2" height="7px"></ngb-progressbar>
+  <div class="italic-02">{{ cellValue.replace('_', ' ') | titlecase }}</div>
+  <div class="caption-02">Ana Jay</div>
+</div>
+
+<ng-container *ngIf="['working_hours', 'to_working_hour'].includes(field)">
+  <div [innerHTML]="roster?.working_hours?.join('<br>') || editShit?.to_working_hour"></div>
+</ng-container>
+
+<div *ngIf="field === 'view'" class="text-center pointer">
+  <svg-icon src="../../../../../assets/images/icons/calendar_view.svg" (click)="calendar.open()"></svg-icon>
+  <app-calendar-modal #calendar [isShiftRequest]="isEditShift" [rosterPlan]="roster"></app-calendar-modal>
+</div>
+
+<div *ngIf="['workplaces', 'to_workplaces'].includes(field)" class="workplace">
+  <span class="workplace-badge" *ngFor="let workplace of (roster?.workplaces || editShit.to_workplaces)">
+    {{ workplace }}
+  </span>
+</div>
+
+<div *ngIf="field === 'action'" class="text-center action">
+  <ng-container *ngIf="roster.status === 'pending'; else elseTemplate">
+    <div container="body" ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-dark" id="dropdown" ngbDropdownToggle (openChange)="onAction($event)">
+        Action
+      </button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem (click)="request.open(roster, 'approve', isEditShift)">Approve</button>
+        <button ngbDropdownItem (click)="request.open(roster, 'reject', isEditShift)">Reject</button>
+        <app-roster-request-modal #request></app-roster-request-modal>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div [ngClass]="{'text-success': roster.status === 'approve', 'text-danger': roster.status === 'reject'}">
+      {{ roster.status | titlecase }}
+    </div>
+  </ng-template>
+</div>

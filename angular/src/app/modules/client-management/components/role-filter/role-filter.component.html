@@ -1,0 +1,7 @@
+<div class="filter-popup">
+  <ng-select class="ag-custom-filter" appendTo="body" (change)="updateFilter()" [(ngModel)]="role"
+    [searchable]="false" placeholder="Filter">
+    <ng-option value="Supervisor">Supervisor</ng-option>
+    <ng-option value="Admin">Admin</ng-option>
+  </ng-select>
+</div>

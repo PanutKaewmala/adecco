@@ -1,0 +1,89 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header">
+  add employee
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Details</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7 mt-3">
+      <div class="btn-group btn-group-toggle" role="group" ngbRadioGroup name="typeRadio" formControlName="type">
+        <label ngbButtonLabel class="btn-outline-danger">
+          <input ngbButton type="radio" value="one_day">One Day
+        </label>
+        <label ngbButtonLabel class="btn-outline-danger">
+          <input ngbButton type="radio" value="multi_day">Multi-Day
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">
+          <span *ngIf="type === 'multi_day'">Start</span> Date
+        </label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()"
+            (dateSelect)="onDateSelect()" placeholder="Select" formControlName="start_date" appValidationForm
+            [firstDayOfWeek]="7" readonly>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="start.toggle()">
+              </svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3" *ngIf="type === 'multi_day'">
+        <label class="required">End Date</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngbDatepicker #end="ngbDatepicker" (click)="end.toggle()"
+            placeholder="Select" formControlName="end_date" appValidationForm (dateSelect)="onDateSelect()"
+            [minDate]="getNgbDate(formGroup.get('start_date').value)" [firstDayOfWeek]="7" readonly>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="end.toggle()">
+              </svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <label>Remarks</label>
+        <input type="text" class="form-control" formControlName="remark">
+      </div>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Employee List</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" formArrayName="date_list">
+      <ng-container *ngFor="let employee of dateArray.controls">
+        <app-employee-box [formGroup]="employee" [employees]="employees" [workingTimes]="workingTimes"
+          [workplaces]="workplaces"></app-employee-box>
+      </ng-container>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,20 @@
+<div class="header d-flex gap-10">
+  <svg-icon src="../../../../../assets/images/icons/arrow.svg" class="pointer d-flex align-items-center"
+    [routerLink]="['/client', clientId, 'project']"></svg-icon>
+  {{ client?.name || 'ADD New project'}}
+</div>
+
+<ng-container *ngIf="isCreate; else elseTemplate">
+  <app-project-detail [clientId]="clientId"></app-project-detail>
+</ng-container>
+<ng-template #elseTemplate>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs mt-3" [(activeId)]="active">
+    <li [ngbNavItem]="menu.id" *ngFor="let menu of menus">
+      <a ngbNavLink class="nav-link" [routerLink]="menu.path" routerLinkActive="active">{{ menu.label }}</a>
+    </li>
+  </ul>
+
+  <div class="pt-3 custom-height">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>

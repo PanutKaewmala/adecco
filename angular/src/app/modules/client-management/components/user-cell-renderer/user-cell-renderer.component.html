@@ -1,0 +1,12 @@
+<ng-container *ngIf="field === 'user.full_name'">
+  <div>{{ cellValue }}</div>
+  <small>{{ data.user.email }}</small>
+</ng-container>
+
+<ng-container *ngIf="field === 'username'">
+  <div>{{ cellValue }}</div>
+</ng-container>
+
+<ng-container *ngIf="field === 'user.role'">
+  <div class="text-center">{{ role | titlecase }}</div>
+</ng-container>

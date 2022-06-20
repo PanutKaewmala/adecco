@@ -1,0 +1,47 @@
+<ng-template #approval let-modal>
+  <div class="modal-header pb-0">
+    <div class="modal-title header with-underline">
+      Roster plan
+    </div>
+    <div>
+      <button type="button" class="close" (click)="onClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <button type="button" class="close" (click)="onEdit()" *ngIf="canEdit">
+        <svg-icon src="../../../../../assets/images/icons/edit.svg"></svg-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <div class="row mb-3">
+      <div class="col-3 title p-0">Employee :</div>
+      <div class="col-9 p-0">{{ data?.title }}</div>
+      <div class="col-3 title p-0">Roster Name :</div>
+      <div class="col-9 p-0">{{ data?.meta.roster.roster_name }}</div>
+      <div class="col-3 title p-0">Duration :</div>
+      <div class="col-9 p-0">
+        {{ data?.start | date: "d MMMM yyyy" }} - {{ data?.end | date: "d MMMM yyyy" }}
+      </div>
+      <div class="col-3 title p-0">Working Time :</div>
+      <div class="col-9 p-0">{{ data?.meta.working_hour }}</div>
+    </div>
+
+    <ng-container *ngIf="roster; else elseTemplate">
+      <app-roster-schedule [rosterPlan]="roster" [selectedShift]="selected">
+      </app-roster-schedule>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="my-5">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="modal-footer pt-0" *ngIf="roster?.status === 'pending'">
+    <button class="btn btn-outline-danger" (click)="request.open(roster, 'reject')">Reject</button>
+    <button class="btn btn-danger" (click)="request.open(roster, 'approve')">Approve</button>
+  </div>
+</ng-template>
+
+<app-roster-request-modal #request></app-roster-request-modal>

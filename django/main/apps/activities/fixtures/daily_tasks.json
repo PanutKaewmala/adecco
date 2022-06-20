@@ -1,0 +1,74 @@
+[
+  {
+    "model": "activities.dailytask",
+    "pk": 1,
+    "fields": {
+      "date": "2022-02-07",
+      "task_name": "Sale Report",
+      "start_time": null,
+      "stop_time": null,
+      "all_day": true,
+      "place": 1
+    }
+  },
+  {
+    "model": "activities.dailytask",
+    "pk": 2,
+    "fields": {
+      "date": "2022-02-07",
+      "task_name": "Visit store",
+      "start_time": "9:00:00",
+      "stop_time": null,
+      "all_day": false,
+      "place": 1
+    }
+  },
+  {
+    "model": "activities.dailytask",
+    "pk": 3,
+    "fields": {
+      "date": "2022-02-07",
+      "task_name": "Re-arrange products on shelf",
+      "start_time": "10:00:00",
+      "stop_time": "12:00:00",
+      "all_day": false,
+      "place": 1
+    }
+  },
+  {
+    "model": "activities.dailytask",
+    "pk": 4,
+    "fields": {
+      "date": "2022-02-07",
+      "task_name": "Check Stock-OSA",
+      "start_time": "13:00:00",
+      "stop_time": "15:00:00",
+      "all_day": false,
+      "place": 2
+    }
+  },
+  {
+    "model": "activities.dailytask",
+    "pk": 5,
+    "fields": {
+      "date": "2022-02-07",
+      "task_name": "Visit store",
+      "start_time": "15:30:00",
+      "stop_time": null,
+      "all_day": false,
+      "place": 3
+    }
+  },
+  {
+    "model": "activities.dailytask",
+    "pk": 6,
+    "fields": {
+      "date": "2022-02-07",
+      "task_name": "Check Stock-OSA",
+      "start_time": "17:00:00",
+      "stop_time": "20:00:00",
+      "all_day": false,
+      "place": 3
+    }
+  }
+]

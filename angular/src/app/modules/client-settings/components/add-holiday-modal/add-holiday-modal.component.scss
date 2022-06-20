@@ -1,0 +1,41 @@
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  .import-religion {
+    background-color: #843297;
+    color: white;
+    background-color: #f3ecf5;
+    color: #973d86;
+    border-color: #973d86;
+
+    &:hover {
+      background-color: #973d86;
+      color: #fff;
+    }
+  }
+
+  .import-thailand {
+    background-color: #f1f6ed;
+    color: #56a547;
+    border-color: #56a547;
+
+    &:hover {
+      background-color: #56a547;
+      color: #fff;
+    }
+  }
+
+  .dropdown-detail {
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eff7fd;
+    }
+  }
+}
+
+.m-t-5 {
+  margin-top: 5px;
+}

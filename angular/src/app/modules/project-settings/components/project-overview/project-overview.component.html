@@ -1,0 +1,114 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="row">
+    <div class="col-10 p-0 body-01 my-auto">
+      Project Overview
+    </div>
+    <div class="col-2 p-0 text-right">
+      <button class="btn btn-outline-dark" (click)="back()">Edit</button>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="my-2">
+        <div class="title">
+          project name
+        </div>
+        <div class="body-01">{{ project.name }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="my-2">
+        <div class="title">
+          client name
+        </div>
+        <div class="body-01">{{ project.client.name || '-' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="my-2">
+        <div class="title">
+          project description
+        </div>
+        <div class="body-01">{{ project.description || '-' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          Project assignee
+        </div>
+        <div class="body-01">{{ project.project_assignee?.full_name || '-' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          start date
+        </div>
+        <div class="body-01">{{ project.start_date | date: 'dd MMM yyyy' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          end date
+        </div>
+        <div class="body-01">{{ project?.end_date | date: 'dd MMM yyyy' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          country
+        </div>
+        <div class="body-01">{{ project.country }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          city
+        </div>
+        <div class="body-01">{{ project.city }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          Business type
+        </div>
+        <div class="body-01">Monthly-Shift</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          leave type
+        </div>
+        <div class="body-01">By Hour</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 p-0">
+      <div class="mt-2">
+        <div class="title">
+          currency
+        </div>
+        <div class="body-01">THB (฿)</div>
+      </div>
+    </div>
+  </div>
+</ng-template>

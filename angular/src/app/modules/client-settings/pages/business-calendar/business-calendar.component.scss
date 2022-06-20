@@ -1,0 +1,61 @@
+::ng-deep .calendar-view .cal-month-view {
+  .cal-header .cal-cell {
+    font-weight: 500;
+    text-align: left;
+    font-size: 10px;
+    padding-left: 5px;
+  }
+
+  .cal-day-number {
+    float: initial;
+    display: block;
+    text-align: left;
+    margin: 5px;
+    font-size: 10px !important;
+  }
+
+  .cal-day-cell.cal-today .cal-day-number {
+    font-size: 1.2em;
+  }
+
+  .cal-day-cell.cal-out-month {
+    .caption-03 {
+      color: #acacac;
+    }
+  }
+
+  .caption-03 {
+    color: #be2c42;
+  }
+
+  .schedule-1 {
+    background-color: #be2c423d;
+  }
+
+  .schedule-2 {
+    background-color: #f3ecf5;
+  }
+}
+
+:host ::ng-deep .month-picker {
+  .ngb-dp-arrow {
+    display: none;
+  }
+
+  ngb-datepicker-month {
+    display: none;
+  }
+
+  .ngb-dp-header {
+    background: none;
+  }
+
+  ngb-datepicker {
+    width: 300px;
+    border: none;
+  }
+
+  .ngb-dp-navigation-select {
+    gap: 10px;
+  }
+}

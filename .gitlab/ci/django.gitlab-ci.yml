@@ -1,0 +1,121 @@
+lint-django:
+  stage: lint
+  image: python:3.9-alpine
+  rules:
+    - if: '$CI_MERGE_REQUEST_IID'
+      changes:
+        - django/**/*
+  before_script:
+    - pip install pylint
+  script:
+    - cd django
+    - pylint main
+
+build-django:
+  extends:
+    - .docker
+  stage: build
+  services:
+    - docker:dind
+  needs:
+    - job: lint-django
+      optional: true
+  rules:
+    - if: '$CI_MERGE_REQUEST_IID || $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - django/**/*
+  script:
+    - docker pull $CI_REGISTRY_IMAGE/django || true
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - >
+      docker build
+      --pull
+      --build-arg VCS_REF=$CI_COMMIT_SHA
+      --build-arg VCS_URL=$CI_PROJECT_URL
+      --cache-from $CI_REGISTRY_IMAGE/django
+      --tag $CI_REGISTRY_IMAGE/django:$CI_COMMIT_SHA
+      ./django
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+    - docker push $CI_REGISTRY_IMAGE/django:$CI_COMMIT_SHA
+
+test-django:
+  extends:
+    - .docker
+  stage: test
+  services:
+    - docker:dind
+    - postgres:12-alpine
+    - redis:alpine
+  needs: [ "build-django" ]
+  rules:
+    - if: '$CI_MERGE_REQUEST_IID || $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - django/**/*
+  variables:
+    POSTGRES_DB: adecco_db
+    POSTGRES_PASSWORD: Codium123!
+  script:
+    - docker pull $CI_REGISTRY_IMAGE/django:$CI_COMMIT_SHA
+    - >
+      docker run
+      -e DATABASE_URL=postgres://postgres:$POSTGRES_PASSWORD@$POSTGRES_PORT_5432_TCP_ADDR:5432/$POSTGRES_DB
+      -e REDIS_HOST=redis://$REDIS_PORT_6379_TCP_ADDR:6379/0
+      -e CI_TESTING=true
+      -v $CI_PROJECT_DIR/result:/opt/app/result
+      --rm
+      $CI_REGISTRY_IMAGE/django:$CI_COMMIT_SHA
+      sh -c
+      "
+        pip install coverage &&
+        coverage run &&
+        coverage combine &&
+        coverage report -m
+      "
+  artifacts:
+    reports:
+      junit: result/report.xml
+  coverage: /^TOTAL.+?(\d+\%)$/
+
+push-django:
+  extends:
+    - .push
+  needs: [ "test-django" ]
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - django/**/*
+  variables:
+    APPLICATION: django
+
+deploy-django:
+  extends:
+    - .deploy
+  image: kroniak/ssh-client:3.11
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - docker-compose.yml
+        - deployment/dev/**/*
+        - scripts/**/*
+        - django/**/*
+        - mocki.yml
+      variables:
+        ENV: dev
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9-\.]+/'
+      changes:
+        - docker-compose.yml
+        - deployment/prod/**/*
+        - scripts/**/*
+        - django/**/*
+      variables:
+        ENV: prod
+  resource_group: deploy-django
+  script:
+    - >
+      ssh -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_IP
+      "
+        cd $DEPLOY_REMOTE_PATH &&
+        echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY &&
+        chmod +x ./deploy.sh &&
+        ./deploy.sh
+      "

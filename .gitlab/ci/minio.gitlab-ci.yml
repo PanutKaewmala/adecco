@@ -1,0 +1,23 @@
+.deploy-minio:
+  extends:
+    - .deploy
+  rules:
+    - if: '$DEPLOY_MINIO != null'
+  script:
+    - >
+      ssh -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_IP "
+      cd $DEPLOY_REMOTE_PATH &&
+      docker-compose up -d minio-blue &&
+      sleep 10 &&
+      cp ./nginx/nginx.blue.conf ./nginx/nginx.conf &&
+      docker-compose up -d nginx &&
+      docker-compose exec -T nginx nginx -s reload &&
+      sleep 5 &&
+      docker-compose rm -fs minio &&
+      sleep 5 &&
+      docker-compose up -d minio &&
+      sleep 10 &&
+      cp ./nginx/nginx.green.conf ./nginx/nginx.conf &&
+      docker-compose exec -T nginx nginx -s reload &&
+      docker-compose rm -fs minio-blue
+      "

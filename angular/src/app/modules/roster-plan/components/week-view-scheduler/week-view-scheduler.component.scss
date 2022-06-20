@@ -1,0 +1,15 @@
+@import "../../pages/roster-plan/roster-plan.component.scss";
+
+.roster-table table {
+  .roster-time {
+    margin: 0 5px;
+  }
+
+  td {
+    width: auto;
+  }
+
+  .bg-pending {
+    background-color: #f4f5f7;
+  }
+}

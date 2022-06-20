@@ -1,0 +1,47 @@
+<div class="d-flex flex-column h-100">
+  <label class="header mb-0">Employee Data</label>
+  <div class="text-right my-3">
+    <div class="d-flex align-items-center justify-content-end">
+      <button class="btn btn-outline-danger mx-3"
+          type="button">
+        Export report
+      </button>
+      <div class="d-block"
+          container="body"
+          ngbDropdown
+          [autoClose]="true">
+        <button class="btn btn-outline-danger"
+            id="dropdown"
+            ngbDropdownToggle
+            type="button">
+          New Employee
+        </button>
+        <div ngbDropdownMenu
+            aria-labelledby="dropdown">
+          <button ngbDropdownItem
+              type="button"
+              [routerLink]="['/employee', 'create']">
+            Create New
+          </button>
+          <button ngbDropdownItem
+              type="button"
+              (click)="import.open()">
+            Import
+          </button>
+        </div>
+        <app-upload-file-modal #import
+            title="Import New Employee"
+            template="https://docs.google.com/spreadsheets/d/1pSavKw9xt18TxTG_EIC3GMPKVdSjjETx/edit#gid=1762430451">
+        </app-upload-file-modal>
+      </div>
+    </div>
+  </div>
+  <div class="row flex-grow-1 overflow-hidden">
+    <div class="col-12 col-md-4 p-0 pr-md-3 workplace-list mb-3 mb-md-0">
+      <app-employee-list></app-employee-list>
+    </div>
+    <div class="col-12 col-md-8 p-0 h-100 overflow-auto outlet-panel">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

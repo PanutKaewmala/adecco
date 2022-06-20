@@ -1,0 +1,27 @@
+.status {
+  i {
+    font-size: 7px;
+  }
+
+  .leave {
+    color: #5961f9;
+  }
+
+  .day-off {
+    color: #d0a201;
+  }
+
+  .admin-status {
+    color: #a61589;
+  }
+}
+
+.location {
+  .coordinate {
+    text-decoration: underline;
+  }
+
+  .location-value {
+    white-space: break-spaces;
+  }
+}

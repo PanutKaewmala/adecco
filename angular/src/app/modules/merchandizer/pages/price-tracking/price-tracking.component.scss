@@ -1,0 +1,20 @@
+.table {
+  background-color: white;
+  table-layout: fixed;
+
+  th {
+    font-weight: 500;
+    color: #989797;
+    vertical-align: middle;
+    width: 110px;
+    text-align: center;
+  }
+
+  th:first-child {
+    width: 40px;
+  }
+
+  th:last-child{
+    width: 30px;
+  }
+}

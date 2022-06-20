@@ -1,0 +1,16 @@
+[
+  {
+    "model": "managements.client",
+    "pk": 1,
+    "fields": {
+      "name": "Codium",
+      "branch": "Main",
+      "lead_time_in_before": 30,
+      "lead_time_in_after": 30,
+      "lead_time_out_before": 30,
+      "lead_time_out_after": 30,
+      "project_assignee": 15,
+      "project_manager": 14
+    }
+  }
+]

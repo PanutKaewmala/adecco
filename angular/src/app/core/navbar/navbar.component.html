@@ -1,0 +1,32 @@
+<div class="d-flex nav-bar" (mouseleave)="isShow = false">
+  <div class="menu-icon d-flex flex-column text-center justify-content-between" (mousedown)="isShow = true">
+    <div class="d-flex flex-column">
+      <div class="icon" *ngFor="let menu of menus" [ngClass]="{'active': this.active === menu.name}"
+        (click)="selectMenu(menu.name)">
+        <svg-icon src="../../../assets/images/icons/{{this.active === menu.name ? menu.activeIcon : menu.icon}}">
+        </svg-icon>
+      </div>
+    </div>
+
+    <div class="logout py-3">
+      <svg-icon src="../../../assets/images/icons/logout.svg" class="pointer" (click)="logoutModal.open()"></svg-icon>
+      <app-confirm-modal #logoutModal message="Are you sure you want to logout?" (confirm)="logout()">
+      </app-confirm-modal>
+
+      <div class="profile pointer mt-3" (click)="active = null">
+        A
+      </div>
+    </div>
+  </div>
+  <div class="sub-menu d-none d-lg-flex" [ngClass]="{'show-sub-menu': isShow}">
+    <ng-container *ngFor="let subMenu of getSubMenus">
+      <ng-select class="mr-3 mt-2" *ngIf="subMenu.type === 'dropdown'" [items]="projects" bindLabel="label"
+        bindValue="value" [(ngModel)]="project" [clearable]="false" (change)="onProjectChange()">
+      </ng-select>
+      <a class="link" *ngIf="!subMenu.type" [routerLink]="subMenu.path" routerLinkActive="active"
+        (click)="isShow = false">
+        {{subMenu.name}}
+      </a>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="form-group">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <label class="m-0">{{ question.name | titlecase }}</label>
+    <app-switch [(value)]="question.hide" [reverse]="true" [label]="!question.hide ? 'Active' : 'Inactive'">
+    </app-switch>
+  </div>
+  <ng-select [items]="options" bindLabel="label" bindValue="value" [clearable]="false" [(ngModel)]="question.require">
+  </ng-select>
+</div>

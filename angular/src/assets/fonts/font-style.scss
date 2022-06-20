@@ -1,0 +1,85 @@
+.header {
+  font-size: 16px;
+  color: #be2c42;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: "Houschka", "Prompt", sans-serif;
+
+  &.with-underline {
+    border-bottom: 2px solid;
+  }
+}
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.heading-01 {
+  font-size: 32px;
+  font-family: "Houschka", "Prompt", sans-serif;
+}
+
+.heading-02 {
+  font-size: 20px;
+  font-family: "Houschka", "Prompt", sans-serif;
+}
+
+.heading-03 {
+  font-size: 16px;
+  font-family: "Houschka", "Prompt", sans-serif;
+}
+
+.heading-04 {
+  font-size: 14px;
+  font-family: "Houschka", "Prompt", sans-serif;
+}
+
+.heading-05 {
+  font-size: 12px;
+  font-family: "Houschka", "Prompt", sans-serif;
+}
+
+.body-01 {
+  font-size: 16px;
+}
+
+.body-02 {
+  font-size: 14px;
+}
+
+.body-03 {
+  font-size: 12px;
+}
+
+.caption-01 {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.caption-02 {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.caption-03 {
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+.underline {
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+.italic-01 {
+  font-size: 12px;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.italic-02 {
+  font-size: 10px;
+  font-weight: lighter;
+  font-style: italic;
+}

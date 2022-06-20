@@ -1,0 +1,335 @@
+<div class="d-flex flex-column h-100">
+  <label class="header mb-0">Employee Data</label>
+  <div class="form-content"
+      [formGroup]="formGroup">
+    <div class="box my-3">
+      <div class="box-title mb-0">
+        <div class="decorate"></div>
+        <div class="title">SUPERVISOR</div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-12 col-lg-7"
+          formGroupName="employee_projects">
+        <label>
+          Supervisor
+          <span>*</span>
+        </label>
+        <ng-select appValidationForm="supervisor"
+            bindLabel="label"
+            bindValue="value"
+            formControlName="supervisor"
+            [clearable]="false"
+            [items]="supervisorDropdown$ | async">
+        </ng-select>
+      </div>
+    </div>
+    <div class="box my-3">
+      <div class="box-title mb-0">
+        <div class="decorate"></div>
+        <div class="title">GENERAL INFORMATION</div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <ng-container formGroupName="user">
+        <div class="col-12 col-lg-5 order-1 order-lg-2 px-4
+            container-profile-photo align-items-lg-start">
+          <label class="mb-2">Image Profile</label>
+          <div class="position-relative">
+            <app-upload-profile-photo [src]="employeeInfo?.user?.photo"
+                (photoChange)="onPhotoChange($event)"
+                (removeClick)="photoFile = null">
+            </app-upload-profile-photo>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 order-2 order-lg-1">
+          <label for="input-employee-id">
+            Search user id/name from master data
+          </label>
+          <ng-select bindLabel="full_name"
+              clearable="true"
+              formControlName="id"
+              id="input-employee-id"
+              [items]="userDropdown$ | async"
+              [typeahead]="userSearch$"
+              (change)="onUserSelect($event)">
+            <ng-template ng-label-tmp ng-option-tmp
+                let-user="item">
+              <label class="label-user-option mb-0">ID: {{ user.id || user }}</label>
+              <label *ngIf="user.full_name"
+                  class="mb-0">
+                {{ user.full_name }}
+              </label>
+            </ng-template>
+          </ng-select>
+        </div>
+      </ng-container>
+      <div class="col-12 col-lg-7 order-3 order-3">
+        <label for="input-system-pool-id">
+          System Pool ID
+        </label>
+        <input class="form-control"
+            formControlName="id"
+            id="input-system-pool-id"
+            type="text"
+            [readonly]="true">
+      </div>
+      <ng-container formGroupName="user">
+        <div class="col-12 col-lg-7 order-3">
+          <label for="input-firstname">
+            First Name
+            <span>*</span>
+          </label>
+          <input appValidationForm="input-firstname"
+              class="form-control"
+              formControlName="first_name"
+              id="input-firstname"
+              type="text"
+              [readonly]="userIdControl.value">
+        </div>
+      </ng-container>
+      <div class="col-12 col-lg-7 order-3">
+        <label for="input-middlename">
+          Middle Name
+        </label>
+        <input class="form-control"
+            formControlName="middle_name"
+            id="input-middlename"
+            type="text">
+      </div>
+      <ng-container formGroupName="user">
+        <div class="col-12 col-lg-7 order-3">
+          <label for="input-lastname">
+            Last Name
+            <span>*</span>
+          </label>
+          <input appValidationForm="input-lastname"
+              class="form-control"
+              formControlName="last_name"
+              id="input-lastname"
+              type="text"
+              [readonly]="userIdControl.value">
+        </div>
+      </ng-container>
+      <div class="col-12 col-lg-7 order-3">
+        <label for="input-nickname">
+          Nick Name
+        </label>
+        <input class="form-control"
+            formControlName="nick_name"
+            id="input-nickname"
+            type="text">
+      </div>
+      <div class="col-12 col-lg-7 order-3">
+        <label for="input-position">
+          Position
+        </label>
+        <input class="form-control"
+            formControlName="position"
+            id="input-position"
+            type="text">
+      </div>
+      <ng-container formGroupName="employee_projects">
+        <div class="col-12 col-lg-7 order-3">
+          <label for="input-start-date">
+            Start Date
+          </label>
+          <div class="input-group">
+            <input #start="ngbDatepicker"
+                class="form-control"
+                formControlName="start_date"
+                id="input-start-date"
+                ngbDatepicker
+                placeholder="Select"
+                placement="bottom-right top-right"
+                type="text"
+                [firstDayOfWeek]="7"
+                (click)="start.toggle()">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg"
+                    (click)="start.toggle()">
+                </svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 order-3">
+          <label for="input-resign-date">
+            Resign Date
+          </label>
+          <div class="input-group">
+            <input #resign="ngbDatepicker"
+                class="form-control"
+                formControlName="resign_date"
+                id="input-resign-date"
+                ngbDatepicker
+                placeholder="Select"
+                placement="bottom-right top-right"
+                type="text"
+                [firstDayOfWeek]="7"
+                (click)="resign.toggle()">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg"
+                    (click)="resign.toggle()">
+                </svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-12 col-lg-7 order-3">
+        <label for="input-hrms-id">
+          HRMS ID
+        </label>
+        <input class="form-control"
+            formControlName="hrms_id"
+            id="input-hrms-id"
+            type="text">
+      </div>
+      <div class="col-12 col-lg-7 order-3">
+        <label for="input-client-employee-id">
+          Client Employee ID
+        </label>
+        <input class="form-control"
+            formControlName="client_employee_id"
+            id="input-client-employee-id"
+            type="text">
+      </div>
+    </div>
+    <div class="box my-3">
+      <div class="box-title mb-0">
+        <div class="decorate"></div>
+        <div class="title">WORKPLACE</div>
+      </div>
+    </div>
+    <div class="row no-gutters"
+        formGroupName="employee_projects">
+      <ng-container formArrayName="workplaces">
+        <div *ngFor="let workplace of workplaceFormArray.controls; index as i"
+            class="col-12 col-lg-7">
+          <div class="container-workplace no-gutters">
+            <div class="col col-lg-12">
+              <label for="input-workplace-{{ i + 1 }}">
+                Workplace {{ i + 1 }}
+              </label>
+              <ng-select appValidationForm="workplace'"
+                  bindValue="value"
+                  class="w-100"
+                  id="input-workplace-{{ i + 1 }}"
+                  [clearable]="false"
+                  [formControlName]="i"
+                  [items]="workplaceDropdown">
+              </ng-select>
+            </div>
+            <div class="col-auto">
+              <svg-icon class="pointer mx-3"
+                  src="assets/images/icons/trash.svg"
+                  [class.invisible]="workplaceFormArray.length < 2"
+                  (click)="removeWorkplaceForm(i)">
+              </svg-icon>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-danger"
+              type="button"
+              (click)="addWorkplaceForm()">
+            + Add Workplace
+          </button>
+        </div>
+      </ng-container>
+    </div>
+    <div class="box my-3">
+      <div class="box-title mb-0">
+        <div class="decorate"></div>
+        <div class="title">PERSONAL INFORMATION</div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <ng-container formGroupName="user">
+        <div class="col-12 col-lg-7">
+          <label for="input-mobile">
+            Mobile
+          </label>
+          <input class="form-control"
+              formControlName="phone_number"
+              id="input-mobile"
+              type="text">
+        </div>
+        <div class="col-12 col-lg-7">
+          <label for="input-email">
+            Email
+          </label>
+          <input class="form-control"
+              formControlName="email"
+              id="input-email"
+              type="text"
+              appValidationForm
+              [readonly]="userIdControl.value">
+        </div>
+      </ng-container>
+      <div class="col-12 col-lg-7">
+        <label for="input-address">
+          Address
+        </label>
+        <input class="form-control"
+            formControlName="address"
+            id="input-address"
+            type="text">
+      </div>
+    </div>
+    <div class="box my-3">
+      <div class="box-title mb-0">
+        <div class="decorate"></div>
+        <div class="title">OTHER</div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-12 col-lg-7">
+        <label for="input-reference">
+          Reference
+        </label>
+        <input class="form-control"
+            formControlName="reference"
+            id="input-reference"
+            type="text">
+      </div>
+      <div class="col-12 col-lg-7">
+        <label for="input-reference-contact">
+          Reference Contact
+        </label>
+        <input class="form-control"
+            formControlName="reference_contact"
+            id="input-reference-contact"
+            type="text">
+      </div>
+      <div class="col-12 col-lg-7">
+        <label for="input-additional-note">
+          Additional Note
+        </label>
+        <input class="form-control"
+            formControlName="additional_note"
+            id="input-additional-note"
+            type="text">
+      </div>
+    </div>
+    <div class="row py-4">
+      <div class="col-12 col-lg-7 text-right p-0">
+        <button class="btn btn-outline-danger mr-2"
+          type="button"
+          (click)="onCancelClick()">
+          Cancel
+        </button>
+        <button class="btn btn-danger"
+          type="submit"
+          [ladda]="submitting"
+          appSubmitForm
+          (click)="submit()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

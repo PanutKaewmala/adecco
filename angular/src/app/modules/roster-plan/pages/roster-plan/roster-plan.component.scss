@@ -1,0 +1,99 @@
+.table-bordered td:hover {
+  color: #212529;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.roster-table {
+  overflow: auto;
+  position: relative;
+
+  table {
+    position: relative;
+    border-collapse: collapse;
+
+    thead tr {
+      &:first-child th:first-child {
+        left: 0;
+        z-index: 1;
+        vertical-align: middle;
+      }
+
+      &:nth-child(2) th {
+        top: 55.5px !important;
+        text-align: center;
+        font-weight: 500;
+      }
+    }
+
+    th.selected-roster,
+    td.selected-roster {
+      background-color: #c81a404a !important;
+    }
+
+    thead th {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      background-color: white;
+      white-space: nowrap;
+    }
+
+    tbody th {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      background-color: white;
+      border: 1px solid #dee2e6;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0;
+      vertical-align: middle;
+      width: 1rem;
+    }
+
+    .roster-time {
+      height: 2rem;
+    }
+  }
+}
+
+::ng-deep .popover {
+  &.popover-success {
+    border: 1px solid var(--success);
+  }
+
+  &.popover-secondary {
+    border: 1px solid #dadada;
+  }
+
+  &.popover-success,
+  &.popover-secondary {
+    .arrow {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    &.month-popover {
+      width: 180px;
+    }
+  }
+}
+
+:host ::ng-deep .month-picker {
+  .ngb-dp-arrow {
+    display: none;
+  }
+
+  ngb-datepicker-month {
+    display: none;
+  }
+
+  ngb-datepicker {
+    width: 220px;
+    padding: 10px;
+  }
+}

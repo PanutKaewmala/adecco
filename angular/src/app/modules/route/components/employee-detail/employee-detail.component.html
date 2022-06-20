@@ -1,0 +1,39 @@
+<div class="row my-4">
+  <div class="col-12 col-lg-2 m-auto d-flex justify-content-center">
+    <div class="square">
+      <img [src]="trackRoute.photo || pinpoint.user?.photo || 'assets/images/icons/adecco_user.svg'" alt="profile">
+    </div>
+  </div>
+  <div class="col-10 row mt-3">
+    <div class="col-12 col-md-6 col-lg-6 m-auto">
+      <div class="title">name</div>
+      <div class="body-01">{{ trackRoute.full_name || pinpoint.user.full_name }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 m-auto">
+      <div class="title">phone number</div>
+      <div class="body-01">{{ pinpoint.user?.phone_number || '-' }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6" *ngIf="!isPinpointDetail">
+      <div class="title">Working hour</div>
+      <div class="body-01">{{ trackRoute.roster }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6">
+      <div class="title">SUPERVISOR</div>
+      <div class="body-01">{{ pinpoint.supervisor?.full_name || '-' }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="workplace-box p-3" *ngIf="!isPinpointDetail">
+  <div class="title">WORKPLACE</div>
+  <div class="workplace mt-2">
+    <ng-container *ngIf="trackRoute.workplaces?.length; else elseTemplate">
+      <span class="workplace-badge" *ngFor="let workplace of trackRoute.workplaces">
+        {{ workplace }}
+      </span>
+    </ng-container>
+    <ng-template #elseTemplate>
+      -
+    </ng-template>
+  </div>
+</div>

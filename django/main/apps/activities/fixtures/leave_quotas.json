@@ -1,0 +1,254 @@
+[
+  {
+    "model": "activities.leavequota",
+    "pk": 1,
+    "fields": {
+      "user": 3,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 6,
+    "fields": {
+      "user": 2,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 7,
+    "fields": {
+      "user": 15,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 8,
+    "fields": {
+      "user": 15,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 9,
+    "fields": {
+      "user": 15,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 10,
+    "fields": {
+      "user": 14,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 11,
+    "fields": {
+      "user": 14,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 12,
+    "fields": {
+      "user": 14,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 13,
+    "fields": {
+      "user": 9,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 14,
+    "fields": {
+      "user": 9,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 15,
+    "fields": {
+      "user": 9,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 16,
+    "fields": {
+      "user": 10,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 17,
+    "fields": {
+      "user": 10,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 18,
+    "fields": {
+      "user": 10,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 19,
+    "fields": {
+      "user": 6,
+      "type": 1,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 20,
+    "fields": {
+      "user": 6,
+      "type": 2,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  },
+  {
+    "model": "activities.leavequota",
+    "pk": 21,
+    "fields": {
+      "user": 6,
+      "type": 3,
+      "total": "30.00",
+      "used": "0.00",
+      "remained": "0.00",
+      "project": 1
+    }
+  }
+]

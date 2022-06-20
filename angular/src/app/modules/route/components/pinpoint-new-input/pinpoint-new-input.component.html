@@ -1,0 +1,23 @@
+<form [formGroup]="question">
+  <div class="border-left-box mt-3">
+    <div class="form-group">
+      <div class="d-flex justify-content-between mb-2">
+        <label>Question</label>
+        <div class="pointer" (click)="p.open()" #p="ngbPopover" [ngbPopover]="popover" [autoClose]="false"
+          triggers="manual" placement="left">
+          <svg-icon src="../../../../../assets/images/icons/delete.svg"></svg-icon>
+
+          <ng-template #popover>
+            <app-delete-popover (confirm)="delete.emit()" (cancel)="p.close()" message="question"></app-delete-popover>
+          </ng-template>
+        </div>
+      </div>
+      <input type="text" class="form-control" formControlName="name" appValidationForm>
+    </div>
+    <div class="d-flex">
+      <app-switch [value]="question.get('require').value" (valueChange)="question.get('require').patchValue($event)"
+        label="Require an answer to this Question">
+      </app-switch>
+    </div>
+  </div>
+</form>

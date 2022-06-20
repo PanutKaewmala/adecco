@@ -1,0 +1,30 @@
+sonarqube:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: test
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'  # Run on push to main branch
+    - if: '$CI_MERGE_REQUEST_IID'  # Run in merge request
+  needs: []
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_STRATEGY: clone
+    GIT_DEPTH: 0  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - .sonar/cache
+  interruptible: true
+  script:
+    - npm install typescript  # in order to let sonarqube scan typescript
+    - sonar-scanner
+    - |
+      if [[ $CI_COMMIT_BRANCH == 'main' ]]; then
+        sonar-scanner -Dsonar.branch.name=$CI_COMMIT_BRANCH
+      else
+        sonar-scanner \
+          -Dsonar.pullrequest.key=$CI_MERGE_REQUEST_IID \
+          -Dsonar.pullrequest.branch=$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME \
+          -Dsonar.pullrequest.base=$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+      fi

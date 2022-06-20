@@ -1,0 +1,17 @@
+.bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--red);
+  background-image: url(../../../assets/images/bg-vector.svg);
+  background-size: cover;
+  background-position: center;
+}
+
+.logo {
+  z-index: 1;
+  position: absolute;
+  top: 3em;
+  left: 3em;
+  width: 67px;
+}

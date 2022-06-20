@@ -1,0 +1,26 @@
+<ng-container *ngIf="isLoading">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="d-flex justify-content-between">
+    <div class="body-01 text-uppercase d-flex gap-10 align-items-center">
+      <svg-icon src="../../../../../assets/images/icons/arrow.svg" class="pointer d-flex align-items-center"
+        [routerLink]="['/route', 'pinpoint']"></svg-icon>
+      PINPOINT DATA
+    </div>
+
+    <button class="btn btn-outline-dark" routerLink="edit">Edit</button>
+  </div>
+
+  <app-employee-detail [data]="pinpoint" [isPinpointDetail]="true"></app-employee-detail>
+
+  <div class="my-3">
+    <app-track-route-data-detail [data]="pinpoint.activity" [isPinpointDetail]="true"></app-track-route-data-detail>
+  </div>
+
+  <div class="my-3">
+    <app-pinpoint-detail [details]="pinpoint.answers"></app-pinpoint-detail>
+  </div>
+</ng-container>

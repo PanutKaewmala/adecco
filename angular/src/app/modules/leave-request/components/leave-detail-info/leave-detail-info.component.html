@@ -1,0 +1,29 @@
+<div class="row my-4">
+  <div class="col-12 col-lg-2 m-auto d-flex justify-content-center">
+    <div class="square">
+      <img [src]="user.photo || 'assets/images/icons/adecco_user.svg'" alt="profile">
+    </div>
+  </div>
+  <div class="col-10 row mt-3">
+    <div class="col-12 col-md-6 col-lg-4 m-auto">
+      <div class="title">name</div>
+      <div class="body-01">{{ user.full_name }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 m-auto">
+      <div class="title">phone</div>
+      <div class="body-01">{{ user.phone_number }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="title">id</div>
+      <div class="body-01">{{ user.id }}</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="title">Working hour</div>
+      <div class="body-01">9:00 - 18:00</div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="title">SUPERVISOR</div>
+      <div class="body-01">Naruedee Sripradhum</div>
+    </div>
+  </div>
+</div>

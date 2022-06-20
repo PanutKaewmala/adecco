@@ -1,0 +1,32 @@
+<div class="container-image"
+    ngbDropdown>
+  <img *ngIf="photoUrl || src; else defaultImage"
+      class="h-100 w-100 object-cover"
+      alt="Profile"
+      [src]="photoUrl || src">
+  <svg-icon class="icon-edit"
+      ngbDropdownToggle
+      src="assets/images/icons/edit.svg"
+      [svgStyle]="{ 'height.px': 20, 'width.px': 20 }">
+  </svg-icon>
+  <div ngbDropdownMenu>
+    <button ngbDropdownItem
+        type="button"
+        (click)="fileInput.click()">Upload</button>
+    <button ngbDropdownItem
+        type="button"
+        (click)="onRemoveClick()">Remove</button>
+  </div>
+  <ng-template #defaultImage>
+    <svg-icon class="icon-default"  
+        src="assets/images/icons/user-avatar-filled-alt.svg"
+        [svgStyle]="{ 'height.px': 50, 'width.px': 50 }">
+    </svg-icon>
+  </ng-template>
+  <input #fileInput
+      accept="image/*"
+      class="d-none"
+      title="file"
+      type="file"
+      (change)="onUploadFileChange($event)">
+</div>

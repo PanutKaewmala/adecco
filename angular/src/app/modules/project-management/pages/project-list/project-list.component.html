@@ -1,0 +1,18 @@
+<div class="header">
+  Project Management
+</div>
+
+<div class="text-right mt-3">
+  <button class="btn btn-outline-danger" routerLink="create">
+    New Project
+  </button>
+</div>
+
+<div class="grid-container d-flex">
+  <ag-grid-angular style="width: 100%; height: auto;" class="ag-theme-alpine mt-4" [rowData]="dataList"
+    [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)"
+    (gridSizeChanged)="onGridSizeChanged($event)" (cellClicked)="onCellClicked($event)"
+    (filterOpened)="onFilterOpened($event)">
+  </ag-grid-angular>
+</div>
+<app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>

@@ -1,0 +1,51 @@
+<app-breadcrumb></app-breadcrumb>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <div class="row">
+    <div class="col-12 col-md-8 p-0 d-flex gap-10 my-auto">
+      <div class="header">
+        {{ data.user.full_name }}
+      </div>
+      <div class="status d-flex" [ngClass]="{'pending': data.status === 'pending',
+      'approve': ['approve', 'partial_approve'].includes(data.status), 'reject': data.status === 'reject'}">
+        <i class="fas" [ngClass]="{'fa-clock': data.status === 'pending', 
+        'fa-times-circle': data.status === 'reject', 
+        'fa-check-circle': ['approve', 'partial_approve'].includes(data.status)}"></i>
+        {{ ['approve', 'partial_approve'].includes(data.status) ? 'Approve' : (data.status | titlecase) }}
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex justify-content-end p-0" *ngIf="data.status === 'pending'">
+      <div container="body" ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+          Action
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem (click)="approve.open(data, 'approve')">Approve</button>
+          <button ngbDropdownItem (click)="partial.open(data)">Partial-Approve</button>
+          <button ngbDropdownItem (click)="approve.open(data, 'reject')">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <app-approve-ot-modal #approve></app-approve-ot-modal>
+    <app-partial-approve-ot-modal #partial></app-partial-approve-ot-modal>
+  </div>
+
+  <ul ngbNav #nav="ngbNav" class="nav-tabs mt-3" [(activeId)]="active">
+    <li [ngbNavItem]="menu.id" *ngFor="let menu of menus">
+      <a ngbNavLink class="nav-link">{{ menu.label }}</a>
+    </li>
+  </ul>
+
+  <div class="pt-3">
+    <app-ot-detail *ngIf="active === 1" [detail]="data"></app-ot-detail>
+    <app-ot-loa *ngIf="active === 2"></app-ot-loa>
+  </div>
+</ng-template>

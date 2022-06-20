@@ -1,0 +1,18 @@
+default:
+  image: docker:stable
+
+stages:
+  - lint
+  - build
+  - test
+  - push
+  - upload
+  - deploy
+
+include:
+  - local: .gitlab/ci/common.gitlab-ci.yml
+  - local: .gitlab/ci/django.gitlab-ci.yml
+  - local: .gitlab/ci/angular.gitlab-ci.yml
+  - local: .gitlab/ci/minio.gitlab-ci.yml
+  - local: .gitlab/ci/sonarqube.gitlab-ci.yml
+  - local: .gitlab/ci/sentry.gitlab-ci.yml

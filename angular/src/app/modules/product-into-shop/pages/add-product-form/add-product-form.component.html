@@ -1,0 +1,113 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header">
+  {{ shopId ? 'Add/Edit product(s)' : 'Add product(s) in multiple shop' }}
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <ng-container *ngIf="!shopId">
+      <div class="col-12 my-3">
+        <div class="box">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <div class="title">Select shop</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-3">
+        <div class="form-group">
+          <label>Shop group</label>
+          <ng-select formControlName="shop_group" [items]="groups$.shop | async" bindValue="value" bindLabel="label"
+            (change)="onGroupChange('shop', $event)" appValidationForm>
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-3">
+        <div class="form-group">
+          <label>Shop category</label>
+          <ng-select formControlName="shop_category" [items]="categories$.shop | async" bindValue="value"
+            bindLabel="label" (change)="onCategoryChange('shop', $event)" appValidationForm
+            [readonly]="!formGroup.get('shop_group').value">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-3">
+        <div class="form-group">
+          <label>Shop subcategory</label>
+          <ng-select formControlName="shop_subcategory" [items]="subcategories$.shop | async" bindValue="value"
+            bindLabel="label" (change)="onSubcategoryChange('shop', $event)" appValidationForm
+            [readonly]="!formGroup.get('shop_category').value">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <app-multi-select dataLabel="Shop List" addedLabel="Added Product into this shop"
+          (selectedChange)="formGroup.get('shops').patchValue($event)" (search)="onSearch('shop', $event)"
+          [dataList]="dataList$.shop | async" [(selected)]="selectedShops">
+          <small class="text-danger" *ngIf="formGroup.touched && formGroup.get('shops').errors">
+            Shops is required.
+          </small>
+        </app-multi-select>
+      </div>
+    </ng-container>
+
+    <div class="col-12 my-3">
+      <div class="box">
+        <div class="box-title">
+          <div class="decorate"></div>
+          <div class="title">Select Product</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 col-lg-3">
+      <div class="form-group">
+        <label>Product group</label>
+        <ng-select formControlName="product_group" [items]="groups$.product | async" bindValue="value" bindLabel="label"
+          (change)="onGroupChange('product', $event)" appValidationForm>
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-3">
+      <div class="form-group">
+        <label>Product category</label>
+        <ng-select formControlName="product_category" [items]="categories$.product | async" bindValue="value"
+          bindLabel="label" (change)="onCategoryChange('product', $event)" appValidationForm
+          [readonly]="!formGroup.get('product_group').value">
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-3">
+      <div class="form-group">
+        <label>Product subcategory</label>
+        <ng-select formControlName="product_subcategory" [items]="subcategories$.product | async" bindValue="value"
+          bindLabel="label" (change)="onSubcategoryChange('product', $event)" appValidationForm
+          [readonly]="!formGroup.get('product_category').value">
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <app-multi-select dataLabel="Product List" addedLabel="Added Product"
+        (selectedChange)="formGroup.get('products').patchValue($event)" (search)="onSearch('product', $event)"
+        [dataList]="dataList$.product | async" [(selected)]="selectedProducts" [canSearchAdded]="!!shopId">
+        <small class="text-danger" *ngIf="formGroup.touched && formGroup.get('products').errors">
+          Products is required.
+        </small>
+      </app-multi-select>
+    </div>
+
+    <div class="col-12 mt-3">
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" [ladda]="submitting" appSubmitForm>
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+<ng-template #modal let-modal>
+  <div class="modal-header pb-0">
+    <div class="modal-title header with-underline">
+      {{ title }}
+    </div>
+    <button type="button" class="close" (click)="onClose(); modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-content">
+    <div class="input-list" *ngFor="let item of items; index as i">
+      <div class="add-list-input-group">
+        <label>
+          {{itemName}}
+          <svg-icon class="pointer" *ngIf="!singleElement" src="./../../../../../assets/images/icons/delete.svg"
+            triggers="manual" placement="right" (click)="deleteItem(i)">
+          </svg-icon>
+        </label>
+        <input type="text" class="form-control" [value]="items[i]" (change)="changeValue(i, $event)">
+      </div>
+    </div>
+    <button class="btn btn-outline-danger btn-full" *ngIf="!singleElement" (click)="addItem()">+ {{ addLabel }}</button>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="onClose(); modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="onConfirm(); modal.close()">Confirm</button>
+  </div>
+</ng-template>

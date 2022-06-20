@@ -1,0 +1,12 @@
+:host ::ng-deep .ag-theme-alpine {
+  .ag-root-wrapper,
+  .ag-ltr .ag-cell,
+  .ag-header-cell {
+    border: none;
+    border-right: none;
+  }
+
+  .ag-header-cell-label {
+    justify-content: left;
+  }
+}

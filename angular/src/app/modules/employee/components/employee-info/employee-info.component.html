@@ -1,0 +1,103 @@
+<div class="position-relative p-3">
+  <button class="btn btn-outline-dark btn-edit" type="button" (click)="onEditClick()">
+    Edit
+  </button>
+  <div class="row no-gutters align-items-center flex-column">
+    <div class="square mb-3">
+      <img [src]="employee.user?.photo || 'assets/images/icons/adecco_user.svg'" title="Employee Image" alt="profile">
+    </div>
+    <h5 class="mb-0">{{ employee.user.full_name || '-' }}</h5>
+    <h5>{{ employee.nick_name }}</h5>
+  </div>
+  <div class="box mt-3">
+    <div class="box-title">
+      <div class="decorate"></div>
+      <label class="title">GENERAL INFORMATION</label>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-6 mb-2 mb-2">
+        <div class="title">SYSTEM ID</div>
+        <div class="body-01">{{ employee.id }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">SUPERVISOR</div>
+        <div class="body-01">{{ employee.employee_projects.supervisor || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">POSITION</div>
+        <div class="body-01">{{ employee.position || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">HRMS ID</div>
+        <div class="body-01">{{ employee.hrms_id || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">START DATE</div>
+        <div class="body-01">{{ employee.employee_projects.start_date || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">CLIENT EMPLOYEE ID</div>
+        <div class="body-01">{{ employee.client_employee_id || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">RESIGN DATE</div>
+        <div class="body-01">{{ employee.employee_projects.resign_date || '-' }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="box mt-3">
+    <div class="box-title">
+      <div class="decorate"></div>
+      <label class="title">WORKPLACE</label>
+    </div>
+    <div class="row no-gutters workplace">
+      <ng-container *ngIf="employee.employee_projects.workplaces?.length < 1; else workplaceTags">
+        <label class="mb-0">-</label>
+      </ng-container>
+      <ng-template #workplaceTags>
+        <label *ngFor="let workplace of employee.employee_projects.workplaces"
+          class="workplace-badge mx-1">{{ workplace.name || '-' }}</label>
+      </ng-template>
+    </div>
+  </div>
+  <div class="box mt-3">
+    <div class="box-title">
+      <div class="decorate"></div>
+      <label class="title">PERSONAL INFORMATION</label>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-6 mb-2">
+        <div class="title">MOBILE PHONE</div>
+        <div class="body-01">{{ employee.user.phone_number || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">EMAIL</div>
+        <div class="body-01">{{ employee.user.email || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">ADDRESS</div>
+        <div class="body-01">{{ employee.address || '-' }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="box mt-3">
+    <div class="box-title">
+      <div class="title-mark"></div>
+      <label class="title">OTHERS</label>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-6 mb-2">
+        <div class="title">REFERENCE</div>
+        <div class="body-01">{{ employee.reference || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">REFERENCE CONTACT</div>
+        <div class="body-01">{{ employee.reference_contact || '-' }}</div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="title">ADDITIONAL NOTE</div>
+        <div class="body-01">{{ employee.additional_note || '-' }}</div>
+      </div>
+    </div>
+  </div>
+</div>

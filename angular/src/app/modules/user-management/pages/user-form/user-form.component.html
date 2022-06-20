@@ -1,0 +1,83 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="header">
+  ADD New User
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-7 mt-3">
+      <div class="form-group">
+        <label class="required">Client</label>
+        <ng-select placeholder="Select" appValidationForm formControlName="client">
+        </ng-select>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Project</label>
+        <ng-select placeholder="Select" appValidationForm formControlName="project">
+        </ng-select>
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">First ​Name</label>
+        <input type="text" class="form-control" appValidationForm formControlName="firstName">
+      </div>
+
+      <div class="form-group my-4">
+        <label>Middle ​Name</label>
+        <input type="text" class="form-control" appValidationForm formControlName="middleName">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Last ​Name</label>
+        <input type="text" class="form-control" appValidationForm formControlName="lastName">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Email address</label>
+        <input type="text" class="form-control" appValidationForm formControlName="email">
+      </div>
+
+      <div class="form-group my-4">
+        <label class="required">Role</label>
+        <ng-select placeholder="Select" [items]="roles" [(ngModel)]="role" appValidationForm formControlName="role"
+          (change)="onRoleChange()">
+        </ng-select>
+      </div>
+
+      <ng-container *ngIf="role === 'Supervisor'">
+        <div class="form-group my-4">
+          <label class="required">Username</label>
+          <input type="text" class="form-control" appValidationForm formControlName="username">
+        </div>
+
+        <div class="form-group my-4">
+          <label>
+            Create Password
+            <span class="font-weight-lighter">(You may leave this field blank to generate random password)</span>
+          </label>
+          <input type="text" class="form-control" appValidationForm formControlName="password">
+        </div>
+
+        <div class="form-group my-4">
+          <label>
+            Confirm Password
+            <span class="font-weight-lighter">(You may leave this field blank to generate random password)</span>
+          </label>
+          <input type="text" class="form-control" appValidationForm formControlName="cfPassword">
+        </div>
+      </ng-container>
+
+
+      <div class="text-right">
+        <button class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" appSubmitForm>
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

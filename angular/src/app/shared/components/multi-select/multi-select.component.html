@@ -1,0 +1,76 @@
+<div class="col-12 p-0">
+  <div class="box row">
+    <div class="col-12 col-lg-5">
+      <div class="d-flex justify-content-between">
+        <label>{{ dataLabel }}</label>
+        <a class="text-danger pointer text-underline" (click)="onAddAll()">Select All</a>
+      </div>
+      <div class="employee-list text-left d-flex flex-column">
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" placeholder="Search name"
+            (keyup.enter)="search.emit($event.target.value)" (keydown.enter)="$event.preventDefault()">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/search.svg"></svg-icon>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="!dataList; else elseTemplate">
+          <div class="mt-5 flex-grow-1" *ngIf="!dataList">
+            <app-loading-spinner></app-loading-spinner>
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <ng-container *ngIf="!dataSet.size; else dataTemplate">
+            <div class="text-center my-3">
+              Not found
+            </div>
+          </ng-container>
+          <ng-template #dataTemplate>
+            <div class="flex-grow-1 overflow-auto">
+              <div class="py-2 my-1 pointer" [ngClass]="{'active': selectedSet.has(data)}" *ngFor="let data of dataSet"
+                (click)="onSelect(data)">
+                {{ data.label }}
+              </div>
+            </div>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-2 d-flex flex-column justify-content-center my-3">
+      <button type="button" class="btn btn-outline-secondary mb-3" (click)="onAdd()">
+        Add <svg-icon src="../../../../../assets/images/icons/right.svg"></svg-icon>
+      </button>
+      <button type="button" class="btn btn-outline-secondary" (click)="onRemove()">
+        <svg-icon src="../../../../../assets/images/icons/left.svg"></svg-icon> Remove
+      </button>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="d-flex justify-content-between">
+        <label>{{ addedLabel }}</label>
+        <a class="text-danger pointer text-underline" (click)="onRemoveAll()">Select All</a>
+      </div>
+      <div class="employee-list text-left d-flex flex-column">
+        <div class="input-group mb-2" *ngIf="canSearchAdded">
+          <input type="text" class="form-control" placeholder="Search name" (keyup.enter)="filter = $event.target.value"
+            (keydown.enter)="$event.preventDefault()">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <svg-icon src="../../../../../assets/images/icons/search.svg"></svg-icon>
+            </div>
+          </div>
+        </div>
+        <div class="flex-grow-1 overflow-auto">
+          <div class="py-2 my-1 pointer" [ngClass]="{'active': selectedSet.has(data)}"
+            *ngFor="let data of filterAddedSet()" (click)="onSelect(data)">
+            {{ data.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-content></ng-content>
+</div>

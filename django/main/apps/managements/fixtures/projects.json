@@ -1,0 +1,71 @@
+[
+  {
+    "model": "managements.project",
+    "pk": 1,
+    "fields": {
+      "name": "project 1",
+      "description": "Developer",
+      "start_date": "2022-02-17",
+      "end_date": "2023-01-01",
+      "country": "Thailand",
+      "city": "Krung Thep Maha Nakhon",
+      "project_manager": 7,
+      "client": 1,
+      "lead_time_in_before": 30,
+      "lead_time_in_after": 30,
+      "lead_time_out_before": 30,
+      "lead_time_out_after": 30,
+      "leave_types": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "managements.project",
+    "pk": 2,
+    "fields": {
+      "name": "project 2",
+      "description": "Developer",
+      "start_date": "2022-04-30",
+      "end_date": "2023-01-01",
+      "country": "Thailand",
+      "city": "Chiang Mai",
+      "project_manager": 1,
+      "client": 1,
+      "lead_time_in_before": 30,
+      "lead_time_in_after": 30,
+      "lead_time_out_before": 30,
+      "lead_time_out_after": 30,
+      "leave_types": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "managements.project",
+    "pk": 3,
+    "fields": {
+      "name": "project 3",
+      "description": "ดูแลงานฟุตบอล ManU - LiverPools ที่จะจัดขึ้นใสไทย",
+      "start_date": "2022-05-01",
+      "end_date": "2023-05-01",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "project_manager": 7,
+      "client": 1,
+      "lead_time_in_before": 30,
+      "lead_time_in_after": 30,
+      "lead_time_out_before": 30,
+      "lead_time_out_after": 30,
+      "leave_types": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]

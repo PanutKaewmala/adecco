@@ -1,0 +1,14 @@
+<div class="header">
+  OT Request
+</div>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs mt-3" [(activeId)]="active">
+  <li [ngbNavItem]="menu.id" *ngFor="let menu of menus">
+    <a ngbNavLink class="nav-link" [routerLink]="['/ot-request', menu.path]"
+      routerLinkActive="active">{{ menu.name }}</a>
+  </li>
+</ul>
+
+<div class="pt-3 tab-container">
+  <router-outlet></router-outlet>
+</div>

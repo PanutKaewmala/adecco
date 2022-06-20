@@ -1,0 +1,82 @@
+version: "2.4"
+
+services:
+  nginx:
+    image: nginx:1.21-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/dhparam.pem:/etc/nginx/dhparam.pem:ro
+      - ./nginx/nginx.green.conf:/etc/nginx/nginx.green.conf:ro
+      - ./nginx/nginx.blue.conf:/etc/nginx/nginx.blue.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt/live/adecco.ememo-codium.com:/certificate:ro
+      - /etc/letsencrypt/archive:/archive:ro
+      - ./.docker_volumes/angular/dist:/angular/dist:ro
+      - ./.docker_volumes/django/static:/django/static
+      - ./.docker_volumes/django/media:/django/media
+    restart: always
+
+  postgres:
+    env_file:
+      - .env
+    restart: always
+
+  django:
+    depends_on:
+      - minio
+    image: registry.gitlab.com/c0d1um/adecco/django
+    command: 'gunicorn -k main.apps.common.workers.UvicornWorker --bind 0.0.0.0:8000 --workers 3 --max-requests 1000 --timeout 6000 main.asgi:application --log-level=INFO'
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    env_file:
+      - .env
+      - minio.env
+    restart: always
+
+  django-blue:
+    depends_on:
+      - minio
+    image: registry.gitlab.com/c0d1um/adecco/django
+    command: 'gunicorn -k main.apps.common.workers.UvicornWorker --bind 0.0.0.0:8000 --workers 3 --max-requests 1000 --timeout 6000 main.asgi:application --log-level=INFO'
+    env_file:
+      - .env
+      - minio.env
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    restart: always
+
+  celery-worker:
+    image: registry.gitlab.com/c0d1um/adecco/django
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    env_file:
+      - .env
+      - minio.env
+    restart: always
+
+  celery-beat:
+    image: registry.gitlab.com/c0d1um/adecco/django
+    volumes:
+      - ./.docker_volumes/django/static:/opt/app/staticfiles
+      - ./.docker_volumes/django/media:/opt/app/media
+    env_file:
+      - .env
+      - minio.env
+    restart: always
+
+  redis:
+    restart: always
+
+  minio:
+    command: server /data
+    image: minio/minio
+    env_file:
+      - minio.env
+    volumes:
+      - ./.docker_volumes/minio/data:/data
+    restart: always

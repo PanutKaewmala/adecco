@@ -1,0 +1,66 @@
+version: "2.4"
+
+services:
+  angular:
+    build:
+      context: ./angular
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./angular:/opt/app
+    command: tail -f /dev/null
+
+  postgres:
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=adecco_db
+      - POSTGRES_PASSWORD=Codium123!
+
+  django:
+    build:
+      context: ./django
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django:/opt/app
+    command: tail -f /dev/null
+    env_file:
+      - .env
+
+  celery-worker:
+    build:
+      context: ./django
+    volumes:
+      - ./django:/opt/app
+    env_file:
+      - .env
+
+  celery-beat:
+    build:
+      context: ./django
+    volumes:
+      - ./django:/opt/app
+    env_file:
+      - .env
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" # smtp server
+      - "1080:8025" # web ui
+
+  mocki:
+    ports:
+      - "9002:9002"
+
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./minio/data:/data
+    env_file:
+      - .env
+    command: server /data --console-address ":9001"

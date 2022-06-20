@@ -1,0 +1,16 @@
+.loading-background {
+  position: fixed;
+  z-index: 10;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  left: 0;
+  margin: auto;
+  background: #80808050;
+
+  .loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+}

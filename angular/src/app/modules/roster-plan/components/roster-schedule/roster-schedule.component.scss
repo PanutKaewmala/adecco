@@ -1,0 +1,20 @@
+.workplace {
+  background: #ddecea;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 10px;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.box-title {
+  .title.active {
+    font-weight: bold;
+  }
+
+  .title:not(:last-child)::after {
+    content: "";
+    border: 1px solid #c4c4c4a1;
+    margin: 0 5px;
+  }
+}

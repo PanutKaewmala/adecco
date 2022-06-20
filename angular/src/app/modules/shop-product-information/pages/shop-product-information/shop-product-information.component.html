@@ -1,0 +1,29 @@
+<div class="d-flex flex-column h-100">
+  <div class="d-flex justify-content-end gap-10">
+    <button class="btn btn-outline-danger" (click)="add.open()">+ Add {{ type | titlecase }} detail</button>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+        New {{ type | titlecase }}
+      </button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem routerLink="add">Create New</button>
+        <button ngbDropdownItem (click)="import.open()">Import</button>
+      </div>
+
+      <app-upload-file-modal #import title="Import new {{ type }}">
+      </app-upload-file-modal>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column h-100">
+    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine mt-3" [rowData]="dataList"
+      [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)"
+      (gridSizeChanged)="onGridSizeChanged($event)" (cellClicked)="onCellClicked($event)"
+      [suppressFieldDotNotation]="true" (filterOpened)="onFilterOpened()">
+    </ag-grid-angular>
+
+    <app-pagination [totalItems]="totalItems" (changePage)="onPageChange($event)" [page]="page"></app-pagination>
+  </div>
+</div>
+
+<app-add-detail-modal #add [clientId]="clientId" [type]="type"></app-add-detail-modal>

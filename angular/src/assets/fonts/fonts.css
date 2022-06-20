@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Houschka";
+  src: url(Houschka/HouschkaHead-Light.otf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Houschka";
+  src: url(Houschka/HouschkaHead-Medium.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Houschka";
+  src: url(Houschka/HouschkaHead-DemiBold.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Houschka";
+  src: url(Houschka/HouschkaHead-Bold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url(Nunito/Nunito-ExtraLight.ttf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url(Nunito/Nunito-Light.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url(Nunito/Nunito-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url(Nunito/Nunito-Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url(Prompt/Prompt-Thin.ttf);
+  font-weight: 200;
+  font-style: normal;
+  unicode-range: U+0E00- U+0E7F;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url(Prompt/Prompt-Light.ttf);
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+0E00- U+0E7F;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url(Prompt/Prompt-Bold.ttf);
+  font-weight: bold;
+  font-style: normal;
+  unicode-range: U+0E00- U+0E7F;
+}
+
+body {
+  font-family: "Nunito", "Houschka", "Prompt", sans-serif !important;
+  font-size: 14px !important;
+}

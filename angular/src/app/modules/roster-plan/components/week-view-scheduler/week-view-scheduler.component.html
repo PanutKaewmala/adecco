@@ -1,0 +1,54 @@
+<div class="roster-table" *ngIf="weeks">
+  <ng-container *ngIf="isLoading; else elseTemplate">
+    <app-loading-spinner></app-loading-spinner>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <ng-container *ngIf="employees.length; else elseTemplate">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th rowspan="2">Employee</th>
+            <th colspan="48">
+              <div class="heading-02 text-center">
+                {{ weeks[0] | date: "dd MMMM " }} - {{ weeks[6] | date: "dd MMMM, yyyy" }}
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <th *ngFor="let week of weeks">{{ week | date: "E, dd MMM" }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <th [ngClass]="{'selected-roster': selectedRoster?.meta.id === employee.meta.id}">
+              {{ employee.title }}
+            </th>
+            <td *ngFor="let item of weeks"
+              [ngClass]="{'selected-roster': (selectedRoster?.meta.id === employee.meta.id)}">
+              <ng-container *ngIf="haveShift(item, employee)">
+                <div class="roster-time" [ngClass]="{'bg-success': employee.meta.roster.status === 'approve', 
+                  'bg-pending': employee.meta.roster.status === 'pending', 
+                  'bg-danger': employee.meta.roster.status === 'reject'}" [ngbPopover]="popover"
+                  popoverClass="popover-success" triggers="mouseenter:mouseleave"
+                  (click)="approval.open(); selectedRoster = employee"></div>
+              </ng-container>
+
+              <ng-template #popover>
+                <div class="body-03">{{ employee.meta.workplaces?.join(', ') }}</div>
+                <div class="italic-01">{{ employee.meta.working_hour }}</div>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="heading-02 text-center">
+        Data not found
+      </div>
+    </ng-template>
+  </ng-template>
+
+</div>
+<app-roster-plan-approval-modal #approval (dismissed)="selectedRoster = null" [data]="selectedRoster">
+</app-roster-plan-approval-modal>

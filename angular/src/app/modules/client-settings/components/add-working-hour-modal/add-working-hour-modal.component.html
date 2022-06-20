@@ -1,0 +1,112 @@
+<div class="modal-header pb-0">
+  <div class="modal-title header with-underline">
+    Add Business’s Working Hour
+  </div>
+  <button type="button" class="close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="modal-body">
+    <div class="table-responsive">
+      <table class="table table-bordered working-hour-table mt-3">
+        <thead>
+          <tr>
+            <th>Shift Name</th>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" rowspan="3">
+            <th scope="row" rowspan="3">
+              <input type="text" class="form-control" [(ngModel)]="workingHour.name">
+              <small class="text-danger" *ngIf="submitted && !workingHour.name">
+                Shift name is required.
+              </small>
+            </th>
+            <td *ngFor="let day of days">
+              <input type="checkbox" [(ngModel)]="workingHour[day]" (change)="onSelectDay(day)">
+            </td>
+          </tr>
+          <tr>
+            <td class="border-bottom body-03" *ngFor="let day of days" [ngClass]="{'time': workingHour[day]}">
+              <div class="d-flex align-items-center body-03 m-custom justify-content-center" *ngIf="workingHour[day]">
+                <ngb-timepicker class="working-hour" [(ngModel)]="this.workingHour[this.getStartTimeKey(day)]">
+                </ngb-timepicker>-
+                <ngb-timepicker class="working-hour" [(ngModel)]="this.workingHour[this.getEndTimeKey(day)]">
+                </ngb-timepicker>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="form-check ml-1">
+        <input type="checkbox" class="form-check-input" id="allow" [(ngModel)]="additional">
+        <label for="allow" class="form-check-label">Additional Allowance</label>
+      </div>
+    </div>
+
+    <div class="table-responsive" *ngIf="additional">
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Pay Code</th>
+            <th>Day of Week</th>
+            <th>Description</th>
+            <th style="width: 50px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let type of workingHour.additional_allowances; index as i">
+            <td>
+              <input type="text" class="form-control" [(ngModel)]="type.type">
+            </td>
+            <td>
+              <input type="text" class="form-control" [(ngModel)]="type.pay_code">
+            </td>
+            <td>
+              <ng-select appendTo="body" placeholder="Select" [items]="dayList" bindLabel="label" bindValue="value"
+                [clearable]="false" [(ngModel)]="type.day_of_week">
+              </ng-select>
+            </td>
+            <td>
+              <input type="text" class="form-control" [(ngModel)]="type.description">
+            </td>
+            <td>
+              <svg-icon class="pointer" src="../../../../../assets/images/icons/delete.svg" (click)="onDelete(i)">
+              </svg-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <button class="btn btn-outline-danger ml-3 mr-3 mb-3" *ngIf="additional" (click)="onAddType()">Add Type</button>
+  <div class="modal-footer pt-0">
+    <button class="btn btn-outline-danger"
+        type="button"
+        (click)="dismiss()">
+      Cancel
+    </button>
+    <button class="btn btn-danger"
+        type="button"
+        (click)="onAdd()"
+        [ladda]="submitting">
+      {{ editMode === 'add' ? 'Add' : 'Edit' }}
+    </button>
+  </div>
+</ng-template>

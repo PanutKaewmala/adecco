@@ -1,0 +1,29 @@
+[
+  {
+    "model": "activities.leavetype",
+    "pk": 1,
+    "fields": {
+      "name": "Annual Leave",
+      "earn_income": true,
+      "leave_type_setting": 1
+    }
+  },
+  {
+    "model": "activities.leavetype",
+    "pk": 2,
+    "fields": {
+      "name": "Business Leave",
+      "earn_income": true,
+      "leave_type_setting": 2
+    }
+  },
+  {
+    "model": "activities.leavetype",
+    "pk": 3,
+    "fields": {
+      "name": "Sick Leave",
+      "earn_income": true,
+      "leave_type_setting": 3
+    }
+  }
+]

@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between">
+  <div class="d-flex w-100">
+    <label class="body-01 my-auto">
+      Business’s Calendar
+    </label>
+    <ng-select bindValue="value"
+        class="mx-3 flex-grow-1"
+        placeholder="Select Business Holiday"
+        [items]="businessOptions"
+        (change)="onCalendarTypeChange($event?.value)">
+    </ng-select>
+  </div>
+  <button class="btn btn-outline-dark"
+      routerLink="edit"
+      type="button">
+    Add/Edit
+  </button>
+</div>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="overflow-auto">
+    <ng-template #customCell let-day="day" let-locale="locale">
+      <div class="cel-cell-top">
+        <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+      </div>
+      <div class="m-2 caption-03" *ngFor="let event of day.events">
+        {{ event.title }}
+      </div>
+    </ng-template>
+
+    <div class="calendar-view p-4 bg-white rounded mt-4">
+      <div class="w-100 month-picker text-center">
+        <ngb-datepicker [startDate]="date" (navigate)="onNavigate($event)"></ngb-datepicker>
+      </div>
+      <mwl-calendar-month-view [viewDate]="selectedMonth" [events]="events" [cellTemplate]="customCell"
+        (beforeViewRender)="beforeMonthViewRender($event)">
+      </mwl-calendar-month-view>
+    </div>
+  </div>
+</ng-template>

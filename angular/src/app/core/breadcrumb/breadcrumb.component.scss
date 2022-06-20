@@ -1,0 +1,24 @@
+::ng-deep .breadcrumb {
+  background-color: white;
+  border-radius: unset;
+  color: #989797;
+  font-size: 12px;
+  padding: 0;
+
+  .breadcrumb-item.active a {
+    color: #989797 !important;
+    font-size: 12px;
+  }
+
+  .breadcrumb-item + .breadcrumb-item {
+    span {
+      color: #989797 !important;
+      font-size: 12px;
+    }
+
+    &::before {
+      color: #989797;
+      font-size: 12px;
+    }
+  }
+}

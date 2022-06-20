@@ -1,0 +1,72 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="header">
+  edit employee
+</div>
+
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <ng-container *ngIf="isLoading; else elseTemplate">
+    <div class="mt-5">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="row">
+      <div class="col-12 mt-3">
+        <div class="box">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <div class="title">Details</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8 col-lg-7 mt-3">
+        <div class="form-group">
+          <label class="required">Date</label>
+          <div class="input-group">
+            <input type="text" class="form-control" ngbDatepicker #start="ngbDatepicker" (click)="start.toggle()"
+              placeholder="Select" formControlName="date" appValidationForm [firstDayOfWeek]="7" readonly>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <svg-icon src="../../../../../assets/images/icons/calendar.svg" (click)="start.toggle()">
+                </svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label>Remarks</label>
+          <input type="text" class="form-control" formControlName="remark">
+        </div>
+      </div>
+
+      <div class="col-12 mt-3">
+        <div class="box">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <div class="title">Employee List</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12" *ngIf="adjustDetail">
+        <app-employee-box [formGroup]="formGroup" [employees]="employees" [workingTimes]="workingTimes"
+          [workplaces]="workplaces" [isEdit]="true" (delete)="modal.open()"></app-employee-box>
+      </div>
+
+      <div class="col-12 mt-3">
+        <div class="text-right">
+          <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+            Cancel
+          </button>
+          <button class="btn btn-danger" type="submit" appSubmitForm [ladda]="submitting">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</form>
+
+<app-confirm-modal #modal (confirm)="onDeleteRequest()" message="Are you sure you want to delete this request?">
+</app-confirm-modal>

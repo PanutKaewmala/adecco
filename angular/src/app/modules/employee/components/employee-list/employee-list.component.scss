@@ -1,0 +1,14 @@
+.ag-theme-alpine {
+  &::ng-deep {
+    .ag-root-wrapper,
+    .ag-ltr .ag-cell,
+    .ag-header-cell {
+      border: none;
+      border-right: none;
+    }
+
+    .ag-header-cell-label {
+      justify-content: start;
+    }
+  }
+}

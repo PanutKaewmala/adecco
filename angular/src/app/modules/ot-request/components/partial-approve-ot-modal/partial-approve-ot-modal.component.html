@@ -1,0 +1,39 @@
+<ng-template #partial let-modal>
+  <div class="modal-header pb-0">
+    <div class="modal-title header with-underline">
+      partial-approve
+    </div>
+    <button type="button" class="close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row mb-3">
+      <div class="col-12 p-0">Please select date and time that you would like to approve</div>
+      <div class="col-12 col-md-4 title p-0">Request Leave Date :</div>
+      <div class="col-12 col-md-8 p-0">
+        {{ data.start_date | date: "dd MMM yyyy" }}, {{ otTotal }}
+      </div>
+    </div>
+
+    <div class="time-box p-3">
+      <div class="row mb-2">
+        <div class="col-12 col-md-4 pl-0 m-auto">
+          {{ data.start_date | date: "dd MMM yyyy"}}
+        </div>
+        <div class="col-12 col-md-8 d-flex gap-10 align-items-center p-0 mt-2 mt-md-0">
+          <ngb-timepicker [(ngModel)]="data.start_time" size="small"></ngb-timepicker>-
+          <ngb-timepicker [(ngModel)]="data.end_time" size="small"></ngb-timepicker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="openConfirm()">Confirm</button>
+  </div>
+</ng-template>
+
+<app-approve-ot-modal #confirm></app-approve-ot-modal>

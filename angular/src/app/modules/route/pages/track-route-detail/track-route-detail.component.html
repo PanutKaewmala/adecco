@@ -1,0 +1,25 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="header">Track Route Detail</div>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <app-employee-detail [data]="trackRoute"></app-employee-detail>
+
+  <div class="my-3" *ngFor="let route of trackRoute.routes">
+    <ng-container *ngIf="['pin_point', 'track_route'].includes(route.type); else elseTemplate">
+      <app-track-route-data-detail [data]="route"></app-track-route-data-detail>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <app-check-in-out-detail [route]="route"></app-check-in-out-detail>
+    </ng-template>
+  </div>
+
+  <div class="my-3">
+    <app-total-detail></app-total-detail>
+  </div>
+</ng-template>

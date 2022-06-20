@@ -1,0 +1,75 @@
+<app-breadcrumb></app-breadcrumb>
+
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <div class="row align-items-center">
+    <div class="col-12 col-md-10 p-0 d-flex gap-10">
+      <div class="header">
+        {{ employeeList }}
+      </div>
+    </div>
+    <app-roster-request-modal #approval></app-roster-request-modal>
+  </div>
+
+  <div class="my-3">
+    <app-roster-detail-cmp [rosterPlan]="shiftRequest"></app-roster-detail-cmp>
+
+    <div class="row mt-3">
+      <div class="col-12 col-lg-8 p-0 pr-lg-3 box p-3">
+        <app-roster-calendar [rosterPlan]="shiftRequest" [rosterPlanDetail]="rosterPlanDetail"
+          [shifts]="shiftRequest.from_shift"></app-roster-calendar>
+      </div>
+
+      <div class="col-12 col-lg-4 p-0 pl-lg-3">
+        <app-roster-schedule [rosterPlan]="shiftRequest" [selectedShift]="shiftRequest.from_shift" [disableEdit]="true">
+        </app-roster-schedule>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 p-0 d-flex justify-content-between align-items-center">
+        <div class="box bg-white d-flex align-items-center">
+          <div class="box-title">
+            <div class="decorate"></div>
+            <span class="title">
+              Shift change request
+            </span>
+          </div>
+          <div class="status d-flex justify-content-around ml-3" [ngClass]="{'pending': shiftRequest.to_shift.status === 'edit_pending',
+          'approve': shiftRequest.to_shift.status === 'approve', 'reject': shiftRequest.to_shift.status === 'reject'}">
+            <i class="fas" [ngClass]="{'fa-clock': shiftRequest.to_shift.status === 'edit_pending', 
+            'fa-times-circle': shiftRequest.to_shift.status === 'reject', 
+            'fa-check-circle': shiftRequest.to_shift.status === 'approve'}"></i>
+            {{ shiftRequest.to_shift.status.replace('_', ' ')| titlecase }}
+          </div>
+        </div>
+
+        <div container="body" ngbDropdown class="d-inline-block"
+          *ngIf="shiftRequest.to_shift.status === 'edit_pending'">
+          <button class="btn btn-outline-danger" id="dropdown" ngbDropdownToggle>
+            Action
+          </button>
+          <div ngbDropdownMenu>
+            <button ngbDropdownItem (click)="approval.open(shiftRequest, 'approve', true)">Approve</button>
+            <button ngbDropdownItem (click)="approval.open(shiftRequest, 'reject', true)">Reject</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-8 p-0 pr-lg-3 box p-3">
+        <app-roster-calendar [rosterPlan]="shiftRequest" [rosterPlanDetail]="rosterPlanDetail"
+          [shifts]="shiftRequest.to_shift"></app-roster-calendar>
+      </div>
+
+      <div class="col-12 col-lg-4 p-0 pl-lg-3">
+        <app-roster-schedule [rosterPlan]="shiftRequest" [selectedShift]="shiftRequest.to_shift" [disableEdit]="true">
+        </app-roster-schedule>
+      </div>
+    </div>
+  </div>
+</ng-template>

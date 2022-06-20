@@ -1,0 +1,10 @@
+<div class="d-flex align-content justify-content-center gap-10">
+  <i class="fal fa-edit m-t-5 pointer" (click)="edit()"></i>
+  <svg-icon class="pointer" src="./../../../../../assets/images/icons/delete.svg" #p="ngbPopover" [ngbPopover]="popover"
+    container="body" [autoClose]="false" triggers="manual" placement="left" (click)="p.open()">
+  </svg-icon>
+  <ng-template #popover>
+    <app-delete-popover message="leave quota" (cancel)="p.close()" (confirm)="deleteConfirm()">
+    </app-delete-popover>
+  </ng-template>
+</div>

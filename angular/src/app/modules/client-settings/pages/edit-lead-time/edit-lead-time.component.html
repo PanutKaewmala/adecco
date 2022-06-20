@@ -1,0 +1,37 @@
+<div class="header">
+  Edit Lead time
+</div>
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-12 col-md-10 p-0 mt-3">
+      <div class="form-group">
+        <label>In Before (Mins)</label>
+        <input type="text" class="form-control" formControlName="lead_time_in_before" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label>In After (Mins)</label>
+        <input type="text" class="form-control" formControlName="lead_time_in_after" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label>Out Before (Mins)</label>
+        <input type="text" class="form-control" formControlName="lead_time_out_before" appValidationForm>
+      </div>
+
+      <div class="form-group">
+        <label>Out After (Mins)</label>
+        <input type="text" class="form-control" formControlName="lead_time_out_after" appValidationForm>
+      </div>
+
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-danger mr-3" appBackLocation>
+          Cancel
+        </button>
+        <button class="btn btn-danger" type="submit" [ladda]="submitting" appSubmitForm>
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

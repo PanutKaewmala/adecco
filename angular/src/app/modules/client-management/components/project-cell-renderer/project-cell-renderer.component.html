@@ -1,0 +1,8 @@
+<div class="d-flex flex-column" *ngIf="field === 'name'">
+  {{ cellValue }}
+  <small>{{ data.client.name }}</small>
+</div>
+
+<div class="d-flex flex-column" *ngIf="field === 'start_end'">
+  {{ data.start_date | date: "dd MMM yyyy" }}-{{ data.end_date | date: "dd MMM yyyy" }}
+</div>

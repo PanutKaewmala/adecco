@@ -1,0 +1,723 @@
+# Mock of response from BE but FE also can write below kub.
+
+name: mocki
+port: 9000
+references:
+  - type: collection
+    id: leave_requests
+    data: [ {
+      id: 1,
+      employee: 'Pensri Worasuksomdecha',
+      employee_id: '41565',
+      leave_type: 'Annual Leave',
+      leave_date: '01 Dec 2021 - 03 Dec 2021',
+      status: '1/2 Pending Request',
+      approve_name: 'Ana Jay',
+      request_date: '01 Nov 2021',
+      attachment: 'attachment 1.jpg',
+    } ]
+  - type: collection
+    id: daily-tasks
+    data: {
+      "count": 5,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "place": {
+            "id": 1,
+            "place_name": "Lotus Rama1",
+            "latitude": null,
+            "longitude": null
+          },
+          "date": "2022-02-07",
+          "task_name": "Sale Report",
+          "start_time": null,
+          "stop_time": null,
+          "all_day": true
+        },
+        {
+          "id": 2,
+          "place": {
+            "id": 1,
+            "place_name": "Lotus Rama1",
+            "latitude": null,
+            "longitude": null
+          },
+          "date": "2022-02-07",
+          "task_name": "Visit store",
+          "start_time": "09:00:00",
+          "stop_time": null,
+          "all_day": false
+        },
+        {
+          "id": 3,
+          "place": {
+            "id": 1,
+            "place_name": "Lotus Rama1",
+            "latitude": null,
+            "longitude": null
+          },
+          "date": "2022-02-07",
+          "task_name": "Re-arrange products on shelf",
+          "start_time": "10:00:00",
+          "stop_time": "12:00:00",
+          "all_day": false
+        },
+        {
+          "id": 4,
+          "place": {
+            "id": 2,
+            "place_name": "Central World Department Store",
+            "latitude": null,
+            "longitude": null
+          },
+          "date": "2022-02-07",
+          "task_name": "Check Stock-OSA",
+          "start_time": "13:00:00",
+          "stop_time": "15:00:00",
+          "all_day": false
+        },
+        {
+          "id": 5,
+          "place": {
+            "id": 3,
+            "place_name": "Central Rama 9",
+            "latitude": null,
+            "longitude": null
+          },
+          "date": "2022-02-07",
+          "task_name": "Visit store",
+          "start_time": "15:30:00",
+          "stop_time": null,
+          "all_day": false
+        }
+      ]
+    }
+  - type: collection
+    id: activities
+    data: {
+      "count": 2,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "type": "check_out",
+          "date_time": "2022-02-08T17:30:00+07:00",
+          "location_name": "Codium company",
+          "latitude": 35554.5247775,
+          "longitude": 100.5247775,
+          "user": 2
+        },
+        {
+          "id": 2,
+          "type": "check_in",
+          "date_time": "2022-02-08T13:30:00+07:00",
+          "location_name": "Codium company",
+          "latitude": 35554.5247775,
+          "longitude": 100.5247775,
+          "user": 2
+        }
+      ]
+    }
+  - type: collection
+    id: projects
+    data: {
+      "count": 2,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 11,
+          "project_manager": {
+            "id": 1,
+            "full_name": "admin admin",
+            "email": "admin@example.com"
+          },
+          "client": {
+            "id": 3,
+            "name": "Codium",
+            "branch": "Main"
+          },
+          "name": "test",
+          "description": "test",
+          "start_date": "2022-02-17",
+          "end_date": "2022-03-17",
+          "country": "TH",
+          "city": "Bangkok",
+          "users": [
+            6,
+            3
+          ]
+        },
+        {
+          "id": 10,
+          "project_manager": {
+            "id": 1,
+            "full_name": "admin admin",
+            "email": "admin@example.com"
+          },
+          "client": {
+            "id": 3,
+            "name": "Codium",
+            "branch": "Main"
+          },
+          "name": "test",
+          "description": "test",
+          "start_date": "2022-02-17",
+          "end_date": "2022-03-17",
+          "country": "TH",
+          "city": "Bangkok",
+          "users": [
+            6,
+            3
+          ]
+        }
+      ]
+    }
+  - type: collection
+    id: clients
+    data: {
+      "count": 2,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 5,
+          "project_manager": {
+            "id": 1,
+            "full_name": "admin admin",
+            "email": "admin@example.com"
+          },
+          "project_assignee": {
+            "id": 2,
+            "full_name": "codium codium",
+            "email": "admin@codium.co"
+          },
+          "name": "Test",
+          "branch": "Test branch name",
+          "contact_person": "0631234567",
+          "contact_number": "0631234567",
+          "url": "Test"
+        },
+        {
+          "id": 4,
+          "project_manager": {
+            "id": 5,
+            "full_name": "Natkamon Nakaprom",
+            "email": "natkamon.n@adecco.com"
+          },
+          "project_assignee": {
+            "id": 6,
+            "full_name": "Waleerat Thamsupimol",
+            "email": "waleerat.t@codium.co"
+          },
+          "name": "Dev",
+          "branch": "Main",
+          "contact_person": "192.168.1.1",
+          "contact_number": "192.168.1.2",
+          "url": ""
+        }
+      ]
+    }
+  - type: collection
+    id: workplaces
+    data: {
+      "count": 2,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "name": "Hell 1",
+          "address": "Hell",
+          "wifi": "",
+          "bluetooth": "",
+          "qr_code": "",
+          "latitude": "20",
+          "longitude": "20",
+        },
+        {
+          "id": 2,
+          "name": "Hell 2",
+          "address": "Hell v2",
+          "wifi": "",
+          "bluetooth": "",
+          "qr_code": "",
+          "latitude": "20",
+          "longitude": "20",
+        }
+      ]
+    }
+
+  - type: collection
+    id: attendance-history
+    data: [ {
+      date_time: '2022-02-01',
+      check_in: 'null',
+      check_out: 'null',
+      status: 'leave',
+      leave: {
+        start_date: "2022-02-01",
+        end_date: "2022--02-01",
+        start_time: null,
+        end_time: null,
+        all_day: true
+      }
+    },
+      {
+        date_time: "2022-02-22",
+        check_in: "2022-02-22T08:30:00+07:00",
+        check_out: "2022-02-22T17:30:00+07:00",
+        status: "on_time",
+        leave: "null"
+      } ]
+
+
+  - type: collection
+    id: current-roster-calendar
+    data: [ {
+      date: '2022-02-01',
+      type: null,
+    },{
+      date: '2022-02-02',
+      type: null,
+    },{
+      date: '2022-02-03',
+      type: work_day,
+    },{
+      date: '2022-02-04',
+      type: work_day,
+    },{
+      date: '2022-02-05',
+      type: work_day,
+    },{
+      date: '2022-02-06',
+      type: work_day,
+    },{
+      date: '2022-02-07',
+      type: work_day,
+    },{
+      date: '2022-02-08',
+      type: work_day,
+    },{
+      date: '2022-02-09',
+      type: day_off,
+    },{
+      date: '2022-02-10',
+      type: pending,
+    }, ]
+
+  - type: collection
+    id: attendance-history-calendar
+    data: {
+      "count": 3,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "Date": "2022-02-22",
+          "type": "leave"
+
+        },
+        {
+          "id": 2,
+          "Date": "2022-02-22",
+          "type": "leave"
+        },
+        {
+          "id": 3,
+          "date": "2022-02-24",
+          "type": "ontime"
+        }
+      ]
+    }
+
+  - type: collection
+    id: calendar
+    data: [ {
+      date_time: '2022-02-01',
+      type: 'leave',
+      work_day: null,
+      over_time: null,
+      leave: {
+        start_date: "2022-02-01",
+        end_date: "2022--02-02",
+        start_time: null,
+        end_time: null,
+        all_day: true
+      }
+    },
+      {
+        date_time: '2022-02-02',
+        type: 'leave',
+        work_day: null,
+        over_time: null,
+        leave: {
+          start_date: "2022-02-01",
+          end_date: "2022--02-02",
+          start_time: null,
+          end_time: null,
+          all_day: true
+        }
+      },
+      {
+        date_time: '2022-02-03',
+        type: null,
+        work_day: null,
+        over_time: null,
+        leave: null
+      },
+    ]
+  - type: collection
+    id: working-hours
+    data: {
+      "sunday": "holiday",
+      "monday": null,
+      "tuesday": null,
+      "wednesday": null,
+      "thursday": null,
+      "friday": null,
+      "saturday": "holiday",
+      "working_hours": [
+        {
+          "id": 1,
+          "start_time": "09:00",
+          "end_time": "12:00"
+        },
+        {
+          "id": 2,
+          "start_time": "15:00",
+          "end_time": "18:00"
+        }
+      ]
+    }
+  - type: collection
+    id: roster
+    data: {
+      "id": null,
+      "project": 1,
+      "name": "Roster 001",
+      "description": "Description",
+      "start_date": "2022-02-01",
+      "end_date": "2022-02-28",
+      "remark": "for reject roster",
+      "shifts": [
+        {
+          "id": null,
+          "from_date": "2022-02-01",
+          "to_date": "2022-02-20",
+          "schedules": [
+            {
+              "id": null,
+              "sunday": "holiday",
+              "monday": "work_day",
+              "tuesday": "work_day",
+              "wednesday": "day_off",
+              "thursday": "work_day",
+              "friday": "day_off",
+              "saturday":"holiday",
+              "workplace_times": [
+                {
+                  "work_place": 1,
+                  "working_hour": 1
+                },
+                {
+                  "work_place": 2,
+                  "working_hour": 4
+                }
+              ]
+            },
+            {
+              "id": null,
+              "sunday": "holiday",
+              "monday": "day_off",
+              "tuesday": "day_off",
+              "wednesday": "work_day",
+              "thursday": "day_off",
+              "friday": "work_day",
+              "saturday":"holiday",
+              "workplace_times": [
+                {
+                  "work_place": 3,
+                  "working_hour": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": null,
+          "from_date": "2022-02-21",
+          "to_date": "2022-02-28",
+          "schedules": [
+            {
+              "id": null,
+              "sunday": "holiday",
+              "monday": "work_day",
+              "tuesday": "work_day",
+              "wednesday": "work_day",
+              "thursday": "day_off",
+              "friday": "day_off",
+              "saturday":"holiday",
+              "workplace_times": [
+                {
+                  "work_place": 1,
+                  "working_hour": 1
+                },
+                {
+                  "work_place": 2,
+                  "working_hour": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+
+endpoints:
+  - path: /mocki/backend/api/token-auth/
+    #    {
+    #      "username": "admin",
+    #      "password": "admin"
+    #    }
+    method: post
+    responses:
+      - statusCode: 200
+        delay: 1000
+        body:
+          refresh: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NDgwMjc2MiwianRpIjoiOTJlOGUzMTkzYzdhNGEwZDg5NGZjZGY2ZGFiZjFiMTMiLCJ1c2VyX2lkIjo0fQ.Hi0Zeifz7qDi0evg03hna76Le2EUR544_Xti7thVONI
+          access: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1ODU4NzYyLCJqdGkiOiJjZTE0MzIxNmI2MTk0NWZmYmM3NzVkZWZiYTAwZTk5MiIsInVzZXJfaWQiOjR9.0xFEGdsBK3qPwdaiz4OQq8UebZfbzNC27It1sm3JXNA
+          user:
+            username: admin
+            email: admin@example.com
+            first_name: admin
+            last_name: admin
+            first_time_login: true
+
+  - path: /mocki/backend/api/token-refresh/
+    #    {
+    #      "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"
+    #    }
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          access: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1ODU4NzYyLCJqdGkiOiJjZTE0MzIxNmI2MTk0NWZmYmM3NzVkZWZiYTAwZTk5MiIsInVzZXJfaWQiOjR9.0xFEGdsBK3qPwdaiz4OQq8UebZfbzNC27It1sm3JXNA
+
+  - path: /mocki/backend/api/token-auth-failed/
+    method: post
+    responses:
+      - statusCode: 401
+        body:
+          detail: No active account found with the given credentials
+
+  - path: /mocki/backend/api/change-first-time-password/
+    #    {
+    #      "new_password": "Codium123456789!",
+    #      "confirm_password": "Codium123456789!"
+    #    }
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/create-pincode/
+    #    {
+    #      "new_pincode": "123456"
+    #    }
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/login-pincode/
+    #    {
+    #      "login_pincode": "123456"
+    #    }
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/activities/
+    #    For Check-in
+    #    {
+    #      "type": "check_in",
+    #      "date_time": "2022-02-08T11:30",
+    #      "location_name": "Codium company",
+    #      "latitude": "35554.5247775",
+    #      "longitude": "100.5247775",
+    #      "user": "2",
+    #      "picture": "ironman.jpeg"
+    #    }
+
+    #    For Check-out
+    #    {
+    #      "type": "check_out",
+    #      "date_time": "2022-02-08T11:30",
+    #      "location_name": "Codium company",
+    #      "latitude": "35554.5247775",
+    #      "longitude": "100.5247775",
+    #      "user": "2",
+    #      "picture": "ironman.jpeg"
+    #    }
+    method: post
+    responses:
+      - statusCode: 201
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/activities/date=2022-02-08
+    #    For Getting detail of activities such as check_in time, check_out time by query string "date"
+    #    But in real API need to insert "?" in front of query string too (Mocki not support).
+    #    /mocki/backend/api/activities/?date=2022-02-08
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: activities
+
+  - path: /mocki/backend/api/daily-tasks/
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: daily-tasks
+
+  - path: /mocki/backend/api/forget-password/
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/change-password/
+    method: post
+    responses:
+      - statusCode: 200
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/leave-requests/
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: leave_requests
+
+  - path: /mocki/backend/api/projects/
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: projects
+
+
+  - path: /mocki/backend/api/projects/
+    method: post
+    responses:
+      - statusCode: 201
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/clients/
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: clients
+
+  - path: /mocki/backend/api/clients/
+    method: post
+    responses:
+      - statusCode: 201
+        body:
+          detail: OK
+
+  - path: /mocki/backend/api/activities/attendance-histories/
+    #    filter by month like => ?date_month=2021-02-22
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: attendance-history
+
+  - path: /mocki/backend/api/attendance-histories/calendars/
+    #    filter by month like => ?date_month=2021-02-22
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: attendance-history-calendar
+
+  - path: /mocki/backend/api/leave-requests/calendars/
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: calendar
+
+  - path: /mocki/backend/api/workplaces/
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: workplaces
+
+
+  - path: /mocki/backend/api/current-roster-calendar/
+    #    filter month by format => ?date=2021-03-22
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: current-roster-calendar
+
+
+
+  - path: /mocki/backend/api/projects/1/working-hours
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: working-hours
+
+  - path: /mocki/backend/api/rosters
+    method: get
+    responses:
+      - statusCode: 200
+        body:
+          $ref:
+            type: collection
+            id: roster

@@ -1,0 +1,34 @@
+<ng-template #add let-modal>
+  <div class="modal-header pb-0">
+    <div class="modal-title header with-underline">
+      Create New {{ type | titlecase }}
+    </div>
+    <button type="button" class="close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group" *ngFor="let data of dataList; index as i">
+      <div class="d-flex justify-content-between my-2">
+        {{ level | titlecase }} {{ i + 1 }}
+        <div class="pointer" (click)="s.open()" #s="ngbPopover" [ngbPopover]="popover" [autoClose]="false"
+          triggers="manual" placement="left">
+          <svg-icon src="../../../../../assets/images/icons/delete.svg"></svg-icon>
+
+          <ng-template #popover>
+            <app-delete-popover (confirm)="onDelete(i)" (cancel)="s.close()" [message]="type">
+            </app-delete-popover>
+          </ng-template>
+        </div>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="data.name">
+    </div>
+    <button *ngIf="!isEdit" class="btn btn-outline-danger w-100 mt-3" (click)="onAdd()">+ Add more {{ level }}</button>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="modal.close()">Cancel</button>
+    <button class="btn btn-danger" (click)="onSubmit()" [ladda]="submitting">Confirm</button>
+  </div>
+</ng-template>

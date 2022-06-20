@@ -1,0 +1,77 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="my-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="row">
+    <div class="col-10 p-0 body-01 my-auto">
+      Client Overview
+    </div>
+    <div class="col-2 p-0 text-right">
+      <button class="btn btn-outline-dark" [routerLink]="['/client', clientDetail.id, 'edit']">Edit</button>
+    </div>
+
+    <div class="col-12 p-0">
+      <div class="my-2">
+        <div class="title">
+          Client name
+        </div>
+        <div class="body-01">{{ clientDetail.name }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 p-0">
+      <div class="my-2">
+        <div class="title">
+          branch name
+        </div>
+        <div class="body-01">{{ clientDetail.branch || '-' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 p-0">
+      <div class="my-2">
+        <div class="title">
+          Contact person
+        </div>
+        <div class="body-01">{{ clientDetail.contact_person || '-' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8 p-0">
+      <div class="mt-2">
+        <div class="title">
+          Contact number
+        </div>
+        <div class="body-01">{{ clientDetail.contact_number || '-' }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 p-0">
+      <div class="mt-2">
+        <div class="title">
+          project manager
+        </div>
+        <div class="body-01">{{ clientDetail.project_manager.full_name }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 p-0">
+      <div class="mt-2">
+        <div class="title">
+          url
+        </div>
+        <div class="value d-flex gap-10">
+          {{ clientDetail.url || '-' }}
+
+          <div class="d-flex copy-link pointer" *ngIf="clientDetail.url">
+            <svg-icon src="../../../../../assets/images/icons/copy.svg" class="mr-1"></svg-icon>
+            <span class="m-auto" appCopyClipboard [payload]="'lorealthailand.ahead.net'" ngbPopover="Copied"
+              triggers="click:mouseleave">Copy link</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

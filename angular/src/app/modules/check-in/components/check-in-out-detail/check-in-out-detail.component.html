@@ -1,0 +1,78 @@
+<div class="box">
+  <div class="box-title">
+    <div class="decorate" [ngClass]="{'bg-success': isCheckIn, 'bg-warning': !isCheckIn}"></div>
+    <div class="title" [ngClass]="{'text-success': isCheckIn, 'text-warning': !isCheckIn}">
+      {{ type }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-4 p-0 pr-md-3">
+      <div class="my-2" *ngIf="!detail.type">
+        <div class="title">
+          {{ type }} Status
+        </div>
+        <ng-container *ngIf="detail.extra_type; else dropdownTemplate">
+          <div class="body-01">{{ detail.extra_type.replace('_', ' ') | titlecase }}</div>
+        </ng-container>
+        <ng-template #dropdownTemplate>
+          <div container="body" ngbDropdown class="d-inline-block mt-2">
+            <button class="btn" [ngClass]="{'btn-outline-success': isCheckIn, 'btn-outline-warning': !isCheckIn}"
+              id="dropdown" ngbDropdownToggle>
+              {{ isCheckIn ? 'Check-in' : 'Check-out' }}
+            </button>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem *ngFor="let option of options[detail.type]" (click)="action.open()">
+                {{ option.replace('_', ' ') | titlecase }}
+                <app-check-in-action-modal [id]="detail.id" [type]="detail.type" [extra_type]="option" #action>
+                </app-check-in-action-modal>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="my-2">
+        <div class="title">
+          {{ type }} TIME
+        </div>
+        <div class="body-01"> {{ (detail.date_time | date: "dd MMM yyyy, h:mm a") || '-' }}</div>
+      </div>
+
+      <div class="my-2">
+        <div class="title">
+          {{ type }} Detail
+        </div>
+        <div class="body-01">{{ detail.remark || detail.reason_for_adjust_time || '-' }}</div>
+      </div>
+
+      <div class="mt-2">
+        <div class="title">
+          {{ type }} photo
+        </div>
+        <div class="check-in-image mt-1">
+          <ng-container *ngIf="detail.picture; else elseTemplate">
+            <img [src]="detail.picture" alt="check-in-out">
+          </ng-container>
+          <ng-template #elseTemplate>
+            -
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8 p-0 pl-md-3">
+      <div class="title">{{ type }} Location</div>
+      <div class="body-01">
+        {{ detail.location_name || '-' }}
+      </div>
+      <div class="text-underline">
+        {{ latLng }}
+      </div>
+
+      <div class="mt-3" *ngIf="latLng">
+        <app-google-map [position]="position"></app-google-map>
+      </div>
+    </div>
+  </div>
+</div>
