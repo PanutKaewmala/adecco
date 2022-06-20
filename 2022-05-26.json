@@ -1,0 +1,6351 @@
+{
+	"info": {
+		"_postman_id": "568544b1-e4f6-404b-a603-bd3e8211a0ed",
+		"name": "Adecco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10102453"
+	},
+	"item": [
+		{
+			"name": "activities",
+			"item": [
+				{
+					"name": "time and location track",
+					"item": [
+						{
+							"name": "answer-pin-point (after-pin-poin)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"activity\": 5,\n  \"type\": 1,\n  \"answers\": [\n    {\n      \"pin_point\": null,\n      \"question\": 1,\n      \"question_name\": \"Name\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 2,\n      \"question_name\": \"Address\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 3,\n      \"question_name\": \"Branch\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 4,\n      \"question_name\": \"Owner\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 5,\n      \"question_name\": \"Telephone\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 6,\n      \"question_name\": \"Phone\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 7,\n      \"question_name\": \"Fax\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 8,\n      \"question_name\": \"E-mail\",\n      \"answer\": \"test\"\n    },\n    {\n      \"pin_point\": null,\n      \"question\": 9,\n      \"question_name\": \"Open Hours\",\n      \"answer\": \"test\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/pin-points/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"pin-points",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "track-route",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "track_route",
+											"type": "text"
+										},
+										{
+											"key": "date_time",
+											"value": "2022-04-16T10:00:00",
+											"type": "text"
+										},
+										{
+											"key": "location_name",
+											"value": "Codium",
+											"type": "text"
+										},
+										{
+											"key": "location_address",
+											"value": "Rama I Road, Wang Mai, Pathum Wan, Bangkok",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "13.747141700956178",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "100.52692056687667",
+											"type": "text"
+										},
+										{
+											"key": "project",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "remark",
+											"value": "TRACK ROUTE",
+											"type": "text"
+										},
+										{
+											"key": "picture",
+											"description": "null",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/activities/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pin-point",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "pin_point",
+											"type": "text"
+										},
+										{
+											"key": "date_time",
+											"value": "2022-04-06T10:00:00",
+											"type": "text"
+										},
+										{
+											"key": "location_name",
+											"value": "Codium Pin",
+											"type": "text"
+										},
+										{
+											"key": "location_address",
+											"value": "Rama I Road, Wang Mai, Pathum Wan, Bangkok",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "13.747141700956178",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "100.52692056687667",
+											"type": "text"
+										},
+										{
+											"key": "project",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "picture",
+											"type": "file",
+											"src": "/Users/codium/Downloads/avataaars.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/activities/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-in",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "check_in",
+											"description": "change in/out",
+											"type": "text"
+										},
+										{
+											"key": "date_time",
+											"value": "2022-05-07T11:00:00",
+											"type": "text"
+										},
+										{
+											"key": "location_address",
+											"value": "Rama I Road, Wang Mai, Pathum Wan, Bangkok",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "13.747141700956178",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "100.52692056687667",
+											"type": "text"
+										},
+										{
+											"key": "project",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "workplace",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "working_hour",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "picture",
+											"type": "file",
+											"src": "/Users/codium/Downloads/avataaars_3lH3APP.png"
+										},
+										{
+											"key": "extra_type",
+											"value": "ot",
+											"description": "if this check in associate need ot",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "description",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/activities/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-out",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "check_out",
+											"type": "text"
+										},
+										{
+											"key": "date_time",
+											"value": "2022-05-06T23:30:00",
+											"type": "text"
+										},
+										{
+											"key": "location_address",
+											"value": "Rama I Road, Wang Mai, Pathum Wan, Bangkok",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "13.747141700956178",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "100.52692056687667",
+											"type": "text"
+										},
+										{
+											"key": "project",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "workplace",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "working_hour",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "picture",
+											"type": "file",
+											"src": "/Users/codium/Downloads/avataaars.png"
+										},
+										{
+											"key": "pair_id",
+											"value": "19",
+											"description": "required get from api/locations",
+											"type": "text"
+										},
+										{
+											"key": "extra_type",
+											"value": "ot",
+											"description": "if this check in associate need ot",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/activities/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "leave-requests",
+					"item": [
+						{
+							"name": "leave-request-dashboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/leave-requests/dashboard/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-requests",
+										"dashboard",
+										""
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "approve",
+											"disabled": true
+										},
+										{
+											"key": "full_name",
+											"value": "admin",
+											"description": "filter ชื่อนะ",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "",
+											"description": "upcoming, pending, history, reject",
+											"disabled": true
+										},
+										{
+											"key": "start_date",
+											"value": "",
+											"description": "leave date",
+											"disabled": true
+										},
+										{
+											"key": "created_at",
+											"value": "",
+											"description": "request date",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "Annual Leave",
+											"description": "type can search in db (Sick Leave, Business Leave, Annual Leave)",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-in-activity-actions",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "check_in",
+											"description": "admin force change type of user acticity [check_in, check_out]",
+											"type": "text"
+										},
+										{
+											"key": "reason_for_adjust_status",
+											"value": "test",
+											"description": "not require",
+											"type": "text"
+										},
+										{
+											"key": "reason_for_adjust_time",
+											"value": "test",
+											"description": "not require",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/activities/26/actions/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										"26",
+										"actions",
+										""
+									]
+								},
+								"description": "## Description\n\nthis api use in FE `/check-in` when admin, super admin change user activity action type\n\nresponse api key data same as api `backend/api/activities/dashboard`\n\nFE can replace data of dashboard after response success"
+							},
+							"response": []
+						},
+						{
+							"name": "leave-request-detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/leave-requests/{{leave_request_id}}/details",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-requests",
+										"{{leave_request_id}}",
+										"details"
+									]
+								},
+								"description": "ดู detail ของ leave request ครับ\n\nเราส่ง leave quota ของ user คนนี้มาให้ด้วยนะ\n\nตัวอย่าง response\n\n``` json\n{\n    \"id\": 2,\n    \"type\": \"Annual Leave\",\n    \"user\": {\n        \"id\": 2,\n        \"full_name\": \"codium codium\",\n        \"email\": \"admin@codium.co\",\n        \"role\": \"project_manager\",\n        \"phone_number\": null\n    },\n    \"upload_attachments\": [],\n    \"leave_quotas\": [\n        {\n            \"type\": \"Business Leave\",\n            \"total\": 5.0,\n            \"project\": 1,\n            \"used\": 0.0,\n            \"remained\": 5.0,\n            \"id\": 2\n        },\n        {\n            \"type\": \"Sick Leave\",\n            \"total\": 10.0,\n            \"project\": 1,\n            \"used\": 0.0,\n            \"remained\": 10.0,\n            \"id\": 3\n        },\n        {\n            \"type\": \"Annual Leave\",\n            \"total\": 10.0,\n            \"project\": 1,\n            \"used\": 2.0,\n            \"remained\": 8.0,\n            \"id\": 1\n        }\n    ],\n    \"start_date\": \"2022-02-17\",\n    \"end_date\": \"2022-02-18\",\n    \"start_time\": null,\n    \"end_time\": null,\n    \"all_day\": true,\n    \"title\": \"leave na krub\",\n    \"description\": \"ja leave\",\n    \"status\": \"approve\"\n}\n\n```"
+							},
+							"response": []
+						},
+						{
+							"name": "leave-request-create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": 1,\n    \"start_date\": \"2022-02-01\",\n    \"end_date\": \"2022-02-02\",\n    \"start_time\": null,\n    \"end_time\": null,\n    \"all_day\": true,\n    \"title\": \"Leave\",\n    \"description\": \"haha\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/leave-requests/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-requests",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leave-request-actions",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "partial_approve",
+											"description": "action [partial_approve, approve, reject] for now don't have loa. action approve will decrease remaining leave quota",
+											"type": "text"
+										},
+										{
+											"key": "note",
+											"value": "note for approve",
+											"description": "not reuqired",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "reason",
+											"value": "note for reject",
+											"description": "not reuqired",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/leave-requests/{{leave_request_id}}/actions/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-requests",
+										"{{leave_request_id}}",
+										"actions",
+										""
+									]
+								},
+								"description": "api นี้อารมเหมือน approve ของ memo เลยครับ\n\nตอนนี้ยังไม่มี flow loa เลย ก็เลยยิงมาแล้วเปลี่ยนเลยครับ\n\nแต่มี validate อยู่คือเฉพาะ leave request ที่ยังไม่เป็น approve, reject\n\nแล้วก็หลังจาก approve จะมีการไปลด leave quota ที่เหลืออยู่ด้วยครับ"
+							},
+							"response": []
+						},
+						{
+							"name": "leave-request-actions (partial-approve)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"partial_approve\",\n    \"leave_request_partial_approves\": [\n        \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/leave-requests/{{leave_request_id}}/actions/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-requests",
+										"{{leave_request_id}}",
+										"actions",
+										""
+									]
+								},
+								"description": "api นี้อารมเหมือน approve ของ memo เลยครับ\n\nตอนนี้ยังไม่มี flow loa เลย ก็เลยยิงมาแล้วเปลี่ยนเลยครับ\n\nแต่มี validate อยู่คือเฉพาะ leave request ที่ยังไม่เป็น approve, reject\n\nแล้วก็หลังจาก approve จะมีการไปลด leave quota ที่เหลืออยู่ด้วยครับ"
+							},
+							"response": []
+						},
+						{
+							"name": "leave-request-leave-quota",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/leave-quotas/dashboard",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-quotas",
+										"dashboard"
+									],
+									"query": [
+										{
+											"key": "full_name",
+											"value": "codium",
+											"description": "ตอนนี้มีแค่ filter full_name",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "",
+											"description": "ยังไม่มี order นะครับ",
+											"disabled": true
+										}
+									]
+								},
+								"description": "หน้า leave quota setting\n\nมันจะเอา leave type ที่มีใน db มาตั้งเป็น keys เลย\n\nตัวอย่าง response\n\n``` json\n{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 2,\n            \"full_name\": \"codium codium\",\n            \"email\": \"admin@codium.co\",\n            \"leave_quotas\": {\n                \"Sick Leave\": 10.0,\n                \"Business Leave\": 5.0,\n                \"Annual Leave\": 10.0\n            }\n        },\n        {\n            \"id\": 6,\n            \"full_name\": \"Waleerat Thamsupimol\",\n            \"email\": \"waleerat.t@codium.co\",\n            \"leave_quotas\": {\n                \"Sick Leave\": 0,\n                \"Business Leave\": 0,\n                \"Annual Leave\": 10.0\n            }\n        }\n    ]\n}\n\n```"
+							},
+							"response": []
+						},
+						{
+							"name": "leave-quota",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/leave-quotas/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-quotas",
+										""
+									],
+									"query": [
+										{
+											"key": "full_name",
+											"value": "codium",
+											"description": "ตอนนี้มีแค่ filter full_name",
+											"disabled": true
+										},
+										{
+											"key": null,
+											"value": "",
+											"description": "ยังไม่มี order นะครับ",
+											"disabled": true
+										}
+									]
+								},
+								"description": "หน้า leave quota setting\n\nมันจะเอา leave type ที่มีใน db มาตั้งเป็น keys เลย\n\nตัวอย่าง response\n\n``` json\n{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 2,\n            \"full_name\": \"codium codium\",\n            \"email\": \"admin@codium.co\",\n            \"leave_quotas\": {\n                \"Sick Leave\": 10.0,\n                \"Business Leave\": 5.0,\n                \"Annual Leave\": 10.0\n            }\n        },\n        {\n            \"id\": 6,\n            \"full_name\": \"Waleerat Thamsupimol\",\n            \"email\": \"waleerat.t@codium.co\",\n            \"leave_quotas\": {\n                \"Sick Leave\": 0,\n                \"Business Leave\": 0,\n                \"Annual Leave\": 10.0\n            }\n        }\n    ]\n}\n\n```"
+							},
+							"response": []
+						},
+						{
+							"name": "leave-request-get-partial-approve-list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/leave-requests/2/get-partial-approve-list",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-requests",
+										"2",
+										"get-partial-approve-list"
+									]
+								},
+								"description": "ดู detail ของ leave request ครับ\n\nเราส่ง leave quota ของ user คนนี้มาให้ด้วยนะ\n\nตัวอย่าง response\n\n``` json\n{\n    \"id\": 2,\n    \"type\": \"Annual Leave\",\n    \"user\": {\n        \"id\": 2,\n        \"full_name\": \"codium codium\",\n        \"email\": \"admin@codium.co\",\n        \"role\": \"project_manager\",\n        \"phone_number\": null\n    },\n    \"upload_attachments\": [],\n    \"leave_quotas\": [\n        {\n            \"type\": \"Business Leave\",\n            \"total\": 5.0,\n            \"project\": 1,\n            \"used\": 0.0,\n            \"remained\": 5.0,\n            \"id\": 2\n        },\n        {\n            \"type\": \"Sick Leave\",\n            \"total\": 10.0,\n            \"project\": 1,\n            \"used\": 0.0,\n            \"remained\": 10.0,\n            \"id\": 3\n        },\n        {\n            \"type\": \"Annual Leave\",\n            \"total\": 10.0,\n            \"project\": 1,\n            \"used\": 2.0,\n            \"remained\": 8.0,\n            \"id\": 1\n        }\n    ],\n    \"start_date\": \"2022-02-17\",\n    \"end_date\": \"2022-02-18\",\n    \"start_time\": null,\n    \"end_time\": null,\n    \"all_day\": true,\n    \"title\": \"leave na krub\",\n    \"description\": \"ja leave\",\n    \"status\": \"approve\"\n}\n\n```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "website-check-in-out",
+					"item": [
+						{
+							"name": "check-in-dashboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/activities/dashboard/?ordering=-date_time",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										"dashboard",
+										""
+									],
+									"query": [
+										{
+											"key": "user",
+											"value": "1",
+											"description": "search by user id",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "check_in",
+											"description": "[check_in, check_out]",
+											"disabled": true
+										},
+										{
+											"key": "date_time_after",
+											"value": "2022-02-14",
+											"description": "start range date/time search by date 2022-02-14 or search by date/time 2022-02-14T13:22:00+07:00",
+											"disabled": true
+										},
+										{
+											"key": "date_time_before",
+											"value": "2022-02-15",
+											"description": "end range date/time",
+											"disabled": true
+										},
+										{
+											"key": "location_name",
+											"value": "codium",
+											"description": "partial search",
+											"disabled": true
+										},
+										{
+											"key": "latitude",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "longitude",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "reason_for_adjust_time",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "remark",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "full_name",
+											"value": "admin",
+											"description": "partial search",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "-date_time",
+											"description": "ordering [date_time, type, location_name]\nsample -date_time mean descending"
+										},
+										{
+											"key": "workplaces",
+											"value": "codium",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-in-detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/activities/48/details",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										"48",
+										"details"
+									]
+								},
+								"description": "``` json\n{\n    \"user\": {\n        \"id\": 1,\n        \"full_name\": \"admin admin\",\n        \"email\": \"admin@example.com\",\n        \"role\": \"super_admin\",\n        \"phone_number\": null\n    },\n    \"activities\": {\n        \"check_in\": {\n            \"id\": 1,\n            \"type\": \"check_in\",\n            \"date_time\": \"2022-02-14T13:22:00+07:00\",\n            \"location_name\": \"Middle Home\",\n            \"latitude\": 13.7462723549596,\n            \"longitude\": 100.534482705112,\n            \"picture\": \"/media/activities/images/2022-02-14/Screen_Shot_2565-02-14_at_10.39.03_AM.png\",\n            \"reason_for_adjust_time\": null,\n            \"remark\": null,\n            \"user\": 1\n        },\n        \"check_out\": {\n            \"id\": 3,\n            \"type\": \"check_out\",\n            \"date_time\": \"2022-02-15T02:22:00+07:00\",\n            \"location_name\": \"Middle Home\",\n            \"latitude\": 13.7462723549596,\n            \"longitude\": 100.534482705112,\n            \"picture\": \"/media/activities/images/2022-02-14/Screen_Shot_2565-02-14_at_10.39.03_AM.png\",\n            \"reason_for_adjust_time\": null,\n            \"remark\": null,\n            \"user\": 1\n        }\n    }\n}\n\n```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ot-requests",
+					"item": [
+						{
+							"name": "user-requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/?status=upcoming&project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "user_request",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "upcoming",
+											"description": "pending, reject, approve, upcoming, history"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										},
+										{
+											"key": "date",
+											"value": "2022-04-20",
+											"description": "for single date",
+											"disabled": true
+										},
+										{
+											"key": "full_name",
+											"value": "ka",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assign-ot",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/?type=assign_ot&project=1&date=2022-04-01",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "assign_ot"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										},
+										{
+											"key": "full_name",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "2022-04-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/23/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										"23",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "associate-ot-request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"start_date\": \"2022-05-22\",\n  \"end_date\": \"2022-05-22\",\n  \"start_time\": \"07:00\",\n  \"end_time\": \"08:00\",\n  \"description\": \"ot เข้างานก่อนเวลา v.2\",\n  \"project\": 1,\n  \"workplace\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assign-ot",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"start_date\": \"2022-04-20\",\n  \"end_date\": \"2022-04-27\",\n  \"start_time\": \"07:00\",\n  \"end_time\": \"08:00\",\n  \"title\": \"OT na krub\",\n  \"description\": \"assign ot krub\",\n  \"project\": 1,\n  \"workplace\": 1,\n  \"employee_projects\": [1, 2]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actions",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "note",
+											"value": "approve krub",
+											"description": "this for approve",
+											"type": "text"
+										},
+										{
+											"key": "reason",
+											"value": "reject krub",
+											"description": "this for reject",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "partial_approve",
+											"description": "approve, partial_approve, reject",
+											"type": "text"
+										},
+										{
+											"key": "partial_start_time",
+											"value": "07:30",
+											"description": "this for partial_approve",
+											"type": "text"
+										},
+										{
+											"key": "partial_end_time",
+											"value": "08:00",
+											"description": "this for partial_approve",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/4/actions/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										"4",
+										"actions",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/ot-requests/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-requests",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "no-status",
+					"item": [
+						{
+							"name": "dashboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/activities/no-status-dashboard/?project=1&date=2022-05-05",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										"no-status-dashboard",
+										""
+									],
+									"query": [
+										{
+											"key": "project",
+											"value": "1",
+											"description": "required"
+										},
+										{
+											"key": "date",
+											"value": "2022-05-05",
+											"description": "required"
+										},
+										{
+											"key": "full_name",
+											"value": "waleerat",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/activities/no-status-detail/?project=1&date=2022-05-05&user=9",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"activities",
+										"no-status-detail",
+										""
+									],
+									"query": [
+										{
+											"key": "project",
+											"value": "1",
+											"description": "required"
+										},
+										{
+											"key": "date",
+											"value": "2022-05-05",
+											"description": "required"
+										},
+										{
+											"key": "user",
+											"value": "9",
+											"description": "required"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "inside-workplace",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "latitude",
+									"value": "13.7575496527435560",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "100.5002367496490500",
+									"type": "text"
+								},
+								{
+									"key": "workplace",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/activities/inside-workplace/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"activities",
+								"inside-workplace",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "managements",
+			"item": [
+				{
+					"name": "clients",
+					"item": [
+						{
+							"name": "clients",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/clients/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "branch",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "contact_person",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "contact_number",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "project_manager",
+											"value": "",
+											"description": "search by name",
+											"disabled": true
+										},
+										{
+											"key": "project_assignee",
+											"value": "codium",
+											"description": "search by name",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, branch",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clients-detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/clients/1/?expand=ot_rules,business_calendars,lead_times",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "ot_rules,business_calendars,lead_times"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clients-patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ot_rules\": [\n        {\n            \"id\": 1,\n            \"client\": 1,\n            \"type\": \"test\",\n            \"pay_code\": 10,\n            \"day\": \"working_day\",\n            \"time\": \"normal_time\",\n            \"description\": \"test\"\n        }\n    ],\n    \"business_calendars\": [\n        {\n            \"client\": 1,\n            \"type\": \"custom_holiday\",\n            \"date\": \"2022-04-16\",\n            \"name\": \"test\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/clients/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clients-create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test",
+											"type": "text"
+										},
+										{
+											"key": "branch",
+											"value": "Test branch name",
+											"type": "text"
+										},
+										{
+											"key": "contact_person",
+											"value": "Name",
+											"type": "text"
+										},
+										{
+											"key": "contact_person_email",
+											"value": "test@example.com",
+											"type": "text"
+										},
+										{
+											"key": "contact_number",
+											"value": "0631234567",
+											"type": "text"
+										},
+										{
+											"key": "project_manager",
+											"value": "1",
+											"description": "id user",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "Test",
+											"type": "text"
+										},
+										{
+											"key": "name_th",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/clients/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clients-dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=client",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "client"
+										},
+										{
+											"key": "query",
+											"value": "codium",
+											"description": "search name",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "projects",
+					"item": [
+						{
+							"name": "projects",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/projects",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects"
+									],
+									"query": [
+										{
+											"key": "project_manager",
+											"value": "admin",
+											"description": "partial search",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "start_date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "end_date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, description, start_date, end_date",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "3",
+											"description": "use this to get project in client id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "projects-detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/projects/1/?expand=ot_rules",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "ot_rules"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "projects-patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "patch name",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/projects/2/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "projects-create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test\",\n    \"description\": \"test\",\n    \"start_date\": \"2022-02-17\",\n    \"end_date\": \"2022-03-17\",\n    \"country\": \"TH\",\n    \"city\": \"Bangkok\",\n    \"project_assignee\": 1,\n    \"client\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/projects/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "projects-dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=project",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "project"
+										},
+										{
+											"key": "query",
+											"value": "Adecco",
+											"description": "search name",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "4",
+											"description": "search by client id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "workplaces",
+					"item": [
+						{
+							"name": "workplaces",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/workplaces?project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"workplaces"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "codium",
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "-name",
+											"disabled": true
+										},
+										{
+											"key": "project",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "workplaces-detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/workplaces/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"workplaces",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "workplaces-create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Codium\",\n    \"address\": \"Codium\",\n    \"wifi\": \"\",\n    \"bluetooth\": \"\",\n    \"qr_code\": \"\",\n    \"latitude\": \"20\",\n    \"longitude\": \"20\",\n    \"project\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/workplaces/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"workplaces",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "workplaces-patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Hell 1 patch name\",\n    \"project\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/workplaces/2/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"workplaces",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "workplaces-dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?project=3&type=workplace",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "Adecco",
+											"description": "search name",
+											"disabled": true
+										},
+										{
+											"key": "project",
+											"value": "3",
+											"description": "search by project id"
+										},
+										{
+											"key": "type",
+											"value": "workplace"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "pin-point-types",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/pin-point-types/?project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"pin-point-types",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "type 01",
+											"disabled": true
+										},
+										{
+											"key": "detail",
+											"value": "test",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, detail",
+											"disabled": true
+										},
+										{
+											"key": "project",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/pin-point-types/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"pin-point-types",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "template-for-create",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/pin-point-types/template",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"pin-point-types",
+										"template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"project\": 1,\n    \"name\": \"pin point type 01\",\n    \"detail\": \"detail text area\",\n    \"employee_projects\": [1, 2],\n\t\"questions\": [\n\t\t{\n          \"name\": \"Name\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Address\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Branch\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Owner\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Telephone\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Phone\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Fax\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"E-mail\",\n          \"require\": true,\n          \"hide\": false\n\t\t},\n        {\n          \"name\": \"Open Hours\",\n          \"require\": true,\n          \"hide\": false\n\t\t}\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/pin-point-types/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"pin-point-types",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"name\": \"pin point type 05 edit\",\n    \"detail\": \"detail text area\",\n    \"project\": 1,\n    \"employee_projects\": [1,2,3],\n    \"questions\": [\n        {\n            \"id\": 10,\n            \"name\": \"Name\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Address\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Branch\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Owner\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Telephone\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Phone\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Fax\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 17,\n            \"name\": \"E-mail\",\n            \"require\": true,\n            \"hide\": false\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Open Hours\",\n            \"require\": true,\n            \"hide\": false\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/pin-point-types/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"pin-point-types",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=pin_point_type&employee_project=2",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "pin_point_type"
+										},
+										{
+											"key": "employee_project",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ot-rules",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/ot-rules/?project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-rules",
+										""
+									],
+									"query": [
+										{
+											"key": "project",
+											"value": "1"
+										},
+										{
+											"key": "client",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve (old not use)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/clients/1/?expand=ot_rules",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "ot_rules"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"client\": null,\n    \"project\": 1,\n    \"type\": \"name rule 1\",\n    \"pay_code\": 2,\n    \"day\": \"working_day\",\n    \"time\": \"normal_work_hour\",\n    \"description\": \"description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/ot-rules/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-rules",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"type\": \"name rule 1 edit name\",\n    \"pay_code\": 2.0,\n    \"day\": \"working_day\",\n    \"time\": \"normal_time\",\n    \"description\": \"description\",\n    \"client\": 1,\n    \"project\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/ot-rules/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"ot-rules",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "working-hours",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/working-hours/?project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"working-hours",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "type 01",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, detail",
+											"disabled": true
+										},
+										{
+											"key": "project",
+											"value": "1",
+											"description": "use this in project setting"
+										},
+										{
+											"key": "client",
+											"value": "1",
+											"description": "use this in client setting",
+											"disabled": true
+										},
+										{
+											"key": "expand",
+											"value": "additional_allowances",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/working-hours/1/?expand=additional_allowances",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"working-hours",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "additional_allowances"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"client\": 1,\n    \"project\": null,\n    \"name\": \"Name <project null == create in client>\",\n    \"sunday\": false,\n    \"monday\": true,\n    \"tuesday\": true,\n    \"wednesday\": true,\n    \"thursday\": true,\n    \"friday\": true,\n    \"saturday\": false,\n    \"sunday_start_time\": null,\n    \"sunday_end_time\": null,\n    \"monday_start_time\": \"08:30\",\n    \"monday_end_time\": \"18:30\",\n    \"tuesday_start_time\": \"08:30\",\n    \"tuesday_end_time\": \"17:30\",\n    \"wednesday_start_time\": \"08:30\",\n    \"wednesday_end_time\": \"17:30\",\n    \"thursday_start_time\": \"09:30\",\n    \"thursday_end_time\": \"18:30\",\n    \"friday_start_time\": \"09:30\",\n    \"friday_end_time\": \"18:30\",\n    \"saturday_start_time\": null,\n    \"saturday_end_time\": null,\n    \"additional_allowances\": [\n        {\n            \"type\": \"test\",\n            \"pay_code\": \"test\",\n            \"day_of_week\": \"monday\",\n            \"description\": null\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/working-hours/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"working-hours",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 10,\n    \"name\": \"Name Patch\",\n    \"sunday\": false,\n    \"monday\": true,\n    \"tuesday\": true,\n    \"wednesday\": true,\n    \"thursday\": true,\n    \"friday\": true,\n    \"saturday\": false,\n    \"sunday_start_time\": null,\n    \"sunday_end_time\": null,\n    \"monday_start_time\": \"08:30:00\",\n    \"monday_end_time\": \"18:30:00\",\n    \"tuesday_start_time\": \"08:30:00\",\n    \"tuesday_end_time\": \"17:30:00\",\n    \"wednesday_start_time\": \"08:30:00\",\n    \"wednesday_end_time\": \"17:30:00\",\n    \"thursday_start_time\": \"09:30:00\",\n    \"thursday_end_time\": \"18:30:00\",\n    \"friday_start_time\": \"09:30:00\",\n    \"friday_end_time\": \"18:30:00\",\n    \"saturday_start_time\": null,\n    \"saturday_end_time\": null,\n    \"client\": 1,\n    \"project\": null,\n    \"additional_allowances\": [\n        {\n            \"id\": 3,\n            \"type\": \"test edit\",\n            \"pay_code\": \"test\",\n            \"day_of_week\": \"monday\",\n            \"description\": null\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/working-hours/10/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"working-hours",
+										"10",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "business-calendars",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/business-calendars/?client=1&type=custom_holiday",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"business-calendars",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "type 01",
+											"disabled": true
+										},
+										{
+											"key": "project",
+											"value": "1",
+											"description": "use this in project setting",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "1",
+											"description": "use this in client setting"
+										},
+										{
+											"key": "type",
+											"value": "custom_holiday",
+											"description": "custom_holiday, default_holiday"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"client\": 1,\n  \"project\": null,\n  \"type\": \"custom_holiday\",\n  \"date\": \"2022-05-16\",\n  \"name\": \"calendar name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/business-calendars/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"business-calendars",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 4,\n    \"type\": \"custom_holiday\",\n    \"date\": \"2022-05-16\",\n    \"name\": \"calendar name <patch>\",\n    \"client\": 1,\n    \"project\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/business-calendars/4/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"business-calendars",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-holiday-from-calendarific",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://calendarific.com/api/v2/holidays?api_key=41aabda4dd35f8df2268923c1b4b9579a28f2d4a&country=TH&year=2022",
+									"protocol": "https",
+									"host": [
+										"calendarific",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"holidays"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "41aabda4dd35f8df2268923c1b4b9579a28f2d4a"
+										},
+										{
+											"key": "country",
+											"value": "TH"
+										},
+										{
+											"key": "year",
+											"value": "2022"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "default-business-calendars",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/clients/default-business-calendars/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										"default-business-calendars",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Leave",
+					"item": [
+						{
+							"name": "leave-type-settings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/leave-type-settings/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"leave-type-settings",
+										""
+									],
+									"query": [
+										{
+											"key": "project",
+											"value": "1",
+											"description": "filter by project id",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "start_date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "end_date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, description, start_date, end_date",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "1",
+											"description": "use this to get project in client id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "client-leave-type-setting",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/client-leave-type-settings/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"client-leave-type-settings",
+										""
+									],
+									"query": [
+										{
+											"key": "project_manager",
+											"value": "admin",
+											"description": "partial search",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "start_date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "end_date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, description, start_date, end_date",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "3",
+											"description": "use this to get project in client id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/users?ordering=-id",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "full_name",
+									"value": "co",
+									"description": "search user full name",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "super_admin",
+									"description": "role list -> [super_admin, project_manager, associate]",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "pincode",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "ordering",
+									"value": "-id",
+									"description": "first_name, last_name"
+								},
+								{
+									"key": "projects_id",
+									"value": "1,2",
+									"description": "search by projects id",
+									"disabled": true
+								},
+								{
+									"key": "project_name",
+									"value": "adecco",
+									"description": "search by project name",
+									"disabled": true
+								},
+								{
+									"key": "clients_id",
+									"value": "4,6",
+									"description": "search by clients id",
+									"disabled": true
+								},
+								{
+									"key": "client_name",
+									"value": "test",
+									"description": "search by client name",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/users/1/?expand=clients",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"users",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "expand",
+									"value": "clients"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"supervisor test\",\n    \"last_name\": \"supervisor te\",\n    \"username\": \"supervisor\",\n    \"email\": \"supervisor@codium.co\",\n    \"password\": \"Codium123!\",\n    \"role\": \"supervisor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/users/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"users",
+								""
+							]
+						},
+						"description": "fields `users_projects` not required."
+					},
+					"response": []
+				},
+				{
+					"name": "users-dropdown",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/dropdown/?type=user&role=supervisor",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"dropdown",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "user"
+								},
+								{
+									"key": "query",
+									"value": "adecco",
+									"description": "search name",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "project_manager",
+									"description": "role for now we have [super_admin, project_manager, project_assignee, associate]",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "supervisor"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users-blob-upload",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/codium/Downloads/image (21).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/users/7/blob-upload/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"users",
+								"7",
+								"blob-upload",
+								""
+							]
+						},
+						"description": "fields `users_projects` not required."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/employees?projects=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "id",
+									"description": "id, position",
+									"disabled": true
+								},
+								{
+									"key": "full_name",
+									"value": "kaeng",
+									"description": "search full name",
+									"disabled": true
+								},
+								{
+									"key": "nick_name",
+									"value": "",
+									"description": "search nick name",
+									"disabled": true
+								},
+								{
+									"key": "position",
+									"value": "",
+									"description": "search position",
+									"disabled": true
+								},
+								{
+									"key": "projects",
+									"value": "1",
+									"description": "search by project id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees-detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"additional_note\": null,\n  \"address\": null,\n  \"client_employee_id\": null,\n  \"hrms_id\": null,\n  \"id\": null,\n  \"middle_name\": null,\n  \"nick_name\": null,\n  \"position\": null,\n  \"reference_contact\": null,\n  \"reference\": null,\n  \"user\": {\n    \"first_name\": \"sukanya\",\n    \"last_name\": \"kunjetjaroensuk\",\n    \"email\": \"sukanya@codium.co\"\n  },\n  \"employee_projects\": [\n    {\n      \"employee\": null,\n      \"id\": null,\n      \"workplaces\": [1, 2],\n      \"supervisor\": 7,\n      \"resign_date\": null,\n      \"start_date\": null,\n      \"project\": 1\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees-patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"id\": 25,\n        \"first_name\": \"kakaeng patch\",\n        \"last_name\": \"ieie patch2\",\n        \"email\": \"test@codium.co\",\n        \"phone_number\": \"0639600314\"\n    },\n    \"middle_name\": \"patch 2\",\n    \"nick_name\": \"patch 2\",\n    \"position\": \"haha\",\n    \"employee_id_hrms\": \"\",\n    \"employee_id_adecco_staff\": \"\",\n    \"employee_id_associate\": \"\",\n    \"gender\": \"male\",\n    \"date_of_birth\": \"2022-06-26\",\n    \"identity_card\": \"\",\n    \"address\": \"\",\n    \"ability\": \"\",\n    \"available_working_place\": \"\",\n    \"available_working_hours\": \"\",\n    \"reference\": \"\",\n    \"reference_contact\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/13/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								"13",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees-assign-project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_project\": {\n        \"supervisor\": 7,\n        \"project\": 1,\n        \"workplaces\": [1, 2],\n        \"start_date\": null,\n        \"resign_date\": null\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/2/assign-project/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								"2",
+								"assign-project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees-dropdown",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/dropdown/?type=employee",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"dropdown",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "adecco",
+									"description": "search name",
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": "1",
+									"description": "search by project id",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "employee"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "locations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/locations/?project=1&date=2022-05-06",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								"locations",
+								""
+							],
+							"query": [
+								{
+									"key": "project",
+									"value": "1",
+									"description": "alway need project id"
+								},
+								{
+									"key": "date",
+									"value": "2022-05-06",
+									"description": "single date need this key"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "daily-tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/daily-tasks/?project=1&date=2022-05-17&latitude=13.7575496527435560&longitude=100.5002367496490500",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								"daily-tasks",
+								""
+							],
+							"query": [
+								{
+									"key": "project",
+									"value": "1",
+									"description": "alway need project id"
+								},
+								{
+									"key": "date",
+									"value": "2022-05-17",
+									"description": "single date need this key"
+								},
+								{
+									"key": "latitude",
+									"value": "13.7575496527435560"
+								},
+								{
+									"key": "longitude",
+									"value": "100.5002367496490500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ot-quotas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/employees/ot-quotas/?project=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employees",
+								"ot-quotas",
+								""
+							],
+							"query": [
+								{
+									"key": "project",
+									"value": "1",
+									"description": "alway need project id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/employee-projects/me/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"employee-projects",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "managers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/managers?projects=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"managers"
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "id",
+									"description": "id, position",
+									"disabled": true
+								},
+								{
+									"key": "full_name",
+									"value": "kaeng",
+									"description": "search full name",
+									"disabled": true
+								},
+								{
+									"key": "projects",
+									"value": "1",
+									"description": "search by project id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "managers-detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/managers/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"managers",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "managers-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"first_name\": \"manager2\",\n        \"last_name\": \"manager2\",\n        \"email\": \"manager2@codium.co\",\n        \"role\": \"supervisor\",\n        \"middle_name\": \"test\"\n    },\n    \"projects\": [\n        1\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/managers/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"managers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "managers-patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"user\": {\n        \"id\": 24,\n        \"first_name\": \"supervisor 1 patch\",\n        \"last_name\": \"supervisor 1\",\n        \"role\": \"supervisor\"\n    },\n    \"projects\": [\n        4\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/managers/3/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"managers",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "managers-assign-project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": 17,\n    \"project\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/managers/assign-project/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"managers",
+								"assign-project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "managers-dropdown",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/dropdown/?type=manager",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"dropdown",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "adecco",
+									"description": "search name",
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": "1",
+									"description": "search by project id",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "manager"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rosters",
+			"item": [
+				{
+					"name": "website-roster-flow-create",
+					"item": [
+						{
+							"name": "employee-project-dropdown (web)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?project=1&query=HAHA&type=employee_project",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "project",
+											"value": "1",
+											"description": "project id"
+										},
+										{
+											"key": "query",
+											"value": "HAHA"
+										},
+										{
+											"key": "type",
+											"value": "employee_project"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "workplaces-dropdown (web)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=workplace&project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "employee_project",
+											"value": "1",
+											"description": "search by employee project id",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "workplace"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "projects-working-hours",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/projects/1/working-hours",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										"1",
+										"working-hours"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "mobile-roster-flow-create",
+					"item": [
+						{
+							"name": "projects-workplaces (mobile)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/projects/1/workplaces",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										"1",
+										"workplaces"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "projects-working-hours",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/projects/1/working-hours",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										"1",
+										"working-hours"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "edit-roster (shift, day-off)",
+					"item": [
+						{
+							"name": "edit-shift",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"from_shift\": 43,\n  \"working_hour\": 4,\n  \"remark\": \"remark\",\n  \"schedules\": [\n    {\n      \"id\": null,\n      \"sunday\": \"holiday\",\n      \"monday\": \"work_day\",\n      \"tuesday\": \"work_day\",\n      \"wednesday\": \"day_off\",\n      \"thursday\": \"work_day\",\n      \"friday\": \"day_off\",\n      \"saturday\": \"holiday\",\n      \"workplaces\": [\n        5,\n        6\n      ]\n    },\n    {\n      \"id\": null,\n      \"sunday\": \"holiday\",\n      \"monday\": \"day_off\",\n      \"tuesday\": \"day_off\",\n      \"wednesday\": \"work_day\",\n      \"thursday\": \"day_off\",\n      \"friday\": \"work_day\",\n      \"saturday\": \"holiday\",\n      \"workplaces\": [\n        2,\n        1\n      ]\n    }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/rosters/174/edit-shift/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"rosters",
+										"174",
+										"edit-shift",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-shift-detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/shifts/48/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shifts",
+										"48",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "day-offs",
+					"item": [
+						{
+							"name": "day-off-create-preview (mobile)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": null,\n  \"employee_projects\": [2],\n  \"name\": \"Roster 001\",\n  \"description\": \"Description -> create day off\",\n  \"start_date\": \"2022-02-01\",\n  \"end_date\": \"2022-02-28\",\n  \"day_off\": {\n    \"working_hour\": 2,\n    \"detail_list\": [\"2022-02-15\", \"2022-02-16\", \"2022-02-28\"]\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/rosters/preview/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"rosters",
+										"preview",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "day-off-create (mobile)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": null,\n  \"employee_projects\": [7],\n  \"name\": \"Roster 001\",\n  \"description\": \"Description -> create day off\",\n  \"start_date\": \"2022-02-01\",\n  \"end_date\": \"2022-02-28\",\n  \"day_off\": {\n    \"working_hour\": 2,\n    \"detail_list\": [\"2022-02-15\", \"2022-02-16\", \"2022-02-28\"]\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/rosters/day-off/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"rosters",
+										"day-off",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve (mobile, web)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/rosters/165/day-off-retrieve/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"rosters",
+										"165",
+										"day-off-retrieve",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit (mobile, web)",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 168,\n  \"employee_projects\": [1],\n  \"name\": \"Roster 001 edit\",\n  \"description\": \"Description -> create day off\",\n  \"start_date\": \"2022-01-01\",\n  \"end_date\": \"2022-01-28\",\n  \"day_off\": {\n    \"id\": 24,\n    \"working_hour\": 2,\n    \"detail_list\": [\"2022-02-9\", \"2022-02-10\", \"2022-02-16\", \"2022-02-28\"]\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/rosters/day-off/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"rosters",
+										"day-off",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "rosters (web, mobile)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/rosters?roster_setting=false&project=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-07-17",
+									"description": "search by month and year",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "reject",
+									"description": "for pending and reject",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Roster",
+									"description": "partial search",
+									"disabled": true
+								},
+								{
+									"key": "employee_name",
+									"value": "kaka",
+									"description": "partial search",
+									"disabled": true
+								},
+								{
+									"key": "roster_setting",
+									"value": "false",
+									"description": "for website (roster-setting)"
+								},
+								{
+									"key": "project",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-details-by-id (website)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-create (mobile, website)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": null,\n  \"employee_projects\": [1],\n  \"name\": \"Roster 002\",\n  \"description\": \"Description\",\n  \"start_date\": \"2022-07-01\",\n  \"end_date\": \"2022-07-28\",\n  \"shifts\": [\n    {\n      \"id\": null,\n      \"from_date\": \"2022-07-01\",\n      \"to_date\": \"2022-07-20\",\n      \"working_hour\": 1,\n      \"schedules\": [\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"work_day\",\n          \"tuesday\": \"work_day\",\n          \"wednesday\": \"day_off\",\n          \"thursday\": \"work_day\",\n          \"friday\": \"day_off\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            1,\n            2\n          ]\n        },\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"day_off\",\n          \"tuesday\": \"day_off\",\n          \"wednesday\": \"work_day\",\n          \"thursday\": \"day_off\",\n          \"friday\": \"work_day\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            2\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": null,\n      \"from_date\": \"2022-07-21\",\n      \"to_date\": \"2022-07-28\",\n      \"working_hour\": 1,\n      \"schedules\": [\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"work_day\",\n          \"tuesday\": \"work_day\",\n          \"wednesday\": \"work_day\",\n          \"thursday\": \"day_off\",\n          \"friday\": \"day_off\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            1\n          ]\n        }\n      ]\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-create-preview (mobile)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": null,\n  \"employee_projects\": [2],\n  \"name\": \"Roster 001\",\n  \"description\": \"Description\",\n  \"start_date\": \"2022-06-01\",\n  \"end_date\": \"2022-06-28\",\n  \"shifts\": [\n    {\n      \"id\": null,\n      \"from_date\": \"2022-06-01\",\n      \"to_date\": \"2022-06-20\",\n      \"working_hour\": 1,\n      \"schedules\": [\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"work_day\",\n          \"tuesday\": \"work_day\",\n          \"wednesday\": \"day_off\",\n          \"thursday\": \"work_day\",\n          \"friday\": \"day_off\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            1,\n            2\n          ]\n        },\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"day_off\",\n          \"tuesday\": \"day_off\",\n          \"wednesday\": \"work_day\",\n          \"thursday\": \"day_off\",\n          \"friday\": \"work_day\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            2\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": null,\n      \"from_date\": \"2022-06-21\",\n      \"to_date\": \"2022-06-28\",\n      \"working_hour\": 1,\n      \"schedules\": [\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"work_day\",\n          \"tuesday\": \"work_day\",\n          \"wednesday\": \"work_day\",\n          \"thursday\": \"day_off\",\n          \"friday\": \"day_off\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            1\n          ]\n        }\n      ]\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/preview/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"preview",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-edit (mobile, website)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 163,\n    \"shifts\": [\n        {\n            \"id\": 159,\n            \"schedules\": [\n                {\n                    \"id\": 221,\n                    \"sunday\": \"holiday\",\n                    \"monday\": \"day_off\",\n                    \"tuesday\": \"day_off\",\n                    \"wednesday\": \"day_off\",\n                    \"thursday\": \"work_day\",\n                    \"friday\": \"day_off\",\n                    \"saturday\": \"holiday\",\n                    \"shift\": 159,\n                    \"workplaces\": [\n                        5,\n                        6\n                    ]\n                },\n                {\n                    \"id\": 222,\n                    \"sunday\": \"holiday\",\n                    \"monday\": \"day_off\",\n                    \"tuesday\": \"day_off\",\n                    \"wednesday\": \"day_off\",\n                    \"thursday\": \"day_off\",\n                    \"friday\": \"work_day\",\n                    \"saturday\": \"holiday\",\n                    \"shift\": 159,\n                    \"workplaces\": [\n                        5\n                    ]\n                }\n            ],\n            \"working_hour\": 1,\n            \"status\": \"pending\",\n            \"from_date\": \"2022-08-01\",\n            \"to_date\": \"2022-08-20\",\n            \"roster\": 163\n        },\n        {\n            \"schedules\": [\n                {\n                    \"sunday\": \"holiday\",\n                    \"monday\": \"day_off\",\n                    \"tuesday\": \"day_off\",\n                    \"wednesday\": \"work_day\",\n                    \"thursday\": \"day_off\",\n                    \"friday\": \"day_off\",\n                    \"saturday\": \"holiday\",\n                    \"workplaces\": [\n                        6,\n                        7\n                    ]\n                }\n            ],\n            \"working_hour\": 3,\n            \"status\": \"pending\",\n            \"from_date\": \"2022-08-21\",\n            \"to_date\": \"2022-08-28\",\n            \"roster\": 163\n        }\n    ],\n    \"description\": \"Description\",\n    \"type\": \"shift\",\n    \"name\": \"Roster 002 (edit)\",\n    \"start_date\": \"2022-08-01\",\n    \"end_date\": \"2022-08-28\",\n    \"status\": \"pending\",\n    \"roster_setting\": true,\n    \"employee_projects\": [\n        1\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"1",
+								""
+							]
+						},
+						"description": "mobile can edit when roster was reject\n\nadmin/manager can edit all time"
+					},
+					"response": []
+				},
+				{
+					"name": "create-auto-shifts (website)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": null,\n  \"employee_projects\": [1, 2],\n  \"name\": \"Roster From Kaeng\",\n  \"description\": \"Description\",\n  \"start_date\": \"2022-06-15\",\n  \"end_date\": \"2022-08-28\",\n  \"auto_shifts\": true,\n  \"shifts\": [\n    {\n      \"id\": null,\n      \"working_hour\": 1,\n      \"schedules\": [\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"work_day\",\n          \"tuesday\": \"work_day\",\n          \"wednesday\": \"day_off\",\n          \"thursday\": \"work_day\",\n          \"friday\": \"day_off\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            1,\n            2\n          ]\n        },\n        {\n          \"id\": null,\n          \"sunday\": \"holiday\",\n          \"monday\": \"day_off\",\n          \"tuesday\": \"day_off\",\n          \"wednesday\": \"work_day\",\n          \"thursday\": \"day_off\",\n          \"friday\": \"work_day\",\n          \"saturday\": \"holiday\",\n          \"workplaces\": [\n            2\n          ]\n        }\n      ]\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-details (mobile)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/1/details",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"1",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-actions (website)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "approve",
+									"description": "status approve, reject",
+									"type": "text"
+								},
+								{
+									"key": "remark",
+									"value": "remark for reject",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/1/actions/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"1",
+								"actions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-calendars (mobile)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/calendars?date=2022-04-11&project=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"calendars"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-04-11"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "reject",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "29",
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rosters-plans (website)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/roster-plans?roster_plan_date=2022-05-05&roster_plan_type=week&project=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"roster-plans"
+							],
+							"query": [
+								{
+									"key": "roster_plan_date",
+									"value": "2022-05-05"
+								},
+								{
+									"key": "roster_plan_type",
+									"value": "week",
+									"description": "week, month"
+								},
+								{
+									"key": "project",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roster-setting-employee-to-new",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_project\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/rosters/1/duplicate/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"rosters",
+								"1",
+								"duplicate",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "edit-shifts",
+			"item": [
+				{
+					"name": "list (website)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/edit-shifts/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"edit-shifts",
+								""
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "002",
+									"description": "search roster name",
+									"disabled": true
+								},
+								{
+									"key": "employee_name",
+									"value": "2",
+									"description": "serach by employee name",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail (website)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/edit-shifts/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"edit-shifts",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actions (website)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "approve",
+									"description": "approve, reject",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/edit-shifts/1/actions/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"edit-shifts",
+								"1",
+								"actions",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "adjust-requests",
+			"item": [
+				{
+					"name": "list (website)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/adjust-requests/?project=1",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"adjust-requests",
+								""
+							],
+							"query": [
+								{
+									"key": "employee_name",
+									"value": "name a",
+									"disabled": true
+								},
+								{
+									"key": "month",
+									"value": "2022-05-01",
+									"description": "filter by month of date",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "work_day",
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/adjust-requests/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"adjust-requests",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create (website)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"remark\": \"remark na krub\",\n  \"date_list\": [\n    {\n      \"date\": \"2022-04-01\",\n      \"employee_list\": [\n        {\n          \"employee_project\": 1,\n          \"type\": \"work_day\",\n          \"workplaces\": [1, 2, 5],\n          \"working_hour\": 2\n        },\n        {\n          \"employee_project\": 2,\n          \"type\": \"work_day\",\n          \"workplaces\": [2, 5],\n          \"working_hour\": 1\n        }\n      ]\n    },\n    {\n      \"date\": \"2022-04-02\",\n      \"employee_list\": [\n        {\n          \"employee_project\": 2,\n          \"type\": \"work_day\",\n          \"workplaces\": [2, 5],\n          \"working_hour\": 1\n        }\n      ]\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/adjust-requests/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"adjust-requests",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"working_hour\": 4,\n    \"date\": \"2023-02-01\",\n    \"workplaces\": [1],\n    \"type\": \"work_day\",\n    \"remark\": null,\n    \"employee_project\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{env}}/backend/api/adjust-requests/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"adjust-requests",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pin-points",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/pin-points/?type=1&project=1&date_range_after=2022-05-01&date_range_before=2022-05-30",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"pin-points",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-04-26",
+									"description": "search by month",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "branch",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "owner",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "telephone",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "open_hours",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "1"
+								},
+								{
+									"key": "project",
+									"value": "1"
+								},
+								{
+									"key": "date_range_after",
+									"value": "2022-05-01",
+									"description": "filter by range"
+								},
+								{
+									"key": "date_range_before",
+									"value": "2022-05-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/pin-points/1/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"pin-points",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "track-routes",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/track-routes/?project=1&start_date=2022-05-01&end_date=2022-05-30",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"track-routes",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-04-22",
+									"description": "required",
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": "1"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-05-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-05-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{env}}/backend/api/track-routes/10/",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"backend",
+								"api",
+								"track-routes",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "merchandizers",
+			"item": [
+				{
+					"name": "settings",
+					"item": [
+						{
+							"name": "create-flow",
+							"item": [
+								{
+									"name": "create-multiple-example",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"settings\": [\n        {\n            \"type\": \"shop\",\n            \"level_name\": \"group\",\n            \"name\": \"setting group shop 1\",\n            \"client\": 1,\n            \"parent\": null\n        },\n        {\n            \"type\": \"shop\",\n            \"level_name\": \"group\",\n            \"name\": \"setting group shop 2\",\n            \"client\": 1,\n            \"parent\": null\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "shop-group-create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "shop",
+													"description": "shop, product",
+													"type": "text"
+												},
+												{
+													"key": "level_name",
+													"value": "group",
+													"description": "group, category, subcategory",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "group shop 1",
+													"description": "name",
+													"type": "text"
+												},
+												{
+													"key": "client",
+													"value": "1",
+													"description": "client id",
+													"type": "text"
+												},
+												{
+													"key": "parent",
+													"value": "",
+													"description": "group level no parent",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "shop-category-create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "shop",
+													"description": "shop, product",
+													"type": "text"
+												},
+												{
+													"key": "level_name",
+													"value": "category",
+													"description": "group, category, subcategory",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "category shop 1",
+													"description": "name",
+													"type": "text"
+												},
+												{
+													"key": "client",
+													"value": "1",
+													"description": "client id",
+													"type": "text"
+												},
+												{
+													"key": "parent",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "shop-subcategory-create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "shop",
+													"description": "shop, product",
+													"type": "text"
+												},
+												{
+													"key": "level_name",
+													"value": "subcategory",
+													"description": "group, category, subcategory",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "subcategory shop 1",
+													"description": "name",
+													"type": "text"
+												},
+												{
+													"key": "client",
+													"value": "1",
+													"description": "client id",
+													"type": "text"
+												},
+												{
+													"key": "parent",
+													"value": "2",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "product-group-create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "product",
+													"description": "shop, product",
+													"type": "text"
+												},
+												{
+													"key": "level_name",
+													"value": "group",
+													"description": "group, category, subcategory",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "group product 1",
+													"description": "name",
+													"type": "text"
+												},
+												{
+													"key": "client",
+													"value": "1",
+													"description": "client id",
+													"type": "text"
+												},
+												{
+													"key": "parent",
+													"value": "",
+													"description": "group level no parent",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "product-category-create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "product",
+													"description": "shop, product",
+													"type": "text"
+												},
+												{
+													"key": "level_name",
+													"value": "category",
+													"description": "group, category, subcategory",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "category product 1",
+													"description": "name",
+													"type": "text"
+												},
+												{
+													"key": "client",
+													"value": "1",
+													"description": "client id",
+													"type": "text"
+												},
+												{
+													"key": "parent",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "product-subcategory-create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "type",
+													"value": "product",
+													"description": "shop, product",
+													"type": "text"
+												},
+												{
+													"key": "level_name",
+													"value": "subcategory",
+													"description": "group, category, subcategory",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "subcategory product 1",
+													"description": "name",
+													"type": "text"
+												},
+												{
+													"key": "client",
+													"value": "1",
+													"description": "client id",
+													"type": "text"
+												},
+												{
+													"key": "parent",
+													"value": "5",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-settings/?parent_only=true&type=shop&client=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-settings",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"description": "search partial",
+											"disabled": true
+										},
+										{
+											"key": "parent_only",
+											"value": "true",
+											"description": "only group level"
+										},
+										{
+											"key": "type",
+											"value": "shop",
+											"description": "shop, product"
+										},
+										{
+											"key": "client",
+											"value": "1"
+										},
+										{
+											"key": "parent",
+											"value": "1",
+											"description": "use this for get all category or subcategory under parent id",
+											"disabled": true
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, id",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-settings/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-settings",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve (with-expand)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-settings/1/?expand=shops,children",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-settings",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "shops,children",
+											"description": "expand all shops in this setting"
+										},
+										{
+											"key": "expand",
+											"value": "products,children",
+											"description": "expand all products in this setting",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "group shop 1 (PATCH)",
+											"description": "can patch name",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-settings/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-settings",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-settings/8/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-settings",
+										"8",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=merchandizer_setting&parent_only=true&setting_type=shop",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "merchandizer_setting"
+										},
+										{
+											"key": "parent_only",
+											"value": "true"
+										},
+										{
+											"key": "parent",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "setting_type",
+											"value": "shop",
+											"description": "product | shop"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "setting-questions",
+					"item": [
+						{
+							"name": "list (NOT USE)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-questions/?type=shop&project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-questions",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"description": "search partial",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "shop",
+											"description": "shop, product"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/clients/1/?expand=merchandizer_questions&fields=merchandizer_questions",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"description": "search partial",
+											"disabled": true
+										},
+										{
+											"key": "expand",
+											"value": "merchandizer_questions"
+										},
+										{
+											"key": "fields",
+											"value": "merchandizer_questions"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create-update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"merchandizer_questions\": [\n        {\n            \"id\": 1,\n            \"type\": \"shop\",\n            \"name\": \"question 1\",\n            \"active\": true,\n            \"client\": 1\n        },\n        {\n            \"id\": 2,\n            \"type\": \"shop\",\n            \"name\": \"question 2 edit\",\n            \"active\": true,\n            \"client\": 1\n        },\n        {\n            \"id\": 5,\n            \"type\": \"product\",\n            \"name\": \"question 3 new (type -> shop, product)\",\n            \"active\": true,\n            \"client\": 1\n        },\n        {\n            \"id\": 6,\n            \"type\": \"product\",\n            \"name\": \"question 3 new (type -> shop, product)\",\n            \"active\": true,\n            \"client\": 1\n        },\n        {\n            \"id\": null,\n            \"type\": \"product\",\n            \"name\": \"question 3 new (type -> shop, product)\",\n            \"active\": true,\n            \"client\": 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/clients/1/?expand=merchandizer_questions&fields=merchandizer_questions",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"clients",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "merchandizer_questions"
+										},
+										{
+											"key": "fields",
+											"value": "merchandizer_questions"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create-by-one (NOT USE)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": null,\n    \"type\": \"shop\",\n    \"name\": \"question 4 new\",\n    \"active\": true,\n    \"project\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizer-questions/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizer-questions",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dropdown-questions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=merchandizer_question&client=1&question_type=shop&active=true",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "merchandizer_question"
+										},
+										{
+											"key": "client",
+											"value": "1",
+											"description": "setting type shop"
+										},
+										{
+											"key": "question_type",
+											"value": "shop",
+											"description": "shop | product"
+										},
+										{
+											"key": "active",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "shops",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/shops/?client=1&setting=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"description": "search partial",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "1"
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, id",
+											"disabled": true
+										},
+										{
+											"key": "setting",
+											"value": "1",
+											"description": "setting type shop"
+										},
+										{
+											"key": "group_only",
+											"value": "true",
+											"description": "only group level",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/shops/3/?expand=products,shop_details",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										"3",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "products,shop_details"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"setting\": 1,\n    \"shop_id\": \"shop id\",\n    \"name\": \"shop name 1\",\n    \"address_1\": \"address 1\",\n    \"address_2\": \"address 2\",\n    \"city\": \"\",\n    \"state\": \"\",\n    \"county\": \"\",\n    \"postalcode\": \"\",\n    \"telephone\": \"\",\n    \"mobile\": \"\",\n    \"fax\": \"\",\n    \"email\": \"shop@example.com\",\n    \"latitude\": 0,\n    \"longitude\": 0,\n    \"shop_details\": [\n      {\n          \"id\": null,\n          \"question\": 1,\n          \"question_name\": \"question 1\",\n          \"answer\": \"test\"\n      },\n      {\n          \"id\": null,\n          \"question\": 2,\n          \"question_name\": \"question 2\",\n          \"answer\": \"test\"\n      }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/shops/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 3,\n    \"shop_id\": \"shop id edit\",\n    \"name\": \"shop name 1\",\n    \"address_1\": \"address 1\",\n    \"address_2\": \"address 2\",\n    \"city\": \"\",\n    \"state\": \"\",\n    \"county\": \"\",\n    \"postalcode\": \"\",\n    \"telephone\": \"\",\n    \"mobile\": \"\",\n    \"fax\": \"\",\n    \"email\": \"shop@example.com\",\n    \"latitude\": 0.0,\n    \"longitude\": 0.0,\n    \"setting\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/shops/3/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "shop-detail-nested",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"shop_details\": [\n      {\n          \"id\": 1,\n          \"question\": 1,\n          \"question_name\": \"question 1\",\n          \"answer\": \"test\"\n      },\n      {\n          \"id\": 2,\n          \"question\": 2,\n          \"question_name\": \"question 2\",\n          \"answer\": \"test\"\n      },\n      {\n          \"id\": null,\n          \"question\": 3,\n          \"question_name\": \"question 2\",\n          \"answer\": \"test\"\n      }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/shops/3/?expand=shop_details&fields=shop_details",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										"3",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "shop_details"
+										},
+										{
+											"key": "fields",
+											"value": "shop_details"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products-nested",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"products\": [2, 3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/shops/8/?expand=products&fields=products",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										"8",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "products"
+										},
+										{
+											"key": "fields",
+											"value": "products"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add-products-to-shops",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"shops\": [3, 6],\n    \"products\": [1, 2, 3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/shops/add-products-in-multiple-shop/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"shops",
+										"add-products-in-multiple-shop",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?setting=1&type=shop",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "group_only",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "setting",
+											"value": "1",
+											"description": "setting type shop"
+										},
+										{
+											"key": "type",
+											"value": "shop"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/products/?client=1&group_only=true",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"products",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "name",
+											"description": "search partial",
+											"disabled": true
+										},
+										{
+											"key": "client",
+											"value": "1"
+										},
+										{
+											"key": "ordering",
+											"value": "name",
+											"description": "name, id",
+											"disabled": true
+										},
+										{
+											"key": "setting",
+											"value": "4",
+											"description": "setting type product",
+											"disabled": true
+										},
+										{
+											"key": "group_only",
+											"value": "true",
+											"description": "only group level"
+										},
+										{
+											"key": "barcode_number",
+											"value": "123-245-12",
+											"disabled": true
+										},
+										{
+											"key": "shop",
+											"value": "6",
+											"description": "for get product in shop",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/products/5/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"products",
+										"5",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"setting\": 4,\n  \"product_id\": \"product group id\",\n  \"name\": \"product name\",\n  \"brand_name\": \"name\",\n  \"distributor\": \"name\",\n  \"price\": 10,\n  \"ratio\": 10,\n  \"barcode_number\": \"123-245-12\",\n  \"product_details\": [\n      {\n          \"id\": 1,\n          \"question\": 19,\n          \"question_name\": \"question 1\",\n          \"answer\": \"test\"\n      },\n      {\n          \"id\": null,\n          \"question\": 23,\n          \"question_name\": \"question 1\",\n          \"answer\": \"test\"\n      }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/products/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"products",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 3,\n    \"shop_id\": \"shop id edit\",\n    \"name\": \"shop name 1\",\n    \"address_1\": \"address 1\",\n    \"address_2\": \"address 2\",\n    \"city\": \"\",\n    \"state\": \"\",\n    \"county\": \"\",\n    \"postalcode\": \"\",\n    \"telephone\": \"\",\n    \"mobile\": \"\",\n    \"fax\": \"\",\n    \"email\": \"shop@example.com\",\n    \"latitude\": 0.0,\n    \"longitude\": 0.0,\n    \"setting\": 1,\n    \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/products/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"products",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "product-detail-nested",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"product_details\": [\n      {\n          \"id\": 1,\n          \"question\": 19,\n          \"question_name\": \"question 1\",\n          \"answer\": \"test\"\n      },\n      {\n          \"id\": null,\n          \"question\": 23,\n          \"question_name\": \"question 1\",\n          \"answer\": \"test\"\n      }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/products/1/?expand=product_details",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"products",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "product_details"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dropdown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?group_only=true&type=product",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "group_only",
+											"value": "true"
+										},
+										{
+											"key": "setting",
+											"value": "1",
+											"description": "setting type shop",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "product"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "merchandizer",
+					"item": [
+						{
+							"name": "mobile",
+							"item": [
+								{
+									"name": "1.merchandizer-me",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizers/me/?employee_project=8",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizers",
+												"me",
+												""
+											],
+											"query": [
+												{
+													"key": "shop_name",
+													"value": "name 2",
+													"disabled": true
+												},
+												{
+													"key": "employee_project",
+													"value": "8",
+													"description": "required"
+												},
+												{
+													"key": "project",
+													"value": "1",
+													"description": "can use this instead employee_project",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.find-products (group)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/merchandizer/?parent_only=True&merchandizer=3&type=product",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												"merchandizer",
+												""
+											],
+											"query": [
+												{
+													"key": "parent_only",
+													"value": "True",
+													"description": "required for group"
+												},
+												{
+													"key": "merchandizer",
+													"value": "3",
+													"description": "id from merchandizer-me"
+												},
+												{
+													"key": "parent",
+													"value": "",
+													"description": "not send",
+													"disabled": true
+												},
+												{
+													"key": "type",
+													"value": "product"
+												},
+												{
+													"key": "name",
+													"value": "name",
+													"description": "search by name",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.find-products (category)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/merchandizer/?merchandizer=3&parent=4&type=product",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												"merchandizer",
+												""
+											],
+											"query": [
+												{
+													"key": "parent_only",
+													"value": "True",
+													"description": "not send",
+													"disabled": true
+												},
+												{
+													"key": "merchandizer",
+													"value": "3",
+													"description": "id from merchandizer-me"
+												},
+												{
+													"key": "parent",
+													"value": "4",
+													"description": "id from find-products (group)"
+												},
+												{
+													"key": "type",
+													"value": "product"
+												},
+												{
+													"key": "name",
+													"value": "name",
+													"description": "search by name",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.find-products (subcategory)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{env}}/backend/api/merchandizer-settings/merchandizer/?merchandizer=3&parent=5&type=product",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"merchandizer-settings",
+												"merchandizer",
+												""
+											],
+											"query": [
+												{
+													"key": "parent_only",
+													"value": "True",
+													"description": "not send",
+													"disabled": true
+												},
+												{
+													"key": "merchandizer",
+													"value": "3",
+													"description": "id from merchandizer-me"
+												},
+												{
+													"key": "parent",
+													"value": "5",
+													"description": "id from find-products (category)"
+												},
+												{
+													"key": "type",
+													"value": "product"
+												},
+												{
+													"key": "name",
+													"value": "name",
+													"description": "search by name",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.products",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{env}}/backend/api/products/merchandizer/?merchandizer=3&setting=4&descendants=True&query=name",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"backend",
+												"api",
+												"products",
+												"merchandizer",
+												""
+											],
+											"query": [
+												{
+													"key": "merchandizer",
+													"value": "3",
+													"description": "id from merchandizer-me"
+												},
+												{
+													"key": "setting",
+													"value": "4",
+													"description": "id from find-products"
+												},
+												{
+													"key": "descendants",
+													"value": "True",
+													"description": "send this for get all setting level below"
+												},
+												{
+													"key": "query",
+													"value": "name",
+													"description": "search name"
+												},
+												{
+													"key": "name",
+													"value": "name",
+													"description": "search by name",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "list (employee-project)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/employee-projects/?project=1&merchandizers=true",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"employee-projects",
+										""
+									],
+									"query": [
+										{
+											"key": "full_name",
+											"value": "test",
+											"description": "search partial",
+											"disabled": true
+										},
+										{
+											"key": "project",
+											"value": "1"
+										},
+										{
+											"key": "merchandizers",
+											"value": "true",
+											"description": "search only merchandizers"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve (employee-project)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/employee-projects/8/?expand=merchandizers",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"employee-projects",
+										"8",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "merchandizers"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"employee_project\": 8,\n    \"shop\": 4,\n    \"merchandizer_products\": [\n        {\n            \"product\": 1\n        },\n        {\n            \"product\": 2\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/merchandizers/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"merchandizers",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "price-tracking",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/price-tracking/?date_range_after=2022-05-01&date_range_before=2022-05-20&merchandizer_product=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"price-tracking",
+										""
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "",
+											"description": "single date",
+											"disabled": true
+										},
+										{
+											"key": "merchandizer",
+											"value": "1",
+											"description": "merchandizer id",
+											"disabled": true
+										},
+										{
+											"key": "product",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "date_range_after",
+											"value": "2022-05-01",
+											"description": "date range"
+										},
+										{
+											"key": "date_range_before",
+											"value": "2022-05-20",
+											"description": "date range"
+										},
+										{
+											"key": "merchandizer_product",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/price-tracking/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"price-tracking",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "merchandizer_product",
+											"value": "1",
+											"description": "id",
+											"type": "text"
+										},
+										{
+											"key": "date",
+											"value": "2022-05-17",
+											"type": "text"
+										},
+										{
+											"key": "normal_price",
+											"value": "30",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "single_category_product",
+											"description": "single_category_product, each_product_category, no",
+											"type": "text"
+										},
+										{
+											"key": "start_date",
+											"value": "2022-05-17",
+											"description": "type single or each",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2022-05-17",
+											"description": "type single or each",
+											"type": "text"
+										},
+										{
+											"key": "promotion_price",
+											"value": "15",
+											"description": "for type single",
+											"type": "text"
+										},
+										{
+											"key": "buy_free",
+											"value": "0",
+											"description": "for type single",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "buy_free_percentage",
+											"value": "0",
+											"description": "for type single",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "buy_off",
+											"value": "0",
+											"description": "for type single",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "buy_off_percentage",
+											"value": "0",
+											"description": "for type single",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "promotion_name",
+											"value": "name",
+											"description": "for type each",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "reason",
+											"value": "1",
+											"description": "id from dropdown reason",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "additional_note",
+											"value": "text area",
+											"description": "not required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/price-tracking/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"price-tracking",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "patch",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"date\": \"2022-05-17\",\n    \"normal_price\": 60.0,\n    \"type\": \"single_category_product\",\n    \"start_date\": \"2022-05-17\",\n    \"end_date\": \"2022-05-17\",\n    \"promotion_price\": 15.0,\n    \"buy_free\": null,\n    \"buy_free_percentage\": null,\n    \"buy_off\": null,\n    \"buy_off_percentage\": null,\n    \"promotion_name\": null,\n    \"reason\": null,\n    \"additional_note\": null,\n    \"merchandizer_product\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/price-tracking/1/",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"price-tracking",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create-reason",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"price_tracking_settings\": [\n        {\n            \"id\": 4,\n            \"name\": \"reason 1 edit\",\n            \"project\": 1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"reason 2\",\n            \"project\": 1\n        },\n        {\n            \"id\": null,\n            \"name\": \"reason 2\",\n            \"project\": 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{env}}/backend/api/projects/1/?expand=price_tracking_settings&fields=price_tracking_settings",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"projects",
+										"1",
+										""
+									],
+									"query": [
+										{
+											"key": "expand",
+											"value": "price_tracking_settings"
+										},
+										{
+											"key": "fields",
+											"value": "price_tracking_settings"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dropdown-reason",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{env}}/backend/api/dropdown/?type=price_tracking_reason&project=1",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"backend",
+										"api",
+										"dropdown",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "price_tracking_reason"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "env",
+			"value": "localhost:8000",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "activity_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "leave_request_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
